@@ -2,7 +2,6 @@
 const puppeteer = require('puppeteer');
 const stringify = require('csv-stringify/lib/sync');
 const fs = require('fs');
-const { generateKey } = require('crypto');
 
 // 크롤링 실행 함수
 const run = async() =>{
