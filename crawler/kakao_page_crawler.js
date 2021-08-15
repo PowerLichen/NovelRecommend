@@ -91,7 +91,7 @@ const run = async() =>{
         const unique = [...new Set(result.map(JSON.stringify))].map(JSON.parse);        
         const str = stringify(unique);
         // csv파일로 쓰기
-        fs.writeFileSync('csv/kakao.csv',str); 
+        fs.writeFileSync(__dirname+'/csv/kakao.csv',str); 
 
     }catch(e){
         console.error(e);
