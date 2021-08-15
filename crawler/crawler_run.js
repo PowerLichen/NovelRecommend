@@ -6,15 +6,17 @@ const ridibooks = require('./ridibooks_crawler.js');
 const fs = require('fs');
 
 // csv 폴더 읽기, 없으면 csv 폴더 생성
-fs.readdir('csv',(err)=>{
+fs.readdir(__dirname+'/csv',(err)=>{
     if(err){
         console.error('csv 폴더가 없으므로, 우선 폴더를 생성합니다.');
-        fs.mkdirSync('csv');
+        fs.mkdirSync(__dirname+'/csv');
     }
 });
 // 크롤링 실행
 const run = async() =>{
     try{
+        console.log(__filename);
+        console.log(__dirname);
         await Promise.all([joara.run(),naver.run(),kakao.run(),ridibooks.run()]);
     } catch(error){
         console.log(error);
