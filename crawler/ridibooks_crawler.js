@@ -87,7 +87,7 @@ const run = async() =>{
                 if(lists.check == false){
                     results = results.concat(datas[i]);
                     const endstr = stringify(datas[i]);
-                    fs.writeFileSync(`csv/ridibooks_${genreCode[0]}.csv`,endstr);
+                    fs.writeFileSync(__dirname+`/csv/ridibooks_${genreCode[0]}.csv`,endstr);
                     break;
                 }
                 genreCode[2] +=1;
@@ -104,7 +104,7 @@ const run = async() =>{
         await browser.close();
         console.log('리디북스 크롤링 완료');
         const str = stringify(results);
-        fs.writeFileSync('csv/ridibooks.csv',str);
+        fs.writeFileSync(__dirname+'/csv/ridibooks.csv',str);
 
     }catch(e){
         console.log(e);

@@ -66,7 +66,7 @@ const run = async () => {
                     if(lists.check == false){
                         result = result.concat(datas[i]);
                         const endstr = stringify(datas[i]);
-                        fs.writeFileSync(`csv/joara_${isFinish[0]}.csv`,endstr);
+                        fs.writeFileSync(__dirname+`/csv/joara_${isFinish[0]}.csv`,endstr);
                         break;
                     }
                     isFinish[1] +=1;
@@ -87,7 +87,7 @@ const run = async () => {
         await browser.close();
         console.log('조아라 크롤링 완료');
         const str = stringify(result);
-        fs.writeFileSync(`csv/joara.csv`,str);
+        fs.writeFileSync(__dirname+`/csv/joara.csv`,str);
 
     }catch(e){
         console.error(e);
