@@ -5,26 +5,20 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-const pool = require('./lib/db');
-
 app.use(cors({ origin: 'http://localhost:3000/' }));
 
+const pool = require('./lib/db');
+const passportConfig = require('./lib/passport');
+
+passportConfig(pool);
+
+//라우팅 설정
+var userRouter = require('./routes/user')(pool);
+
+app.use('/user', userRouter);
 
 app.get('/api/hello', (req, res) => {
     res.send({ message: 'Hello World' });
-});
-
-app.post('/api/join', (req, res) => {
-    let sql = 'INSERT INTO userdata VALUES (null,?,?,?,now(), 0)';
-    let id = req.body.id;
-    let password = req.body.password;
-    let nickname = req.body.nickname;
-    let params = [id, password, nickname];
-    pool.query(sql, params,
-        (err, results, fields) => {
-            console.log('Create account end');
-        });
 });
 
 app.get('/api/join', (req, res, next) => {

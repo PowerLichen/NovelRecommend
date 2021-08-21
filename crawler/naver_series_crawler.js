@@ -110,7 +110,7 @@ const run = async () => {
                     results = results.concat(datas[i]);
                     // 크롤링을 완료한 소설 장르에 대해서 csv 파일로 저장
                     const endstr = stringify(datas[i]);
-                    fs.writeFileSync(`csv/naver_${genreCode[0]}.csv`, endstr);
+                    fs.writeFileSync(__dirname+`/csv/naver_${genreCode[0]}.csv`, endstr);
                     break;
                 }
                 // 페이지 및 아이템 증가(갱신)
@@ -129,7 +129,7 @@ const run = async () => {
         console.log('네이버 시리즈 크롤링 완료');
         // 결과 데이터를 csv파일로 저장
         const str = stringify(results);
-        fs.writeFileSync('csv/naver.csv', str);
+        fs.writeFileSync(__dirname+'/csv/naver.csv', str);
     } catch (e) {
         // 에러 발생시 에러 메시지 콘솔에 출력
         console.error(e);
