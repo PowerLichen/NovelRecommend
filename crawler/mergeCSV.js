@@ -113,4 +113,4 @@ const run = async () => {
     fs.writeFileSync(__dirname+'/csv/novelList.csv',str);
     console.log('done');
 }
-run();
+exports.run = run;
