@@ -3,6 +3,7 @@ const joara = require('./joara_crawler.js');
 const naver = require('./naver_series_crawler.js');
 const kakao = require('./kakao_page_crawler.js');
 const ridibooks = require('./ridibooks_crawler.js');
+const mergeCSV = require('./mergeCSV.js');
 const fs = require('fs');
 
 // csv 폴더 읽기, 없으면 csv 폴더 생성
@@ -15,9 +16,8 @@ fs.readdir(__dirname+'/csv',(err)=>{
 // 크롤링 실행
 const run = async() =>{
     try{
-        console.log(__filename);
-        console.log(__dirname);
         await Promise.all([joara.run(),naver.run(),kakao.run(),ridibooks.run()]);
+        mergeCSV.run();
     } catch(error){
         console.log(error);
     }
