@@ -26,13 +26,22 @@ const run = async () => {
                 console.log(`조아라 ${isFinish[0]} 작품 크롤링 시작`);
                 while(1){
                     let url;
-                    if(isFinish[0]=='연재') url = `http://pre.joara.com/premium_new/book_list.html?page_no=${isFinish[1]}&sl_category=&sl_search=&sl_keyword=&sl_orderby=amt_sale&sl_othercategory=&list_type=&sub_category=&sl_cate_no=fm`;
-                    else url = `http://pre.joara.com/premium_new/finish_list.html?page_no=${isFinish[1]}&sl_category=&sl_search=&sl_keyword=&sl_orderby=cnt_page_read&sl_othercategory=&list_type=finish&sub_category=&sl_cate_no=fm`;
+                    if(isFinish[0]=='연재') url = `http://pre.joara.com/premium_new/book_list.html?page_no=${isFinish[1]}&sl_category=&sl_search=&sl_keyword=&sl_orderby=&sl_othercategory=&list_type=&sub_category=&sl_cate_no=fm`;
+                    else url = `http://pre.joara.com/premium_new/finish_list.html?page_no=${isFinish[1]}&sl_category=&sl_search=&sl_keyword=&sl_orderby=&sl_othercategory=&list_type=finish&sub_category=&sl_cate_no=fm`;
                     await page.goto(url);
                     const lists = await page.evaluate((isFinish)=>{
                         let list = []; // 페이지별 소설 정보를 담을 리스트
                         let check; // 다음 페이지 존재 여부를 저장할 변수
                         let itemNum = isFinish[2];  // 소설 수
+                        let datecheck;
+                        let d = new Date();
+                        d = new Date(d.getFullYear(),d.getMonth(),d.getDate()-7);
+                        let month = d.getMonth()+1;
+                        month = month>=10? month:'0'+month;
+                        let date = d.getDate();
+                        date = date>=10? date:'0'+date;
+                        let lastdate = `${d.getFullYear()}.${month}.${date}`;
+                        let noveldate;
                         // 소설 정보를 담을 객체
                         const data = {
                             title : null,
@@ -53,20 +62,27 @@ const run = async () => {
                             else data.desc = (data.desc).textContent.trim();
                             data.author = novel.querySelector('.member_nickname').textContent.trim();
                             data.image = novel.querySelector('.img_book1 a img').src;
-                            list.push(Object.values(data)); // list에 위 소설 push
-                            itemNum +=1; //소설 수 증가
+                            
+                            noveldate = (document.querySelector('.list_list_con.best_c .finish_list_view div p[style="color:#777"]').textContent.trim()).slice(0,10);
+                            if(noveldate < lastdate){
+                                datecheck = false;
+                                break;
+                            }
+                            else{
+                                datecheck=true;
+                                list.push(Object.values(data)); // list에 위 소설 push
+                                itemNum +=1; //소설 수 증가
+                            }
                         }
                         // 다음 페이지 존재 유무 확인
                         const nextPage = document.querySelector('.paginate_l a:last-child').href;
                         if(nextPage=='javascript:;') check = false;
                         else check = true;
-                        return {list:list,check:check,itemNum:itemNum,};
+                        return {list:list,check:check,itemNum:itemNum,datecheck:datecheck,};
                     },(isFinish));
                     datas[i] = datas[i].concat(lists.list);
-                    if(lists.check == false){
+                    if(lists.check == false || lists.datecheck == false){
                         result = result.concat(datas[i]);
-                        const endstr = stringify(datas[i]);
-                        fs.writeFileSync(__dirname+`/csv/joara_${isFinish[0]}.csv`,endstr);
                         break;
                     }
                     isFinish[1] +=1;
@@ -87,10 +103,10 @@ const run = async () => {
         await browser.close();
         console.log('조아라 크롤링 완료');
         const str = stringify(result);
-        fs.writeFileSync(__dirname+`/csv/joara.csv`,str);
+        fs.writeFileSync(__dirname+`/csv/joara_week.csv`,str);
 
     }catch(e){
         console.error(e);
     }
 }
-exports.run = run;
+run();
