@@ -36,8 +36,8 @@ module.exports = (pool) => {
     router.post('/checkId', (req, res, next) => {
         let sql = 'SELECT idx FROM userdata_tb WHERE user_id=?';
         //post 요청 시 전달되는 id
-        let id = req.body.id;
-        pool.qurey(sql, [id],
+        let email = req.body.email;
+        pool.qurey(sql, [email],
             (err, results) => {
                 if (err) {
                     console.log(err);
@@ -49,11 +49,12 @@ module.exports = (pool) => {
     });
 
     router.post('/join', (req, res, next) => {
+        console.log(req.body);
         let sql = 'INSERT INTO userdata VALUES (null,?,?,?,now(), 0)';
-        let id = req.body.id;
+        let email = req.body.email;
         let password = req.body.password;
-        let nickname = req.body.nickname;
-        let params = [id, password, nickname];
+        let name = req.body.name;
+        let params = [email, password, name];
         pool.query(sql, params,
             (err, results, fields) => {
                 if (err) {
