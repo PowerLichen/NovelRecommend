@@ -1,5 +1,6 @@
 const express = require('express')
 const passport = require('passport');
+const bcrypt = require('bcrypt');
 const router = express.Router();
 
 
@@ -48,11 +49,11 @@ module.exports = (pool) => {
             });
     });
 
-    router.post('/join', (req, res, next) => {
+    router.post('/join', async (req, res, next) => {
         console.log(req.body);
         let sql = 'INSERT INTO userdata VALUES (null,?,?,?,now(), 0)';
         let email = req.body.email;
-        let password = req.body.password;
+        let password = await bcrypt.hash(req.body.password, 10);
         let name = req.body.name;
         let params = [email, password, name];
         pool.query(sql, params,
