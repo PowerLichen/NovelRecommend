@@ -19,7 +19,7 @@ module.exports = (pool) => {
                 return next(err);
             }
             if (info) {
-                return res.status(401).send(info.reason);
+                return res.status(401).send(info);
             }
             return req.login(user, async (loginErr) => {
                 if (loginErr) { return next(loginErr); }
