@@ -1,9 +1,11 @@
 //import Axios from 'axios'
+//import { response } from 'express';
 import React,{useState} from 'react'
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../../../_actions/user_actions'
+//import { USER_SERVER } from '../../../components/Config.js';
 
-function LoginPage() {
+function LoginPage(props) {
   const dispatch =useDispatch();
 
   const [Email,setEmail] = useState("")
@@ -23,6 +25,13 @@ function LoginPage() {
       password: Password
     }
     dispatch(loginUser(body))
+      .then(response => {
+        if(response.payload.loginSuccess){
+          props.history.push('/')
+        }else{
+          alert('Error~')
+        }
+      })
 
     // Axios.post('/api/users/login', body)
     //   .then(response => {})

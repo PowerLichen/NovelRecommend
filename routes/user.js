@@ -23,7 +23,7 @@ module.exports = (pool) => {
             }
             return req.login(user, async (loginErr) => {
                 if (loginErr) { return next(loginErr); }
-                return res.json(user);
+                return res.json({user, loginSuccess: true});
             });
         })(req, res, next);
     });
