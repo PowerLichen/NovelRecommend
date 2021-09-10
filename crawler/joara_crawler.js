@@ -65,8 +65,6 @@ const run = async () => {
                     datas[i] = datas[i].concat(lists.list);
                     if(lists.check == false){
                         result = result.concat(datas[i]);
-                        const endstr = stringify(datas[i]);
-                        fs.writeFileSync(__dirname+`/csv/joara_${isFinish[0]}.csv`,endstr);
                         break;
                     }
                     isFinish[1] +=1;
