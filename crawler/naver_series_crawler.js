@@ -108,9 +108,6 @@ const run = async () => {
                 if (lists.check == false) {
                     // 결과 리스트에 장르별 리스트 병합
                     results = results.concat(datas[i]);
-                    // 크롤링을 완료한 소설 장르에 대해서 csv 파일로 저장
-                    const endstr = stringify(datas[i]);
-                    fs.writeFileSync(__dirname+`/csv/naver_${genreCode[0]}.csv`, endstr);
                     break;
                 }
                 // 페이지 및 아이템 증가(갱신)

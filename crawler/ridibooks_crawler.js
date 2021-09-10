@@ -86,8 +86,6 @@ const run = async() =>{
                 datas[i] = datas[i].concat(lists.list);
                 if(lists.check == false){
                     results = results.concat(datas[i]);
-                    const endstr = stringify(datas[i]);
-                    fs.writeFileSync(__dirname+`/csv/ridibooks_${genreCode[0]}.csv`,endstr);
                     break;
                 }
                 genreCode[2] +=1;

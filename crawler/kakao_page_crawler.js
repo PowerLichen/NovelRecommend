@@ -46,6 +46,12 @@ const run = async() =>{
                 for(const novel of novels){
                     data.title = novel.querySelector(' .css-9prbtm span').textContent.trim();
                     data.genre = novel.querySelectorAll('div.css-k87799>p')[1].textContent.trim();
+                    if(data.genre=='로판'){
+                        data.genre = '로맨스판타지'
+                    }
+                    if(data.genre=='현판'){
+                        data.genre = '현대판타지'
+                    }
                     data.link = novel.querySelector(' a.jsx-219726507').href;
                     data.desc = novel.querySelector(' p.jsx-219726507.text-ellipsis').textContent.trim();
                     data.author = novel.querySelector(' .css-k87799 .text-ellipsis').textContent.trim();
