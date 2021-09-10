@@ -1,9 +1,10 @@
 //import Axios from 'axios'
 import React,{useState} from 'react'
-import {useDispatch} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {registerUser} from '../../../_actions/user_actions'
+import Form from "react-bootstrap/form";
 
-function RegisterPage() {
+function RegisterPage(props) {
   const dispatch =useDispatch();
 
   const [Email,setEmail] = useState("")
@@ -11,6 +12,7 @@ function RegisterPage() {
   const [ConfirmPassword,setConfirmPassword] = useState("")
   const [Name,setName] = useState("")
   const [Genre,setGenre] = useState("")
+  //const { errors } = useSelector((state) => state.user);
   
   const onEmailHandler=(event)=>{
     setEmail(event.currentTarget.value)
@@ -41,7 +43,13 @@ function RegisterPage() {
       genre: Genre
     }
     dispatch(registerUser(body))
-
+      .then(response => {
+        if (response.payload.success) {
+          props.history.push('/login')
+        } else {
+          alert("회원가입에 실패하였습니다.")
+        }
+      })
     // Axios.post('/api/users/login', body)
     //   .then(response => {})
   }
@@ -56,6 +64,9 @@ function RegisterPage() {
       onSubmit={onSubmitHandler}>
         <label>Email</label>
         <input type="email" value={Email} onChange={onEmailHandler}></input>
+        {/* <Form.Control.Feedback type="invalid">
+            {errors.Email}
+        </Form.Control.Feedback> */}
         <label>Password</label>
         <input type="password" value={Password} onChange={onPasswordHandler}></input>
         <label>ConfirmPassword</label>

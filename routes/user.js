@@ -19,7 +19,7 @@ module.exports = (pool) => {
                 return next(err);
             }
             if (info) {
-                return res.status(401).send(info);
+                return res.send(info);
             }
             return req.login(user, async (loginErr) => {
                 if (loginErr) { return next(loginErr); }
@@ -44,7 +44,7 @@ module.exports = (pool) => {
                     console.log(err);
                     return next(err);
                 }
-                if (results.length !== 0) res.status(403).send('해당 아이디가 이미 DB에 있습니다.');
+                if (results.length !== 0) res.status(403).send({email : "해당 아이디가 이미 DB에 있습니다."});
                 else res.send("Good ID.");
             });
     });
@@ -63,7 +63,8 @@ module.exports = (pool) => {
                     return next(err);
                 }
                 console.log('Create account end');
-                res.send("Complete join");
+                //res.send("Complete join");
+                return res.status(200).json({success: true});
             });
     });
 

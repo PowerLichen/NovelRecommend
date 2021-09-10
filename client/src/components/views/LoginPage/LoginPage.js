@@ -10,13 +10,15 @@ function LoginPage(props) {
 
   const [Email,setEmail] = useState("")
   const [Password,setPassword] = useState("")
-  
+  const [formErrorMessage, setFormErrorMessage] = useState('')
+
   const onEmailHandler=(event)=>{
     setEmail(event.currentTarget.value)
   }
   const onPasswordHandler=(event)=>{
     setPassword(event.currentTarget.value)
   }
+  
   const onSubmitHandler= (event) =>{
     event.preventDefault();
     
@@ -29,9 +31,16 @@ function LoginPage(props) {
         if(response.payload.loginSuccess){
           props.history.push('/')
         }else{
-          alert('Error~')
-        }
-      })
+         setFormErrorMessage(response.payload.reason)
+              }
+            })
+            .catch(err => {
+              console.log(err)
+              setFormErrorMessage('서버 연결이 불안정합니다.')
+              setTimeout(() => {
+                setFormErrorMessage("")
+              }, 3000);
+            });
 
     // Axios.post('/api/users/login', body)
     //   .then(response => {})
@@ -53,6 +62,9 @@ function LoginPage(props) {
         <button type='submit'>
           Login
         </button>
+        {formErrorMessage && (
+                <label ><p style={{ color: '#ff0000bf', fontSize: '0.7rem', border: '1px solid', padding: '1rem', borderRadius: '10px' }}>{formErrorMessage}</p></label>
+              )}
       </form>
 
     </div>
