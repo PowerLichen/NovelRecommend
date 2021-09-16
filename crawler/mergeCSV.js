@@ -28,6 +28,7 @@ const run = async () => {
     let results = [];
     console.log('naver');
     for (let item of naver_records) {
+        let check_naver = false;
          novel.title = item[0];
          novel.genre = item[1];
          novel.author = item[2];
@@ -37,6 +38,15 @@ const run = async () => {
          novel.kakao = null;
          novel.joara = null;
          novel.ridibooks = null;
+         for(let comp of results){
+             if(novel.title == comp[0] && novel.author == comp[2]){
+                 check_naver=true;
+                 break;
+             }
+         }
+         if(check_naver==true){
+             continue
+         }
          results.push(Object.values(novel));
      }
     console.log('joara');
@@ -113,4 +123,5 @@ const run = async () => {
     fs.writeFileSync(__dirname+'/csv/novelList.csv',str);
     console.log('done');
 }
+run();
 exports.run = run;
