@@ -15,6 +15,7 @@ module.exports = (pool) => {
         });
     });
 
+    // 작품 상세정보 API : '/novel/detail/:id'
 
 
     return router;
