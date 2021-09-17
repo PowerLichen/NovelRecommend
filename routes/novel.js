@@ -7,7 +7,7 @@ module.exports = (pool) => {
         //위에서 10개의 데이터를 호출
         let sql = 'SELECT id,title,imgurl FROM novel_data LIMIT 0,10';
         pool.query(sql, (err, results) => {
-            if(err){
+            if (err) {
                 console.log(err);
                 return next(err);
             }
@@ -16,6 +16,9 @@ module.exports = (pool) => {
     });
 
     // 작품 상세정보 API : '/novel/detail/:id'
+    router.get('/detail/:novel_id', (req, res, next) => {
+
+    });
 
 
     return router;
