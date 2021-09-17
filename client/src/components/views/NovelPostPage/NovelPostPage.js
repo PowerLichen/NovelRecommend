@@ -7,19 +7,20 @@ import { Link } from 'react-router-dom';
 
 //작품출력
 function NovelPostPage(props) {
-    const [posts, setPosts] = useState([]);
+    
+  const [posts, setPosts] = useState([]);
     
     useEffect(() => {
       axios
         .get(`${USER_SERVER}/novel/lists`)  //테스트용 주소,  
-        .then((data)=>{console.log(data);})
-        //.then(({ data }) => setPosts(data));
+        //.then((data)=>{console.log(data);})
+        .then(({ data }) => setPosts(data));
     });
     
     return (
       <Container>
         <GlobalStyle />
-        {posts.map((post, index) => (
+        {posts.map((data, index) => (
           <Post key={index}>
             {/* 
             <Link to="/TestPage2">  
@@ -27,13 +28,13 @@ function NovelPostPage(props) {
             </Link> 
             */}
             <Body>
-              <a href={`/novel/${post.id}`}>
-                {/* 작품 표지 */}
-                <img src = 'https://cdn.kado.net/news/photo/202004/1018454_448598_1539.jpg' width = '150' align = 'center'></img> {/* 임시 이미지 */}
+              <a href={`/novel/${data.id}`}>
+                {/* 작품 표지 이미지 url */}
+                <img src = {`${data.imgurl}`} width = '150' align = 'center'></img> 
               </a>
             </Body>
             {/* 작품 타이틀*/}
-            <Title>{post.title}</Title>
+            <Title>{data.title}</Title>
           </Post>
           
         ))}
