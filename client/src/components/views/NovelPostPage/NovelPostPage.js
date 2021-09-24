@@ -15,7 +15,7 @@ function NovelPostPage(props) {
         .get(`${USER_SERVER}/novel/lists`)  //테스트용 주소,  
         //.then((data)=>{console.log(data);})
         .then(({ data }) => setPosts(data));
-    });
+    },[]);
     
     return (
       <Container>
