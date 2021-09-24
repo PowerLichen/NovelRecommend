@@ -5,6 +5,7 @@ import { USER_SERVER } from '../../../components/Config.js';
 
 import { Link } from 'react-router-dom'; 
 
+
 //작품출력
 function NovelPostPage(props) {
     
@@ -15,7 +16,7 @@ function NovelPostPage(props) {
         .get(`${USER_SERVER}/novel/lists`)  //테스트용 주소,  
         //.then((data)=>{console.log(data);})
         .then(({ data }) => setPosts(data));
-    });
+    }, [])
     
     return (
       <Container>
@@ -30,11 +31,13 @@ function NovelPostPage(props) {
             <Body>
               <a href={`/novel/${data.id}`}>
                 {/* 작품 표지 이미지 url */}
-                <img src = {`${data.imgurl}`} width = '150' align = 'center'></img> 
+                <img src = {`${data.imgurl}`} width = '150' align = 'center'></img>
+                
               </a>
             </Body>
             {/* 작품 타이틀*/}
             <Title>{data.title}</Title>
+            
           </Post>
           
         ))}

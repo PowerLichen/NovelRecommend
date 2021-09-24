@@ -26,9 +26,8 @@ function App() {
           <Route exact path="/login" component={(LoginPage)} />
           <Route exact path="/join" component={RegisterPage} />
 
-          <Route exact path="/Novle" component={NovelPostPage} />  
-          {/* <Route exact path="/novle/:id" component={(NovelDetail, null)} />  */}
-          <Route exact path="/NovleDetail" component={NovelDetail} />  
+          <Route exact path="/novel" component={NovelPostPage} />  
+          <Route exact path="/novel/:id" component={NovelDetail} /> 
           <Route exact path="/rating" component={RatingPage} /> 
           
         </Switch>
