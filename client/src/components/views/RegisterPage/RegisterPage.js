@@ -2,7 +2,7 @@
 import React,{useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux';
 import {registerUser} from '../../../_actions/user_actions'
-//import Form from "react-bootstrap/form";
+import Form from "react-bootstrap/form";
 
 function RegisterPage(props) {
   const dispatch =useDispatch();
