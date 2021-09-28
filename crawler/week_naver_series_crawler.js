@@ -35,7 +35,7 @@ const run = async() =>{
         ];
         // 브라우저 옵션
         const browserOption = {
-            headless:false,
+            headless:true,
         };
         const browser = await puppeteer.launch(browserOption);
         await Promise.all(genres.map(async (genreCode, i)=>{
