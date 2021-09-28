@@ -1,0 +1,129 @@
+{
+    "data": [
+        {
+            "name": "영화",
+            "path": "/movies",
+            "icon": "fa-home",
+            "children": [
+                {
+                    "name": "SF/히어로",
+                    "path": "/movies/type1",
+                    "color": "green",
+                    "children": [
+                        {
+                            "name": "sci-fi",
+                            "value": "sci-fi",
+                            "path": "/movies/type1/sci-fi"
+                        },
+                        {
+                            "name": "슈퍼히어로",
+                            "value": "superhero",
+                            "path": "/movies/type1/superhero"
+                        },
+                        {
+                            "name": "판타지",
+                            "value": "fantasy",
+                            "path": "/movies/type1/fantasy"
+                        },
+                        {
+                            "name": "애니메이션",
+                            "value": "animation",
+                            "path": "/movies/type1/animation"
+                        }
+                    ]
+                },
+                {
+                    "name": "로맨스/코메디",
+                    "path": "/movies/type2",
+                    "color": "orange",
+                    "children": [
+                        {
+                            "name": "코메디",
+                            "value": "comedy",
+                            "path": "/movies/type2/comedy"
+                        },
+                        {
+                            "name": "로맨스",
+                            "value": "romance",
+                            "path": "/movies/type2/romance"
+                        },
+                        {
+                            "name": "드라마",
+                            "value": "drama",
+                            "path": "/movies/type2/drama"
+                        },
+                        {
+                            "name": "로맨스-코메디",
+                            "value": "comedy-romance",
+                            "path": "/movies/type2/comedy-romance"
+                        }
+                    ]
+                },
+                {
+                    "name": "범죄/호러",
+                    "path": "/movies/type3",
+                    "color": "yellow",
+                    "children": [
+                        {
+                            "name": "미스테리",
+                            "value": "mystery",
+                            "path": "/movies/type3/mystery"
+                        },
+                        {
+                            "name": "범죄",
+                            "value": "crime",
+                            "path": "/movies/type3/crime"
+                        },
+                        {
+                            "name": "공포",
+                            "value": "horror",
+                            "path": "/movies/type3/horror"
+                        },
+                        {
+                            "name": "스릴러",
+                            "value": "thriller",
+                            "path": "/movies/type3/thriller"
+                        }
+                    ]
+                },
+                {
+                    "name": "액션/어드벤처",
+                    "path": "/movies/type4",
+                    "color": "green",
+                    "children": [
+                        {
+                            "name": "액션",
+                            "value": "action",
+                            "path": "/movies/type4/action"
+                        },
+                        {
+                            "name": "액션-코메디",
+                            "value": "action-comedy",
+                            "path": "/movies/type4/action-comedy"
+                        },
+                        {
+                            "name": "어드벤처",
+                            "value": "adventure",
+                            "path": "/movies/type4/adventure"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "소개",
+            "path": "/page2",
+            "icon": "fa-question-circle"
+        },
+        {
+            "name": "정보",
+            "path": "/page3",
+            "icon": "fa-address-book"
+        },
+        {
+            "name": "구매",
+            "path": "/page4",
+            "icon": "fa-cogs"
+        }
+    ]
+}

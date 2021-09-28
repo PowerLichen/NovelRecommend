@@ -2,6 +2,7 @@ const express = require('express')
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 
 
 module.exports = (pool) => {

@@ -3,6 +3,7 @@ import {
     REGISTER_USER,
     AUTH_USER,
     LOGOUT_USER,
+    AUTH_FETCH_USER,
 } from '../_actions/types';
  
 
@@ -16,6 +17,8 @@ export default function saga(state={},action){
             return {...state, userData: action.payload }
         case LOGOUT_USER:
             return {...state }
+        case AUTH_FETCH_USER:
+            return {...state, user: action.payload,};
         default:
             return state;
     }
