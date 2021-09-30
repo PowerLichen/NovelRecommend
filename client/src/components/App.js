@@ -44,17 +44,14 @@ function App() {
           <AuthRoute exact path="/" component={(LandingPage, null)} />
           <Route exact path="/login" component={(LoginPage)} />
           <Route exact path="/join" component={RegisterPage} />
-
-<<<<<<< HEAD
           <AuthRoute exact path="/Novle" component={NovelPostPage} />  
           {/* <Route exact path="/novle/:id" component={(NovelDetail, null)} />  */}
           <AuthRoute exact path="/NovleDetail" component={NovelDetail} />  
           <AuthRoute exact path="/rating" component={RatingPage} /> 
-=======
+
           <Route exact path="/novel" component={NovelPostPage} />  
           <Route exact path="/novel/:id" component={NovelDetail} /> 
           <Route exact path="/rating" component={RatingPage} /> 
->>>>>>> 87ddf443afab75d72178617bff0e73df2fcbf017
           
         </Switch>
       </div>
