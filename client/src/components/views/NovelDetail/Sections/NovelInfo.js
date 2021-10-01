@@ -10,33 +10,19 @@ function NovelInfo(props) {
     const [rating, setRating] = useState([4]);
     const [novels, setNovels] = useState([]);
 
-    
-
     useEffect(() => {
         axios
             .get(`${USER_SERVER}/novel/noveldata/${props.id}`)
             //.then((data)=>{console.log(data);})
-            .then(({ data }) => setNovels(data));
+            .then(({ data }) => {setNovels(data)});
       }, [])
+    
+    const UrlList = ({novels}) => {
+
+    }
 
     return (
         
-    // <Container>
-    //     <GlobalStyle />
-    //     {novels.map((data, index) => (
-    //       <Post>
-    //         <Body>
-    //             {/* 작품 표지 이미지 url */}
-    //             <img src = {`${data.imgurl}`} width = '150' align = 'center'></img>
-    //         </Body>
-    //         {/* 작품 타이틀*/}
-    //         <Title>{data.title}</Title>
-            
-    //       </Post>
-          
-    //     ))}
-    // </Container>
-      
         <div>
             
             <br></br>
@@ -64,12 +50,13 @@ function NovelInfo(props) {
             <h2> 링크  :  {novels.url}</h2>
             <h2> 줄거리   </h2>
             <p>{novels.description}</p>
-            {novels.id}
-ty
+
         </div>
         
     );
 }
+
+
 
 const GlobalStyle = createGlobalStyle`
   body {
