@@ -36,11 +36,6 @@ function NovelDetail(props) {
     return (
         <div>
         <NovelInfo id = {url}></NovelInfo>
-        
-        안녕
-        
-        {url}
-        
         </div>
         
     )
