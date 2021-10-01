@@ -34,7 +34,7 @@ function NovelPostPage(props) {
       //   .get(`${USER_SERVER}/novel/lists`) 
       //   //.then((data)=>{console.log(data);})
       //   .then(({ data }) => {setPosts(data)});
-      setPages(Pages + 1);
+      setPages(Number(Pages)+1);
 
       fetch(`${USER_SERVER}/novel/morelist/${Pages}`)
             .then(response => response.json())
