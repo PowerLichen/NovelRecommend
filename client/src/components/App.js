@@ -44,10 +44,6 @@ function App() {
           <AuthRoute exact path="/" component={(LandingPage, null)} />
           <Route exact path="/login" component={(LoginPage)} />
           <Route exact path="/join" component={RegisterPage} />
-          <AuthRoute exact path="/Novle" component={NovelPostPage} />  
-          {/* <Route exact path="/novle/:id" component={(NovelDetail, null)} />  */}
-          <AuthRoute exact path="/NovleDetail" component={NovelDetail} />  
-          <AuthRoute exact path="/rating" component={RatingPage} /> 
 
           <Route exact path="/novel" component={NovelPostPage} />  
           <Route exact path="/novel/:id" component={NovelDetail} /> 

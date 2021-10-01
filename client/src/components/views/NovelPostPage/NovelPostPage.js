@@ -9,39 +9,72 @@ import { Link } from 'react-router-dom';
 //작품출력
 function NovelPostPage(props) {
     
-  const [posts, setPosts] = useState([]);
+  const [Posts, setPosts] = useState([]);
+  const [Pages, setPages] = useState([1]);
     
     useEffect(() => {
+      //fetchNovel();
+
+      // // 스크롤이 발생할때마다 handleScroll 함수를 호출하도록 추가합니다.
+      // window.addEventListener('scroll', handleScroll, true);
+      // // 해당 컴포넌트가 언마운트 될때, 스크롤 이벤트를 제거합니다.
+      // return () => {
+      //   window.removeEventListener('scroll', handleScroll, true);
+      // };
+
       axios
-        .get(`${USER_SERVER}/novel/lists`)  //테스트용 주소,  
-        //.then((data)=>{console.log(data);})
-        .then(({ data }) => setPosts(data));
+        .get(`${USER_SERVER}/novel/lists`) 
+        .then(({ data }) => { setPosts(data); console.log(data);});
+        
     }, [])
-    
+
+    //소설 포스트 페이지 갱신
+    const fetchNovel = () => {
+      // axios
+      //   .get(`${USER_SERVER}/novel/lists`) 
+      //   //.then((data)=>{console.log(data);})
+      //   .then(({ data }) => {setPosts(data)});
+      setPages(Number(Pages)+1);
+
+      fetch(`${USER_SERVER}/novel/morelist/${Pages}`)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                setPosts([...Posts, ...response])     
+                //setCurrentPage(response.page)
+      })
+
+
+      
+    }
+
     return (
-      <Container>
-        <GlobalStyle />
-        {posts.map((data, index) => (
-          <Post key={index}>
-            {/* 
-            <Link to="/TestPage2">  
-            <Body>{post.body}</Body>
-            </Link> 
-            */}
-            <Body>
-              <a href={`/novel/${data.id}`}>
-                {/* 작품 표지 이미지 url */}
-                <img src = {`${data.imgurl}`} width = '150' align = 'center'></img>
-                
-              </a>
-            </Body>
-            {/* 작품 타이틀*/}
-            <Title>{data.title}</Title>
+      <div>
+        <Container>
+          <GlobalStyle />
+          {Posts.map((data, index) => (
+            <Post key={index}>
+              <Body>
+                <a href={`/novel/${data.id}`}>
+                  {/* 작품 표지 이미지 url */}
+                  <img src = {`${data.imgurl}`} width = '150' align = 'center'></img>
+                  
+                </a>
+              </Body>
+              {/* 작품 타이틀*/}
+              <Title>{data.title}</Title>
+              
+            </Post>
             
-          </Post>
-          
-        ))}
-      </Container>
+          ))}
+        </Container>
+
+        {/*Load More 방식 - 페이지 갱신*/}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <button onClick={fetchNovel}> Load More</button>
+        </div>
+      </div>
+      
     );
 }
 
