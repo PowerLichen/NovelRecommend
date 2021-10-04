@@ -89,9 +89,12 @@ const run = async () => {
                             .querySelector('img')
                             .src;
                         //페이지 내 소설 정보를 list에 삽입
-                        list.push(Object.values(data));
-                        //아이템 수 증가
-                        itemNum += 1;
+                        // 단행본인 경우 삽입 하지 않도록 함
+                        if((data.title).indexOf('단행본')==-1){
+                            list.push(Object.values(data));
+                            //아이템 수 증가
+                            itemNum += 1;
+                        }
                     }
                     // 다음 페이지는 아래 쿼리문을 통해 확인
                     const nextPage = document.querySelector('span.next > a');
