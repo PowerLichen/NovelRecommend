@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "userId": "test",
+            "name": "test",
+            "password": "test123",
+            "gender": "man",
+            "birth": "1991/01/01",
+            "hobby": {
+                "love": true,
+                "game": true,
+                "movie": true
+            }
+        },
+        {
+            "name": "admin",
+            "password": "admin123",
+            "gender": "woman",
+            "birth": "1991/02/02",
+            "hobby": {
+                "love": true,
+                "movie": true
+            }
+        },
+        {
+            "userId": "userid",
+            "name": "userid",
+            "password": "userid123",
+            "gender": "woman",
+            "birth": "1991/03/03",
+            "hobby": {
+                "movie": true
+            }
+        }
+    ]
+}

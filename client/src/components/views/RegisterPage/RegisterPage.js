@@ -2,7 +2,7 @@
 import React,{useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux';
 import {registerUser} from '../../../_actions/user_actions'
-import Form from "react-bootstrap/form";
+//import Form from "react-bootstrap/form";
 
 function RegisterPage(props) {
   const dispatch =useDispatch();
@@ -36,13 +36,13 @@ function RegisterPage(props) {
       return alert('비밀번호와 비밀번호 확인이 다릅니다!')
     }
     
-    let body = {
+    let userData = {
       email: Email,
       password: Password,
       name: Name,
       genre: Genre
     }
-    dispatch(registerUser(body))
+    dispatch(registerUser(userData))
       .then(response => {
         if (response.payload.success) {
           props.history.push('/login')

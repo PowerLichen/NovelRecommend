@@ -7,22 +7,41 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
-
+import HeaderNav from "./Header/HeaderNav";
 import NovelPostPage from './views/NovelPostPage/NovelPostPage'
 import NovelDetail from './views/NovelDetail/NovelDetail'
 import RatingPage from './views/RatingPage/RatingPage'
+import { useSelector, useDispatch } from "react-redux";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
 
 function App() {
+  //const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  
+  const AuthRoute = ({ component: Component, ...rest }) => (
+    <Route
+        {...rest}
+        render={(props) => {
+            if (!user.id) {
+                return <LoginPage />;
+            }
+
+            if (Component) {
+                return <Component {...props} />;
+            }
+        }}
+    />
+);
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
       <NavBar />
+      <HeaderNav />
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
         <Switch>
-          <Route exact path="/" component={(LandingPage, null)} />
+          <AuthRoute exact path="/" component={(LandingPage, null)} />
           <Route exact path="/login" component={(LoginPage)} />
           <Route exact path="/join" component={RegisterPage} />
 
