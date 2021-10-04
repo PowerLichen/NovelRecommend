@@ -99,9 +99,11 @@ const run = async() =>{
                         }
                         else{
                             datecheck=true;
-                            list.push(Object.values(data));
-                            //아이템 수 증가
-                            itemNum += 1;
+                            if((data.title).indexOf('단행본')==-1){
+                                list.push(Object.values(data));
+                                //아이템 수 증가
+                                itemNum += 1;
+                            }
                         }
                     }
                     // 다음 페이지는 아래 쿼리문을 통해 확인
