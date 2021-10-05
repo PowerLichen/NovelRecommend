@@ -57,10 +57,13 @@ function App() {
           <AuthRoute isLogin={isLogin} exact path="/" component={(LandingPage, null)} />
           <Route exact path="/login" component={(LoginPage)} />
           <Route exact path="/join" component={RegisterPage} />
+<<<<<<< HEAD
           <AuthRoute isLogin={isLogin} exact path="/Novle" component={NovelPostPage} />  
           {/* <Route exact path="/novle/:id" component={(NovelDetail, null)} />  */}
           <AuthRoute isLogin={isLogin} exact path="/NovleDetail" component={NovelDetail} />  
           <AuthRoute isLogin={isLogin} exact path="/rating" component={RatingPage} /> 
+=======
+>>>>>>> ebf29df1f4abafce2c3ac5303e86de07f3076b3f
 
           <Route exact path="/novel" component={NovelPostPage} />  
           <Route exact path="/novel/:id" component={NovelDetail} /> 

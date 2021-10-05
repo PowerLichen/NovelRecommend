@@ -7,7 +7,7 @@ module.exports = (pool) => {
     // 초기 리스트 로드 API: '/novel/list'
     router.get('/lists', (req, res, next) => {
         //위에서 10개의 데이터를 호출
-        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT 0,10';
+        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT 0,20';
         pool.query(sql, (err, results) => {
             if (err) {
                 console.log(err);
@@ -19,8 +19,8 @@ module.exports = (pool) => {
 
     // 스크롤 시 다음 리스트 로드 API: '/novel/morelist/[num]'
     router.get('/morelist/:id', (req, res, next) => {
-        const list_id = path.parse(req.params.id).base * 10;
-        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,10';
+        const list_id = path.parse(req.params.id).base * 20;
+        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
         pool.query(sql, [list_id], (err, results) => {
             if(err){
                 console.log(err);
