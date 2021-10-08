@@ -15,7 +15,7 @@ function NavBar() {
   const onClose = () => {
     setVisible(false)
   };
-
+  console.log(visible);
   return (
     <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
       <div className="menu__logo">
@@ -41,7 +41,7 @@ function NavBar() {
           className="menu_drawer"
           closable={false}
           onClose={onClose}
-          visible={visible}
+          visible={true}
         >
           <LeftMenu mode="inline" />
           <RightMenu mode="inline" />

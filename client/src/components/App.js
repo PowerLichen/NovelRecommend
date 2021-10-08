@@ -12,59 +12,68 @@ import NovelPostPage from './views/NovelPostPage/NovelPostPage'
 import NovelDetail from './views/NovelDetail/NovelDetail'
 import RatingPage from './views/RatingPage/RatingPage'
 import { useSelector, useDispatch } from "react-redux";
+import { auth } from '../_actions/user_actions';
+
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
 
-function App() {
+function App(props) {
   //const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const user  = useSelector((state) => state.user);
   const [isLogin, setIsLogin] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if(localStorage.getItem('usertoken') === null){
-    // localStorage 에 user_id 라는 key 값으로 저장된 값이 없다면
-      console.log('isLogin ?? :: ', isLogin)
-    } else {
-    // localStorage 에 user_id 라는 key 값으로 저장된 값이 있다면
-    // 로그인 상태 변경
-      setIsLogin(true)
-      console.log('isLogin ?? :: ', isLogin)
-    }
-  })
+    dispatch(auth())
+      .then(response => {
+        console.log(isLogin)
+        console.log(user.userData)
+        if(response.payload===null){
+          //props.history.push('/login')
+        }else{
+          setIsLogin(true)
+        }
+      })
+  }, [])
 
-  const AuthRoute = ({ component: Component, ...rest }) => (
-    <Route
-        {...rest}
-        render={(props) => {
-            if (!user.id) {
-                return <LoginPage />;
-            }
+  // useEffect(() => {
+  //   if(localStorage.getItem('usertoken') === null){
+  //   // localStorage 에 usertoken 라는 key 값으로 저장된 값이 없다면
+  //     console.log('isLogin ?? :: ', isLogin)
+  //   } else {
+  //   // localStorage 에 usertoken 라는 key 값으로 저장된 값이 있다면
+  //   // 로그인 상태 변경
+  //     setIsLogin(true)
+  //     console.log('isLogin ?? :: ', isLogin)
+  //   }
+  // })
 
-            if (Component) {
-                return <Component {...props} />;
-            }
-        }}
-    />
-);
+//   const AuthRoute = ({ component: Component, ...rest }) => (
+//     <Route
+//         {...rest}
+//         render={(props) => {
+//             if (!!user.userData!==false) {
+//                 return <LoginPage />;
+//             }
+
+//             if (Component) {
+//                 return <Component {...props} />;
+//             }
+//         }}
+//     />
+// );
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
       <NavBar />
       <HeaderNav />
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
         <Switch>
-          <AuthRoute isLogin={isLogin} exact path="/" component={(LandingPage, null)} />
+          <Route  exact path="/" component={(LandingPage)} />
           <Route exact path="/login" component={(LoginPage)} />
           <Route exact path="/join" component={RegisterPage} />
-<<<<<<< HEAD
-          <AuthRoute isLogin={isLogin} exact path="/Novle" component={NovelPostPage} />  
-          {/* <Route exact path="/novle/:id" component={(NovelDetail, null)} />  */}
-          <AuthRoute isLogin={isLogin} exact path="/NovleDetail" component={NovelDetail} />  
-          <AuthRoute isLogin={isLogin} exact path="/rating" component={RatingPage} /> 
-=======
->>>>>>> ebf29df1f4abafce2c3ac5303e86de07f3076b3f
-
+      
           <Route exact path="/novel" component={NovelPostPage} />  
           <Route exact path="/novel/:id" component={NovelDetail} /> 
           
