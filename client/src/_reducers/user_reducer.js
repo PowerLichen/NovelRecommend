@@ -9,7 +9,6 @@ import {
  
 
 export default function saga(state={},action){
-    //console.log('로그아웃 유저')
     switch(action.type){
         case REGISTER_USER:
             return {...state, register: action.payload }
@@ -18,7 +17,6 @@ export default function saga(state={},action){
         case AUTH_USER:
             return {...state, userData: action.payload }
         case LOGOUT_USER:
-            console.log('로그아웃 유저')
             return {...state, userData: null }
         case AUTH_FETCH_USER:
             return {...state, user: action.payload,};

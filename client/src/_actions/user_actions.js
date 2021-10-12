@@ -44,13 +44,12 @@ export async function auth(){
 }
 
 export async function logoutUser(){
-    console.log('dd')
-    const request = await axios.get(`${USER_SERVER}/user/logout`)
+    console.log('로그아웃 action 시작')
+    const request = await axios.get(`${USER_SERVER}/user/logout`,{withCredentials:true})
     .then(response => response.data);
 
     return {
-        type: LOGOUT_USER,
-        payload: request
+        type: LOGOUT_USER
     }
 }
 
