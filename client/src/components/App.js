@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Route, Switch } from "react-router-dom";
 //import Auth from "../hoc/auth";
 // pages for this product
@@ -20,7 +20,20 @@ import { useSelector, useDispatch } from "react-redux";
 function App() {
   //const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    if(localStorage.getItem('usertoken') === null){
+    // localStorage 에 user_id 라는 key 값으로 저장된 값이 없다면
+      console.log('isLogin ?? :: ', isLogin)
+    } else {
+    // localStorage 에 user_id 라는 key 값으로 저장된 값이 있다면
+    // 로그인 상태 변경
+      setIsLogin(true)
+      console.log('isLogin ?? :: ', isLogin)
+    }
+  })
+
   const AuthRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
@@ -41,13 +54,19 @@ function App() {
       <HeaderNav />
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
         <Switch>
-          <AuthRoute exact path="/" component={(LandingPage, null)} />
+          <AuthRoute isLogin={isLogin} exact path="/" component={(LandingPage, null)} />
           <Route exact path="/login" component={(LoginPage)} />
           <Route exact path="/join" component={RegisterPage} />
+<<<<<<< HEAD
+          <AuthRoute isLogin={isLogin} exact path="/Novle" component={NovelPostPage} />  
+          {/* <Route exact path="/novle/:id" component={(NovelDetail, null)} />  */}
+          <AuthRoute isLogin={isLogin} exact path="/NovleDetail" component={NovelDetail} />  
+          <AuthRoute isLogin={isLogin} exact path="/rating" component={RatingPage} /> 
+=======
+>>>>>>> ebf29df1f4abafce2c3ac5303e86de07f3076b3f
 
           <Route exact path="/novel" component={NovelPostPage} />  
           <Route exact path="/novel/:id" component={NovelDetail} /> 
-          <Route exact path="/rating" component={RatingPage} /> 
           
         </Switch>
       </div>
