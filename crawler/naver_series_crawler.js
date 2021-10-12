@@ -89,9 +89,12 @@ const run = async () => {
                             .querySelector('img')
                             .src;
                         //페이지 내 소설 정보를 list에 삽입
-                        list.push(Object.values(data));
-                        //아이템 수 증가
-                        itemNum += 1;
+                        // 단행본인 경우 삽입 하지 않도록 함
+                        if((data.title).indexOf('단행본')==-1){
+                            list.push(Object.values(data));
+                            //아이템 수 증가
+                            itemNum += 1;
+                        }
                     }
                     // 다음 페이지는 아래 쿼리문을 통해 확인
                     const nextPage = document.querySelector('span.next > a');
@@ -108,9 +111,6 @@ const run = async () => {
                 if (lists.check == false) {
                     // 결과 리스트에 장르별 리스트 병합
                     results = results.concat(datas[i]);
-                    // 크롤링을 완료한 소설 장르에 대해서 csv 파일로 저장
-                    const endstr = stringify(datas[i]);
-                    fs.writeFileSync(__dirname+`/csv/naver_${genreCode[0]}.csv`, endstr);
                     break;
                 }
                 // 페이지 및 아이템 증가(갱신)

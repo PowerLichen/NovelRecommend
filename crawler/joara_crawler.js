@@ -26,8 +26,8 @@ const run = async () => {
                 console.log(`조아라 ${isFinish[0]} 작품 크롤링 시작`);
                 while(1){
                     let url;
-                    if(isFinish[0]=='연재') url = `http://www.joara.com/premium_new/book_list.html?page_no=${isFinish[1]}&sl_category=&sl_search=&sl_keyword=&sl_orderby=amt_sale&sl_othercategory=&list_type=&sub_category=&sl_cate_no=fm`;
-                    else url = `http://www.joara.com/premium_new/finish_list.html?page_no=${isFinish[1]}&sl_category=&sl_search=&sl_keyword=&sl_orderby=cnt_page_read&sl_othercategory=&list_type=finish&sub_category=&sl_cate_no=fm`;
+                    if(isFinish[0]=='연재') url = `http://pre.joara.com/premium_new/book_list.html?page_no=${isFinish[1]}&sl_category=&sl_search=&sl_keyword=&sl_orderby=amt_sale&sl_othercategory=&list_type=&sub_category=&sl_cate_no=fm`;
+                    else url = `http://pre.joara.com/premium_new/finish_list.html?page_no=${isFinish[1]}&sl_category=&sl_search=&sl_keyword=&sl_orderby=cnt_page_read&sl_othercategory=&list_type=finish&sub_category=&sl_cate_no=fm`;
                     await page.goto(url);
                     const lists = await page.evaluate((isFinish)=>{
                         let list = []; // 페이지별 소설 정보를 담을 리스트
@@ -65,8 +65,6 @@ const run = async () => {
                     datas[i] = datas[i].concat(lists.list);
                     if(lists.check == false){
                         result = result.concat(datas[i]);
-                        const endstr = stringify(datas[i]);
-                        fs.writeFileSync(__dirname+`/csv/joara_${isFinish[0]}.csv`,endstr);
                         break;
                     }
                     isFinish[1] +=1;

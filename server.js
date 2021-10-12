@@ -28,9 +28,10 @@ app.use(passport.session());
 
 //라우팅 설정
 var userRouter = require('./routes/user')(pool);
+var novelRouter = require('./routes/novel')(pool);
 
 app.use('/user', userRouter);
-
+app.use('/novel', novelRouter);
 
 //Err handler
 app.use(function (req, res, next) {
