@@ -1,3 +1,4 @@
+import ActionButton from 'antd/lib/modal/ActionButton';
 import {
     LOGIN_USER,
     REGISTER_USER,
@@ -12,11 +13,11 @@ export default function saga(state={},action){
         case REGISTER_USER:
             return {...state, register: action.payload }
         case LOGIN_USER:
-            return { ...state, loginSuccess: action.payload }
+            return { ...state, loginSuccess: action.payload.loginSuccess, userData: action.payload.user }
         case AUTH_USER:
             return {...state, userData: action.payload }
         case LOGOUT_USER:
-            return {...state }
+            return {...state, userData: null }
         case AUTH_FETCH_USER:
             return {...state, user: action.payload,};
         default:

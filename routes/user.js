@@ -24,10 +24,10 @@ module.exports = (pool) => {
             }
             return req.login(user, async (loginErr) => {
                 if (loginErr) { return next(loginErr); }
-                const token = user.generateAuthToken();
+               
 
                 
-                return res.json({token, user, loginSuccess: true});
+                return res.json({user, loginSuccess: true});
             });
         })(req, res, next);
     });
