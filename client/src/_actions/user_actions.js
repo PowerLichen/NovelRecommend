@@ -11,8 +11,8 @@ import {
 import { USER_SERVER } from '../components/Config.js';
 //import setAuthHeader from "../util/setAuthHeader";
 
-export function registerUser(dataToSubmit){
-    const request = axios.post(`${USER_SERVER}/user/join`,dataToSubmit)
+export async function registerUser(dataToSubmit){
+    const request = await axios.post(`${USER_SERVER}/user/join`,dataToSubmit)
         .then(response => response.data)
         //.then(setAuthHeader(response => response.dataToSubmit.token));
     return {
@@ -21,8 +21,8 @@ export function registerUser(dataToSubmit){
     }
 }
 
-export function loginUser(dataToSubmit){
-    const request = axios.post(`${USER_SERVER}/user/login`,dataToSubmit)
+export async function loginUser(dataToSubmit){
+    const request = await axios.post(`${USER_SERVER}/user/login`,dataToSubmit, {withCredentials:true})
                 .then(response => {localStorage.setItem('usertoken', response.data)
                 return response.data})
                 //.then(setAuthHeader(response => response.dataToSubmit.token));
@@ -33,8 +33,8 @@ export function loginUser(dataToSubmit){
     }
 }
 
-export function auth(){
-    const request = axios.get(`${USER_SERVER}/user`)
+export async function auth(){
+    const request = await axios.get(`${USER_SERVER}/user`,{withCredentials:true})
     .then(response => response.data);
 
     return {
@@ -43,15 +43,13 @@ export function auth(){
     }
 }
 
-export function logoutUser(){
-    const request = axios.get(`${USER_SERVER}/logout`)
+export async function logoutUser(){
+    console.log('로그아웃 action 시작')
+    const request = await axios.get(`${USER_SERVER}/user/logout`,{withCredentials:true})
     .then(response => response.data);
 
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
     return {
-        type: LOGOUT_USER,
-        payload: request
+        type: LOGOUT_USER
     }
 }
 
