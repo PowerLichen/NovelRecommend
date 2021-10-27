@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import LandingPage from "./views/LandingPage/LandingPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
+import MyPage from './views/MyPgae/MyPage.js';
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import HeaderNav from "./Header/HeaderNav";
@@ -13,7 +14,7 @@ import NovelDetail from './views/NovelDetail/NovelDetail'
 import RatingPage from './views/RatingPage/RatingPage'
 import { useSelector, useDispatch } from "react-redux";
 import { auth } from '../_actions/user_actions';
-
+import { menuAction_fetch } from '../_actions/menuActions';
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -28,7 +29,7 @@ function App(props) {
   useEffect(() => {
     dispatch(auth())
       .then(response => {
-        console.log(isLogin)
+        //console.log(isLogin)
         console.log(user.userData)
         if(response.payload===null){
           //props.history.push('/login')
@@ -36,7 +37,11 @@ function App(props) {
           setIsLogin(true)
         }
       })
-  }, [])
+  }, []);
+  
+  useEffect(() => {
+    dispatch(menuAction_fetch());
+}, [dispatch]);
 
   // useEffect(() => {
   //   if(localStorage.getItem('usertoken') === null){
@@ -70,9 +75,10 @@ function App(props) {
       <HeaderNav />
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
         <Switch>
-          <Route  exact path="/" component={(LandingPage)} />
+          <Route exact path="/" component={(LandingPage)} />
           <Route exact path="/login" component={(LoginPage)} />
           <Route exact path="/join" component={RegisterPage} />
+          <Route exact path="/mypage" component={(MyPage)} />
       
           <Route exact path="/novel" component={NovelPostPage} />  
           <Route exact path="/novel/:id" component={NovelDetail} /> 

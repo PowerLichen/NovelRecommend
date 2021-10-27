@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React,{useState} from 'react';
 import { Menu } from 'antd';
-import { USER_SERVER } from '../../../Config';
+//import { USER_SERVER } from '../../../Config';
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import {logoutUser} from '../../../../_actions/user_actions'
@@ -28,23 +28,32 @@ function RightMenu(props) {
       });
       
   };
+  console.log(user.userData)
 
   if ((!!user.userData)===true) {
     return (
+      <div>
+      {user.userData &&(
       <Menu mode={props.mode}>
-        <Menu.Item key="logout">
+        <Menu.Item key="hello">
+          <a href="/mypage">{`${user.userData.id} 님 반갑습니다.`}</a>
+        </Menu.Item>
+        <Menu.Item key="sada">
           <a onClick={logoutHandler}>Logout</a>
         </Menu.Item>
+        
       </Menu>
+    )}
+    </div>
     );
   } else {
     return (
       <Menu mode={props.mode}>
-        <Menu.Item key="login">
-          <a href="/login">Sign in</a>
+        <Menu.Item key="sada">
+          <a href="/login">로그인</a>
         </Menu.Item>
         <Menu.Item key="join">
-          <a href="/join">Sign up</a>
+          <a href="/join">회원가입</a>
         </Menu.Item>
       </Menu>
     );

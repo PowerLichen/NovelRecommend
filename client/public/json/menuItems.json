@@ -1,8 +1,8 @@
 {
     "data": [
         {
-            "name": "영화",
-            "path": "/movies",
+            "name": "소설",
+            "path": "/novel",
             "icon": "fa-home",
             "children": [
                 {

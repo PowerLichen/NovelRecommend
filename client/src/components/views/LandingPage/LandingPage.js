@@ -1,17 +1,17 @@
-import React from 'react'
-import { FaCode } from "react-icons/fa";
+import React , { Fragment } from 'react'
+import Slider from "../Slide/Slider";
 
 function LandingPage() {
-    
     return (
-        <>
-            <div className="app">
-                <FaCode style={{ fontSize: '4rem' }} /><br />
-                <span style={{ fontSize: '2rem' }}>Let's Start Coding!</span>
+        <Fragment>
+            <Slider />
+            <div className="pageTemplate">
+                <div className="pageTemplate__container">
+                    
+                </div>
             </div>
-            <div style={{ float: 'right' }}>Thanks For Using This Boiler Plate by John Ahn</div>
-        </>
-    )
+        </Fragment>
+    );
 }
 
 export default LandingPage

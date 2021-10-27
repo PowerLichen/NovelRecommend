@@ -6,7 +6,7 @@ import {
     menuAction_validateInput,
     menuAction_updateSecond,
     menuAction_updateThird,
-} from "../../redux/actions";
+} from "../../_actions/menuActions";
 
 // BS
 import Modal from "react-bootstrap/Modal";
