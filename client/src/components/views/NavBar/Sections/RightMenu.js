@@ -50,10 +50,10 @@ function RightMenu(props) {
     return (
       <Menu mode={props.mode}>
         <Menu.Item key="sada">
-          <a href="/login">Sign in</a>
+          <a href="/login">로그인</a>
         </Menu.Item>
         <Menu.Item key="join">
-          <a href="/join">Sign up</a>
+          <a href="/join">회원가입</a>
         </Menu.Item>
       </Menu>
     );
