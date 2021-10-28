@@ -4,7 +4,7 @@ const router = express.Router();
 
 module.exports = (pool) => {
     //단어 검색
-    //API: '/search/keyword/천마'
+    //API: '/search/keyword/천마/568'
     router.get('/keyword/:keyword', (req, res, next) => {
         const keyword = path.parse(req.params.keyword);
         const sql =
