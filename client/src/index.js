@@ -20,11 +20,11 @@ import reducers from "./_reducers/index";
 
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
-const store = createStore(reducers, applyMiddleware(ReduxThunk));
+// const store = createStore(reducers, applyMiddleware(ReduxThunk));
 
-axios.defaults.baseURL = "http://localhost:8080";
-const accessToken = localStorage.accessToken;
-const refreshToken = localStorage.refreshToken;
+// axios.defaults.baseURL = "http://localhost:8080";
+// const accessToken = localStorage.accessToken;
+// const refreshToken = localStorage.refreshToken;
 
 // if (accessToken) {
 //     const decodedToken = jwtDecode(accessToken);

@@ -11,6 +11,9 @@ const HeaderNav = () => {
     const { menuItems } = useSelector((state) => state.menu); // 전체 메뉴 아이템
     const [menuPath, setMenuPath] = useState(""); // 자식 메뉴 오픈 여부
 
+    console.log(menuItems);
+    
+
     // Open Menu
     const handleMouseEnter = (path) => {
         setMenuPath(path);
@@ -20,12 +23,12 @@ const HeaderNav = () => {
     const handleMouseLeave = () => {
         setMenuPath("");
     };
-
+    console.log(menuPath);
     return (
         <div className="headerNav" onMouseLeave={handleMouseLeave}>
             <div className="_container">
                 <NavLink to="/">
-                    <img src={logo} alt="logo" /> 리액트
+                    <img src={logo} alt="logo" /> 추천노블
                 </NavLink>
 
                 <div>

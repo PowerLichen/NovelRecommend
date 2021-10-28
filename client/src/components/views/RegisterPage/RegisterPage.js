@@ -1,6 +1,6 @@
 //import Axios from 'axios'
 import React,{useState} from 'react'
-import {useSelector, useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import {registerUser} from '../../../_actions/user_actions'
 //import Form from "react-bootstrap/form";
 
@@ -63,18 +63,18 @@ function RegisterPage(props) {
       <form style={{display:'flex', flexDirection: 'column'}}
       onSubmit={onSubmitHandler}>
         <label>Email</label>
-        <input type="email" value={Email} onChange={onEmailHandler}></input>
+        <input type="email" value={Email} onChange={onEmailHandler} className="form-control" placeholder="Email for ID"></input>
         {/* <Form.Control.Feedback type="invalid">
             {errors.Email}
         </Form.Control.Feedback> */}
         <label>Password</label>
-        <input type="password" value={Password} onChange={onPasswordHandler}></input>
+        <input type="password" value={Password} onChange={onPasswordHandler}className="form-control" placeholder="Enter Password"></input>
         <label>ConfirmPassword</label>
-        <input type="password" value={ConfirmPassword} onChange={onConfirmPasswordHandler}></input>
+        <input type="password" value={ConfirmPassword} onChange={onConfirmPasswordHandler}className="form-control" placeholder="Password-confirm"></input>
         <label>Name</label>
-        <input type="text" value={Name} onChange={onNameHandler}></input>
+        <input type="text" value={Name} onChange={onNameHandler} className="form-control" placeholder="Enter your name"></input>
         <label>Genre</label>
-        <input type="text" value={Genre} onChange={onGenreHandler}></input>
+        <input type="text" value={Genre} onChange={onGenreHandler}className="form-control" placeholder="Enter Genre"></input>
 
         <br/>
         <button type='submit'>
