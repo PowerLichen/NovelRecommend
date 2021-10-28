@@ -11,6 +11,7 @@ import HeaderNav from "./Header/HeaderNav";
 import NovelPostPage from './views/NovelPostPage/NovelPostPage'
 import NovelDetail from './views/NovelDetail/NovelDetail'
 import RatingPage from './views/RatingPage/RatingPage'
+import SearchPage from './views/SearchPage/SearchPage'
 import { useSelector, useDispatch } from "react-redux";
 
 //null   Anyone Can go inside
@@ -48,6 +49,8 @@ function App() {
           <Route exact path="/novel" component={NovelPostPage} />  
           <Route exact path="/novel/:id" component={NovelDetail} /> 
           <Route exact path="/rating" component={RatingPage} /> 
+
+          <Route exact path="/search" component={SearchPage} />
           
         </Switch>
       </div>
