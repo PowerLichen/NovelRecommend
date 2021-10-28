@@ -18,8 +18,10 @@ function SearchPage(props) {
     const onSubmitHandler= (event) =>{
         event.preventDefault();
         
+        //onSubmitHandler pages 0 으로 초기화
+
         axios
-        .get(`${USER_SERVER}/novel/lists`) 
+        .get(`${USER_SERVER}/novel/list/0`) 
         .then(({ data }) => { setPosts(data); console.log(data);});
 
     }
@@ -33,7 +35,7 @@ function SearchPage(props) {
         //   .then(({ data }) => {setPosts(data)});
         setPages(Number(Pages)+1);
   
-        fetch(`${USER_SERVER}/novel/morelist/${Pages}`)
+        fetch(`${USER_SERVER}/novel/list/${Pages}`)
               .then(response => response.json())
               .then(response => {
                   console.log(response)
