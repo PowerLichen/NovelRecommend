@@ -23,7 +23,7 @@ function NovelPostPage(props) {
       // };
 
       axios
-        .get(`${USER_SERVER}/novel/lists`) 
+        .get(`${USER_SERVER}/novel/list/0`)
         .then(({ data }) => { setPosts(data); console.log(data);});
         
     }, [])
@@ -36,7 +36,7 @@ function NovelPostPage(props) {
       //   .then(({ data }) => {setPosts(data)});
       setPages(Number(Pages)+1);
 
-      fetch(`${USER_SERVER}/novel/morelist/${Pages}`)
+      fetch(`${USER_SERVER}/novel/list/${Pages}`)
             .then(response => response.json())
             .then(response => {
                 console.log(response)
