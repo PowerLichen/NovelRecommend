@@ -89,10 +89,13 @@ const run = async () => {
                     await connection.query(sql,[rows3[0].id,novel.ridibooks]);
                     connection.release();
                 }
-
-                console.log(cnt + ' 작품 INSERT');
+                if(cnt%1000==0){
+                    console.log(cnt + ' 작품 INSERT');
+                }
                 cnt++;
             }
+            console.log('INSERT DONE');
+            pool.end();
         } catch (err) {
             throw err;
         }
