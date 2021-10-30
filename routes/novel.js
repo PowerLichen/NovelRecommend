@@ -3,22 +3,22 @@ const path = require('path');
 const router = express.Router();
 
 module.exports = (pool) => {
-
-    
-    // 스크롤 시 다음 리스트 로드 API: '/novel/list/[num]'
+    // 소설 리스트 출력
+    // API: '/novel/list/[num]'
     router.get('/list/:id', (req, res, next) => {
         const list_id = path.parse(req.params.id).base * 20;
         const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
         pool.query(sql, [list_id], (err, results) => {
-            if(err){
+            if (err) {
                 console.log(err);
                 return next(err);
             }
             res.send(results);
-        })
-    })
+        });
+    });
 
-    // 작품 상세정보 API : '/novel/detail/[num]'
+    // 작품 상세정보 출력
+    // API : '/novel/detail/[num]'
     router.get('/noveldata/:novel_id', (req, res, next) => {
         //패러미터 파싱
         const novel_id = path.parse(req.params.novel_id).base;
@@ -39,6 +39,16 @@ module.exports = (pool) => {
                 res.send(result_data);
             });
     });
+
+    //평점 준 작품 소설 리스트 출력
+
+    //평점 준 작가 기반 소설 리스트 출력
+
+    
+
+    //조회수 기반 소설 리스트 출력
+
+    //추천 알고리즘 기반 소설 리스트 출력
 
 
     return router;
