@@ -2,6 +2,8 @@ const express = require('express')
 const path = require('path');
 const router = express.Router();
 
+const contentrec = require('../lib/recommend/contentbase_lib');
+
 module.exports = (pool) => {
     // 소설 리스트 출력
     // API: '/novel/list/[num]'
@@ -49,7 +51,15 @@ module.exports = (pool) => {
     //조회수 기반 소설 리스트 출력
 
     //추천 알고리즘 기반 소설 리스트 출력
+    //컨텐츠 기반
+    router.get('/content-rec/:uid', (req, res, next) =>{
+        const userId = path.parse(req.params.uid).base;
 
+        contentrec(userId)
+
+        res.send();
+
+    });
 
     return router;
 }
