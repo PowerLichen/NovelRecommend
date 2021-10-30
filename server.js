@@ -30,12 +30,12 @@ app.use(passport.session());
 var userRouter = require('./routes/user')(pool);
 var novelRouter = require('./routes/novel')(pool);
 var searchRouter = require('./routes/search')(pool);
-var ratinghRouter = require('./routes/rating')(pool);
+var ratingRouter = require('./routes/rating')(pool);
 
 app.use('/user', userRouter);
 app.use('/novel', novelRouter);
 app.use('/search', searchRouter);
-app.use('/rating', searchRouter);
+app.use('/rating', ratingRouter);
 
 //Err handler
 app.use(function (req, res, next) {

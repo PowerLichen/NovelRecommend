@@ -5,8 +5,8 @@ const router = express.Router();
 
 module.exports = (pool) => {
     //평점 데이터 추가
-    //API: '/rating/addscore', {uid,nid,score}
-    router.post('/addscore', (req, res, next) => {
+    //API: '/rating/addscore/32/82443/4.5'
+    router.get('/addscore/:uid/:nid/:score', (req, res, next) => {
         const uid = req.body.uid;
         const nid = req.body.nid;
         const score = req.body.score;
