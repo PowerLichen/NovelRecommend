@@ -51,6 +51,8 @@ function NovelInfo(props) {
             <h2> 줄거리   </h2>
             <p>{novels.description}</p>
 
+            
+
         </div>
         
     );
