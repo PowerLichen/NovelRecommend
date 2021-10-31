@@ -4,6 +4,7 @@ import RightMenu from './Sections/RightMenu';
 import { Drawer, Button} from 'antd';
 import Icon from '@ant-design/icons';
 import './Sections/Navbar.css';
+import {FaBookOpen} from "react-icons/fa";
 
 function NavBar() {
   const [visible, setVisible] = useState(false)
@@ -18,7 +19,7 @@ function NavBar() {
   return (
     <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
       <div className="menu__logo">
-        <a href="/">Novel</a>
+        <a href="/"><FaBookOpen/> NR</a>
       </div>
       <div className="menu__container">
         <div className="menu_left">

@@ -35,7 +35,7 @@ function Footer(props) {
         <div className="footer">
         <div className="container">
             <div className="footer__left">
-                <h1>추천 노블</h1>
+                <h1>웹소설 추천, NR</h1>
                 <ul>
                     <li>
                         <Link to="/">서비스 이용약관</Link>

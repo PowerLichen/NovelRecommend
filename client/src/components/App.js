@@ -9,6 +9,7 @@ import MyPage from './views/MyPgae/MyPage.js';
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import HeaderNav from "./Header/HeaderNav";
+// import BoardModal from "./Board/BoardModal";
 import NovelPostPage from './views/NovelPostPage/NovelPostPage'
 import NovelDetail from './views/NovelDetail/NovelDetail'
 import RatingPage from './views/RatingPage/RatingPage'
@@ -79,7 +80,7 @@ function App(props) {
           <Route exact path="/login" component={(LoginPage)} />
           <Route exact path="/join" component={RegisterPage} />
           <Route exact path="/mypage" component={(MyPage)} />
-      
+          {/* <Route exact path="/community" component={(BoardModal)} /> */}
           <Route exact path="/novel" component={NovelPostPage} />  
           <Route exact path="/novel/:id" component={NovelDetail} /> 
           
