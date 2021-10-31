@@ -24,13 +24,18 @@ function MyPage() {
                         {user.userData.id}
                     </Descriptions.Item>
                 )}
+                {user.userData &&(
+                    <Descriptions.Item label="My Name">
+                        {user.userData.nickname}
+                    </Descriptions.Item>
+                )}
                 </Descriptions>
                 <br />
                 {/* Actors Grid*/}
                 <div
                     style={{ display: 'flex', justifyContent: 'center', margin: '2rem' }}
                 >
-                    <button> Toggle Actor View</button>
+                    <button> More Information</button>
                 </div>
             </div>
         </div>

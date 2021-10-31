@@ -28,7 +28,7 @@ const HeaderNav = () => {
         <div className="headerNav" onMouseLeave={handleMouseLeave}>
             <div className="_container">
                 <NavLink to="/">
-                    <img src={logo} alt="logo" /> 추천노블
+                    <img src={logo} alt="logo" /> N.R.
                 </NavLink>
 
                 <div>

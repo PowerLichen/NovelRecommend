@@ -5,7 +5,8 @@ import { Menu } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import {logoutUser} from '../../../../_actions/user_actions'
-
+import Icon from '@ant-design/icons';
+import {FaSearch} from "react-icons/fa";
 
 //formErrorMessage는 에러문구를 표시하는 것? 토스트메시지처럼 사용?
 function RightMenu(props) {
@@ -35,6 +36,9 @@ function RightMenu(props) {
       <div>
       {user.userData &&(
       <Menu mode={props.mode}>
+        <Menu.Item key="search">
+          <a href="/search"><FaSearch className="search"></FaSearch></a>
+        </Menu.Item>
         <Menu.Item key="hello">
           <a href="/mypage">{`${user.userData.id} 님 반갑습니다.`}</a>
         </Menu.Item>
@@ -49,6 +53,9 @@ function RightMenu(props) {
   } else {
     return (
       <Menu mode={props.mode}>
+        <Menu.Item key="search">
+          <a href="/search"><FaSearch className="search"></FaSearch></a>
+        </Menu.Item>
         <Menu.Item key="sada">
           <a href="/login">로그인</a>
         </Menu.Item>

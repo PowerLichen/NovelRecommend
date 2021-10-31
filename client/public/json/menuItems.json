@@ -116,12 +116,12 @@
             "icon": "fa-question-circle"
         },
         {
-            "name": "정보",
+            "name": "리뷰",
             "path": "/page3",
             "icon": "fa-address-book"
         },
         {
-            "name": "구매",
+            "name": "고객센터",
             "path": "/page4",
             "icon": "fa-cogs"
         }
