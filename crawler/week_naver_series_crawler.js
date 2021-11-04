@@ -126,13 +126,9 @@ const run = async() =>{
                 // 페이지 및 아이템 증가(갱신)
                 genreCode[2] += 1;
                 genreCode[3] = lists.itemNum;
-                if(genreCode[2]%100 == 0){
-                    console.log(`장르 : ${genreCode[0]}\t페이지 번호 : ${genreCode[2]}\t 소설 수 : ${genreCode[3]}`);
-                }
             }
             // 작업을 완료한 페이지는 닫아주기
             await page.close();
-            console.log(`네이버 시리즈 ${genreCode[0]} 장르 크롤링 완료`);
         }));
         // 모든 작업을 마치면 browser 닫기
         await browser.close();

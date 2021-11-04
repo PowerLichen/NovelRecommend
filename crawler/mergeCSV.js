@@ -3,17 +3,18 @@ const fs = require('fs');
 const stringify = require('csv-stringify/lib/sync');
 
 const run = async () => {
+    // 크롤링 완료된 소설 data file read
     const naver = fs.readFileSync(__dirname+'/csv/naver.csv')
     const kakao = fs.readFileSync(__dirname+'/csv/kakao.csv');
     const joara = fs.readFileSync(__dirname+'/csv/joara.csv');
     const ridibooks = fs.readFileSync(__dirname+'/csv/ridibooks.csv')
-
+    // csv file parse
     const naver_records = parse(naver.toString('utf-8'));
     const kakao_records = parse(kakao.toString('utf-8'));
     const joara_records = parse(joara.toString('utf-8'));
     const ridibooks_records = parse(ridibooks.toString('utf-8'));
 
-    // 원 순서 : [0]제목, [1]장르, [2]작가, [3]설명, [4]링크, [5]이미지 링크
+    // csv 파일에 저장되어있는 데이터의 순서 : [0]제목, [1]장르, [2]작가, [3]설명, [4]링크, [5]이미지 링크
     let novel = {
         title: null,
         genre: null,
@@ -26,7 +27,7 @@ const run = async () => {
         ridibooks: null
     };
     let results = [];
-    console.log('naver');
+    // 네이버 소설 insert
     for (let item of naver_records) {
         let check_naver = false;
          novel.title = item[0];
@@ -49,8 +50,8 @@ const run = async () => {
          }
          results.push(Object.values(novel));
      }
-    console.log('joara');
 
+     // result와 joara 데이터 비교해서 삽입
     joara_records.forEach((j, ji) => {
         let check = false;
         novel.title = j[0];
@@ -73,7 +74,8 @@ const run = async () => {
             results.push(Object.values(novel));
         }
     });
-    console.log('ridibooks');
+
+    // result와 ridibooks 데이터 비교해서 삽입
     ridibooks_records.forEach((ridi, idx) => {
         let check = false;
         novel.title = ridi[0];
@@ -96,7 +98,8 @@ const run = async () => {
             results.push(Object.values(novel));
         }
     });
-    console.log('kakao');
+    
+    // result와 kakao 데이터 비교해서 삽입
     kakao_records.forEach((k, ki) => {
         let check = false;
         novel.title = k[0];
@@ -119,9 +122,9 @@ const run = async () => {
             results.push(Object.values(novel));
         }
     });
+    // result를 다시 csv 파일로 저장
     const str = stringify(results);
     fs.writeFileSync(__dirname+'/csv/novelList.csv',str);
     console.log('done');
 }
-run();
 exports.run = run;

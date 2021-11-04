@@ -1,14 +1,18 @@
+// 처음 Novel Data를 넣을 때 사용할 js code
 const mysql = require('mysql2/promise');
 const parse = require('csv-parse/lib/sync');
 const fs = require('fs');
 const config = require('./database.json');
 
+// 실행 함수
 const run = async () => {
     try {
         const pool = await mysql.createPool(config);
+        // 크롤링할 novelList.csv 파일의 위치 __dirname : 현 디렉토리 명(root 디렉토리 crawler 폴더 directory)
         const csvfile = fs.readFileSync(
             __dirname + '/csv/novelList.csv'
         );
+        // 불러온 csv 파일을 parse 한다.
         const novelDatas = parse(csvfile.toString('utf-8'));
         const novel = {
             title: null,
@@ -21,8 +25,9 @@ const run = async () => {
             joara: null,
             ridibooks: null
         };
-        let cnt = 1;
+
         const connection = await pool.getConnection(async conn => conn);
+
         try {
             for (const v of novelDatas) {
                 novel.title = v[0];
@@ -36,6 +41,7 @@ const run = async () => {
                 novel.ridibooks = v[8];
 
                 // 작가 정보 INSERT
+                // DB에서 작가명을 확인해서 존재하면 pass, 존재하지 않으면 INSERT
                 let sql = `SELECT EXISTS(SELECT * FROM author WHERE name=?) as isChk`;
                 const [rows0, fields0] = await connection.query(sql,[novel.author]);
                 if (rows0[0].isChk == 0) {
@@ -89,11 +95,8 @@ const run = async () => {
                     await connection.query(sql,[rows3[0].id,novel.ridibooks]);
                     connection.release();
                 }
-                if(cnt%1000==0){
-                    console.log(cnt + ' 작품 INSERT');
-                }
-                cnt++;
             }
+            // 삽입 작업이 끝나면 출력
             console.log('INSERT DONE');
             pool.end();
         } catch (err) {

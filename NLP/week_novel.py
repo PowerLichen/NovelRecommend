@@ -7,10 +7,13 @@ from konlpy.tag import Okt
 import json
 
 with open('database.json') as fj: config = json.load(fj)
-
+# 현재 디렉토리 주소
 CUR_DIR = os.path.dirname(os.path.abspath(__file__))
+# 메인 폴더 디렉토리 주소
 BASE_DIR = os.path.dirname((CUR_DIR))
+# 불러올 소설 정보 파일 주소
 file_dir = BASE_DIR+'/crawler/csv/novelList_week.csv'
+# csv 파일 읽기
 fc = open(file_dir,'r',encoding='UTF-8')
 rdr = csv.reader(fc)
 
@@ -19,9 +22,9 @@ okt = Okt()
 ## MySQL 연결
 tag_db = pymysql.connect(
     user=config['user'],
-    passwd=config['password'], # 비밀번호 설정할 것
+    passwd=config['password'],
     host=config['host'],
-    db=config['database'], # db명 수정할 것
+    db=config['database'],
     charset='utf8mb4'
 )
 
@@ -138,5 +141,7 @@ for v in rdr:
         for search in array:
             cursor.execute(sql, (result_nid[0]['id'],search))
             result = cursor.fetchall()
+    ### 소설 INSERT 하면 commit
     tag_db.commit()
+# 완료후 db 연결 닫기
 tag_db.close()
