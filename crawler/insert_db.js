@@ -8,7 +8,7 @@ const config = require('./database.json');
 const run = async () => {
     try {
         const pool = await mysql.createPool(config);
-        // 크롤링할 novelList.csv 파일의 위치 __dirname : 현 디렉토리 명(root directory)
+        // 크롤링할 novelList.csv 파일의 위치 __dirname : 현 디렉토리 명(root 디렉토리 crawler 폴더 directory)
         const csvfile = fs.readFileSync(
             __dirname + '/csv/novelList.csv'
         );
