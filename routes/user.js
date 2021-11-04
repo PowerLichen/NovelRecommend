@@ -55,11 +55,12 @@ module.exports = (pool) => {
 
     router.post('/join', async (req, res, next) => {
         console.log(req.body);
-        let sql = 'INSERT INTO userdata VALUES (null,?,?,?,now(), 0)';
+        let sql = 'INSERT INTO userdata VALUES (null,?,?,?,?,now(), 0)';
         let email = req.body.email;
         let password = await bcrypt.hash(req.body.password, 10);
         let name = req.body.name;
-        let params = [email, password, name];
+        let genre = req.body.genre;
+        let params = [email, password, name, genre];
         pool.query(sql, params,
             (err, results, fields) => {
                 if (err) {
