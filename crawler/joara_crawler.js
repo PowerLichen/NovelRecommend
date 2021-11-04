@@ -43,6 +43,7 @@ const run = async () => {
                             image : null,
                         };
                         // 쿼리문을 통해 소설 정보를 크롤링
+                        // 만약 페이지 내의 html 코드가 변경된다면 이부분을 수정할 것
                         const novels = document.querySelectorAll('.list_list_con.best_c');
                         for(const novel of novels){
                             data.title = novel.querySelector('.finish_list_view a b').textContent.trim();
@@ -62,16 +63,16 @@ const run = async () => {
                         else check = true;
                         return {list:list,check:check,itemNum:itemNum,};
                     },(isFinish));
+                    // 장르별 리스트 붙여넣기
                     datas[i] = datas[i].concat(lists.list);
+
+                    // 소설 크롤링이 끝났는지 확인해서 끝났으면 결과 list에 해당 장르 list 삽입
                     if(lists.check == false){
                         result = result.concat(datas[i]);
                         break;
                     }
                     isFinish[1] +=1;
                     isFinish[2] = lists.itemNum;
-                    if(isFinish[1]%100 == 0){
-                        console.log(`${isFinish[0]}\t 페이지 번호 : ${isFinish[1]}\t 소설 수 : ${isFinish[2]}`);
-                    }
                 }
                 // 작업을 완료한 페이지는 닫아주기
                 await page.close();
