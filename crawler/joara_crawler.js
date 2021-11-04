@@ -76,7 +76,6 @@ const run = async () => {
                 }
                 // 작업을 완료한 페이지는 닫아주기
                 await page.close();
-                console.log(`조아라 ${isFinish[0]} 작품 크롤링 완료`);
             }
             catch(e){
                 console.error(e);

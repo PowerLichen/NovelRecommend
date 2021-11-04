@@ -93,7 +93,6 @@ const run = async() =>{
             }
             // 작업을 완료한 페이지는 닫아주기
             await page.close();
-            console.log(`리디북스 ${genreCode[0]} 장르 크롤링 완료`);
         }));
         // 모든 작업 마치면 browser 닫기
         await browser.close();

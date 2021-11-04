@@ -87,13 +87,9 @@ const run = async () => {
                     }
                     isFinish[1] +=1;
                     isFinish[2] = lists.itemNum;
-                    if(isFinish[1]%100 == 0){
-                        console.log(`${isFinish[0]}\t 페이지 번호 : ${isFinish[1]}\t 소설 수 : ${isFinish[2]}`);
-                    }
                 }
                 // 작업을 완료한 페이지는 닫아주기
                 await page.close();
-                console.log(`조아라 ${isFinish[0]} 작품 크롤링 완료`);
             }
             catch(e){
                 console.error(e);
