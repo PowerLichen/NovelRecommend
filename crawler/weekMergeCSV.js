@@ -26,7 +26,8 @@ const run = async () => {
         ridibooks: null
     };
     let results = [];
-    console.log('naver');
+
+    // 네이버
     for (let item of naver_records) {
         let check_naver = false;
          novel.title = item[0];
@@ -49,8 +50,8 @@ const run = async () => {
          }
          results.push(Object.values(novel));
      }
-    console.log('joara');
 
+     // 조아라
     joara_records.forEach((j, ji) => {
         let check = false;
         novel.title = j[0];
@@ -73,7 +74,8 @@ const run = async () => {
             results.push(Object.values(novel));
         }
     });
-    console.log('ridibooks');
+    
+    // 리디북스
     ridibooks_records.forEach((ridi, idx) => {
         let check = false;
         novel.title = ridi[0];
@@ -96,7 +98,8 @@ const run = async () => {
             results.push(Object.values(novel));
         }
     });
-    console.log('kakao');
+    
+    // 카카오
     kakao_records.forEach((k, ki) => {
         let check = false;
         novel.title = k[0];
