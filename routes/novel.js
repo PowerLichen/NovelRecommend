@@ -43,23 +43,61 @@ module.exports = (pool) => {
     });
 
     //평점 준 작품 소설 리스트 출력
-
+    router.get('/mybook/:uid/:id', (req, res, next) => {
+        //TODO: 임시 데이터
+        const list_id = path.parse(req.params.id).base * 20;
+        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
+        pool.query(sql, [list_id], (err, results) => {
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+            res.send(results);
+        });
+        //TODO: 임시 데이터 종료
+    });
     //평점 준 작가 기반 소설 리스트 출력
-
+    router.get('/relatedbook/:uid/:id', (req, res, next) => {
+        //TODO: 임시 데이터
+        const list_id = path.parse(req.params.id).base * 20;
+        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
+        pool.query(sql, [list_id], (err, results) => {
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+            res.send(results);
+        });
+        //TODO: 임시 데이터 종료
+    });
     
 
     //조회수 기반 소설 리스트 출력
+    router.get('/list/view/:id', (req, res, next) => {
+        //TODO: 임시 데이터
+        const list_id = path.parse(req.params.id).base * 20;
+        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
+        pool.query(sql, [list_id], (err, results) => {
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+            res.send(results);
+        });
+        //TODO: 임시 데이터 종료
+    });
 
     //추천 알고리즘 기반 소설 리스트 출력
     //컨텐츠 기반
     router.get('/content-rec/:uid', async (req, res, next) =>{
         const userId = path.parse(req.params.uid).base;
+        if(userId == ""){
+            return next();
+        }
         
         // 추천 알고리즘 호출
         var result = await recommend(userId);
 
-        // console.log("추천 API 결과값>>")
-        // console.log(result)
         res.send(result);
 
     });
