@@ -17,6 +17,7 @@ import SearchPage from './views/SearchPage/SearchPage'
 import { useSelector, useDispatch } from "react-redux";
 import { auth } from '../_actions/user_actions';
 import { menuAction_fetch } from '../_actions/menuActions';
+import RecommendPostPage from './views/RecommendPostPage/RecommendPostPage.js';
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -84,9 +85,11 @@ function App(props) {
           {/* <Route exact path="/community" component={(BoardModal)} /> */}
           <Route exact path="/novel" component={NovelPostPage} />  
           <Route exact path="/novel/:id" component={NovelDetail} /> 
+          <Route exact path="/recommend" component={RecommendPostPage} /> 
 
           <Route exact path="/rating" component={RatingPage} /> 
           <Route exact path="/search" component={SearchPage} />
+
         </Switch>
       </div>
       <Footer />

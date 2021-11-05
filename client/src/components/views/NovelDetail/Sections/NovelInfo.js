@@ -9,22 +9,56 @@ function NovelInfo(props) {
 
     const [rating, setRating] = useState([4]);
     const [novels, setNovels] = useState([]);
+    const [urls, setUrls] = useState([]);
 
     useEffect(() => {
         axios
             .get(`${USER_SERVER}/novel/noveldata/${props.id}`)
-            //.then((data)=>{console.log(data);})
-            .then(({ data }) => {setNovels(data)});
+            .then(({ data }) => {setNovels(data); setUrls(data.urls); console.log(data); console.log(data.urls)});
       }, [])
     
-    const UrlList = ({novels}) => {
+    function goUrl(url) {
+      const str = url;
+      if (str.indexOf('naver')>=0) {
+        return (
+          <a href = {url}>
+            <button> 네이버 </button>
+          </a>
+        )
+      }
+      else if (str.indexOf('ridibooks')>=0) {
+        return (
+          <a href = {url}>
+            <button> 리디북스 </button>
+          </a>
+        )
+      }
+      else if (str.indexOf('kakao')>=0) {
+        return (
+          <a href = {url}>
+            <button> 카카오 </button>
+          </a>
+        )
+      }
+      else if (str.indexOf('joara')>=0) {
+        return (
+          <a href = {url}>
+            <button> 조아라 </button>
+          </a>
+        )
+      }
+      else {
+        return (
+          <a href = {url}>
+            <button> ??? </button>
+          </a>
+        )
+      }
 
     }
-
+    
     return (
-        
         <div>
-            
             <br></br>
             <br></br>
             <br></br>
@@ -47,7 +81,12 @@ function NovelInfo(props) {
                 <h3> 평점                {rating} </h3> 
             </div>
             <h2> 장르  :  {novels.genre}</h2>
-            <h2> 링크  :  {novels.url}</h2>
+            <h2> 링크  :  </h2>
+
+              {urls.map((urls) => (
+                goUrl(urls.url)
+              ))}
+            
             <h2> 줄거리   </h2>
             <p>{novels.description}</p>
 

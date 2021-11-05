@@ -2,36 +2,27 @@ import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
-
+import { useSelector } from "react-redux";
 
 
 //작품출력
-function NovelPostPage(props) {
+function RecommendPostPage(props) {
     
   const [Posts, setPosts] = useState([]);
   const [Pages, setPages] = useState([1]);
-    
+
+  //유저 정보
+  const user = useSelector(state => state.user)
+  console.log(user.userData)
+
     useEffect(() => {
-
+      if (user.userData === undefined) {
+        return
+      }
       axios
-        .get(`${USER_SERVER}/novel/list/0`)
+        .get(`${USER_SERVER}/novel/content-rec/${user.userData.idx}`)
         .then(({ data }) => { setPosts(data); console.log(data);});
-        
-    }, [])
-
-    //소설 포스트 페이지 갱신
-    const fetchNovel = () => {
-      
-      setPages(Number(Pages)+1);
-
-      fetch(`${USER_SERVER}/novel/list/${Pages}`)
-            .then(response => response.json())
-            .then(response => {
-                console.log(response)
-                setPosts([...Posts, ...response])     
-                //setCurrentPage(response.page)
-      })
-    }
+    }, [user])
 
     return (
       <div>
@@ -51,13 +42,7 @@ function NovelPostPage(props) {
             
           ))}
         </Container>
-
-        {/*Load More 방식 - 페이지 갱신*/}
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <button onClick={fetchNovel}> Load More</button>
-        </div>
       </div>
-      
     );
 }
 
@@ -102,4 +87,4 @@ const Body = styled.div`
 `;
 
 
-export default NovelPostPage
+export default RecommendPostPage
