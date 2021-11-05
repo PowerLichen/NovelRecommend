@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import ReactDOM from 'react-dom';
 import StarRatingComponent from 'react-star-rating-component';
 import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
@@ -12,8 +11,6 @@ function RatingPage(props) {
   
     //별점 점수
     const [Score, setScore] = useState([4]);
-    //회원 idx
-    const [Idx, setIdx] = useState([0]);
 
     //유저 정보
     const user = useSelector(state => state.user)
@@ -24,24 +21,12 @@ function RatingPage(props) {
       setScore(nextValue);
     }
 
-    useEffect(() => {
-      //setIdx(user.userData.idx);
-    }, [])
-
-
     //점수 제출
     const submitScore = () => {
       axios
         .get(`${USER_SERVER}/rating/addscore/${user.userData.idx}/${props.id}/${Score}`) 
         .then((data)=>{console.log(data);})
-        //.then(({ data }) => {setPosts(data)});
 
-      // fetch(`${USER_SERVER}/rating/addscore/20/83222/5`) //`${USER_SERVER}/rating/addscore/${user.userData.idx}/${props.id}/${Score}`
-      // .then(response => response.json())
-      //       .then(response => {
-      //           console.log(response)
-      //           //setScore([...Score, ...response])
-      //         })
     }
 
     return (         

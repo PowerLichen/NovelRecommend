@@ -28,13 +28,10 @@ function SearchPage(props) {
 
     //소설 포스트 페이지 갱신
     const fetchNovel = () => {
-        // axios
-        //   .get(`${USER_SERVER}/novel/lists`) 
-        //   //.then((data)=>{console.log(data);})
-        //   .then(({ data }) => {setPosts(data)});
+
         setPages(Number(Pages)+1);
   
-        fetch(`${USER_SERVER}/search/keyword/${Word}/${Pages}`) //${USER_SERVER}/novel/list/${Pages}
+        fetch(`${USER_SERVER}/search/keyword/${Word}/${Pages}`)
               .then(response => response.json())
               .then(response => {
                   console.log(response)
@@ -53,7 +50,6 @@ function SearchPage(props) {
                 </button>
             </form>
 
-
             <Container>
                 <GlobalStyle />
                 {Posts.map((data, index) => (
@@ -62,7 +58,6 @@ function SearchPage(props) {
                         <a href={`/novel/${data.id}`}>
                         {/* 작품 표지 이미지 url */}
                         <img src = {`${data.imgurl}`} width = '150' align = 'center'></img>
-                        
                         </a>
                     </Body>
                     {/* 작품 타이틀*/}
