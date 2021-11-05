@@ -23,5 +23,24 @@ module.exports = (pool) => {
             });
     });
 
+
+    // 평점 중복 체크
+    router.get('/check_db/:uid/:nid', (req, res, next) => {
+        const uid = path.parse(req.params.uid).base;
+        const nid = path.parse(req.params.nid).base;
+        const sql = 'SELECT * FROM novel_scoredata WHERE uid=? AND nid=?';
+        pool.query(sql, [uid, nid], (err, results) => {
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+            if (results.length !== 0) {
+                res.send({ 'check': true });
+            } else {
+                res.send({ 'check': false });
+            }
+        });
+    });
+
     return router;
 }
