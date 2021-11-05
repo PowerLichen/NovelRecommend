@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path');
 const router = express.Router();
 
-const contentrec = require('../lib/recommend/contentbase_lib');
+const recommend = require('../lib/recommend/recommend_main')
 
 module.exports = (pool) => {
     // 소설 리스트 출력
@@ -52,12 +52,15 @@ module.exports = (pool) => {
 
     //추천 알고리즘 기반 소설 리스트 출력
     //컨텐츠 기반
-    router.get('/content-rec/:uid', (req, res, next) =>{
+    router.get('/content-rec/:uid', async (req, res, next) =>{
         const userId = path.parse(req.params.uid).base;
+        
+        // 추천 알고리즘 호출
+        var result = await recommend(userId);
 
-        contentrec(userId)
-
-        res.send();
+        // console.log("추천 API 결과값>>")
+        // console.log(result)
+        res.send(result);
 
     });
 
