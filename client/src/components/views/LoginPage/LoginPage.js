@@ -60,7 +60,9 @@ function LoginPage(props) {
   return (
 
 
-    <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', width: '30%', margin: '150px auto', height: '45vh', backgroundColor: '#FFD8A6', borderRadius: '8px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', 
+    alignContent: 'center', width: '20%', margin: '150px auto', height: '45vh', 
+    backgroundColor: '#FAE3BF', borderRadius: '8px',boxShadow:'4px 4px 4px' }}>
 
       <div style={{
         display: 'flex', justifyContent: 'center', alignContent: 'center',
@@ -69,7 +71,7 @@ function LoginPage(props) {
 
         <form style={{ display: 'flex', flexDirection: 'column', margin: '10px ' }}
           onSubmit={onSubmitHandler}>
-          <Title level={2} classname='login' style={{ width: '100%', height: '1vh', margin: '0 0 70px 50px', alignContent: 'center' }}>
+          <Title level={2} classname='login' style={{ width: '100%', height: '1vh', margin: '0 30% 40% 30%', alignContent: 'center' }}>
             로그인</Title>
           <label>Email</label>
           {/* <input type="email" value={Email} onChange={onEmailHandler}></input> */}

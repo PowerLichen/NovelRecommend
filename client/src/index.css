@@ -8,6 +8,14 @@ a:link { text-decoration: none !important; }
 .search{margin-top: 18px;}
 .app { position: relative; overflow-y: scroll; width: 100%; height: 100vh; background-color: white; font-family: "Noto Sans KR", sans-serif; font-weight: 400; }
 ._container { width: 1200px; height: 100%; margin: 100px auto; padding: 0 30px; }
+/* 최신작, 인기작 */
+.headerNav__item { margin-top:20px ;width: 100%; height: 100%;color: #45CEFF; text-align: center; }
+.headerNav__item > a { display: inline-block; position: relative; width: 220px; text-align: center; font-size: 1.2rem; font-weight: 500; color: black; }
+.headerNav__item > a:hover { color: #45CEFF; }
+.headerNav__item > a:before { content: ""; position: absolute; left: 0px; bottom: -10px; width: 0; height: 5px; background: #45CEFF; transition: width 0.5s; }
+.headerNav__item > a:hover:before { width: 100%; }
+.headerNav__item > a.active { color: #45CEFF; }
+.headerNav__item > a.active:before { width: 100%; }
 /* 헤더 상단 */
 .headerUtil { height: 60px; line-height: 60px; background: #f6f6f6; font-size: 0.9rem; }
 .headerUtil__auth { float: right; font-weight: 500; }
@@ -69,7 +77,7 @@ a:link { text-decoration: none !important; }
 /* 페이지 메인 */
 .pagination__item { margin-right: -1px; width: 40px; height: 40px; text-align: center; line-height: 40px; border: 1px solid #b7b7b7; color: #b7b7b7; }
 .pagination__item.active { background-color: #61dafb; font-weight: bold; color: white; }
-.pageTemplate { overflow: hidden; margin: 10px auto 40px auto; height: auto; width: 1200px; background: #20232a; border: 1px solid#e3e3e4; border-radius: 1.5%; }
+.pageTemplate { overflow: hidden; margin: 100px auto 40px auto; height: auto; width: 1500px; background: #20232a; border: 1px solid#e3e3e4; border-radius: 1.5%; }
 .pageTemplate__container { overflow: hidden; display: flex; height: auto; background-color: white; }
 .pageMain { padding: 50px 30px; width: 900px; background-color: white;}
 .pageMain__Content { overflow: hidden; height: auto; }
@@ -111,7 +119,7 @@ table td, table th { cursor: pointer; }
 
 .errorBox { color: #dc3545; font-size: 0.8rem; }
 /* 슬라이드 */
-.slider { overflow: hidden; display: flex; align-items: center; position: relative; margin: 0 ; margin-left: auto;margin-right: auto; padding: 0; width: 60%; height: 500px; background: black; box-sizing: border-box; }
+.slider { overflow: hidden; display: flex; align-items: center; position: relative; margin: 0 ; margin-left: auto;margin-right: auto; padding: 0; width: 70%; height: 500px; background: black; box-sizing: border-box; }
 .slider__slide { overflow: hidden; min-width: 100%; height: 100%; transition: 0.5s; }
 .slider button { position: absolute; top: 50%; transform: translateY(-50%); width: 10%; height: 100%; background: none; outline: none; border: none; transition: 0.5s; }
 .slider button:hover { background: rgba(0, 0, 0, 0.356); cursor: pointer; color: white; }
@@ -121,6 +129,14 @@ table td, table th { cursor: pointer; }
 .sliderCarousel { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); }
 .sliderCarousel__item { float: left; margin: 0 5px; width: 15px; height: 15px; border: 1px solid white; border-radius: 50%; }
 .sliderCarousel__item.active { background-color: white; }
+/* 최신작슬라이드 */
+.slide { overflow: hidden; display: flex; align-items: left; position: relative; margin: 0 ; margin-left: auto;margin-right: auto; padding: 0; width: 100%; height: 400px; }
+.slider__slide { overflow: hidden; min-width: 100%; height: 100%; transition: 0.5s; }
+.slider__image { width: 100%; height: auto; object-fit: cover; }
+.sliderCarousel { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); }
+.sliderCarousel__item { float: left; margin: 0 5px; width: 15px; height: 15px; border: 1px solid white; border-radius: 50%; }
+.sliderCarousel__item.active { background-color: white; }
+
 
 .pageMain__data {float: left; margin: 10px; padding: 15px; width: 30%; height: 300px; border-radius: 2%; border: 1px solid #969696; text-align: left; }
 .pageMain__thumbnail { margin: 0 auto; width: 100%; height: 170px; }

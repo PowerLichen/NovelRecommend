@@ -15,7 +15,7 @@ function RegisterPage(props) {
   const [Genre,setGenre] = useState("")
   //const { errors } = useSelector((state) => state.user);
   const [inputs, setInputs] = useState({
-    genre:"mystery",
+    genre:"미스터리",
     checkbox: {},
     content: "",
     errors: {},
@@ -88,19 +88,22 @@ function RegisterPage(props) {
  
 
   return (
+    <div classname="signinup"style={{ display: 'flex', justifyContent: 'center',
+     alignContent: 'center', width: '30%', margin: '100px auto ', height: '70vh',
+     backgroundColor: '#FAE3BF', borderRadius: '8px',  boxShadow:'4px 4px 4px'}} >
     <div style={{
       display:'flex', justifyContent:'center',alignContent:'center',
-      width:'100%',height:'100vh', margin:'150px auto'
+      width:'100%',height:'100vh', margin:'70px auto', boxShadow:'5px'
     }}>
       <form style={{display:'flex', flexDirection: 'column'}}
       onSubmit={onSubmitHandler}>
         <Title level={2} classname='join' style={{ width: '100%', height: '1vh', margin: '0 0 70px 70px', alignContent: 'center' }}>
             회원가입</Title>
         {/* <label>Email</label> */}
-        <Form.Item required label="이메일">
+        <Form.Item required label="이메일　">
                 <Input
-                  id="name"
-                  placeholder="Enter your name"
+                  id="email"
+                  placeholder="Enter Email-ID"
                   type="email"
                   value={Email}
                   onChange={onEmailHandler}
@@ -132,7 +135,7 @@ function RegisterPage(props) {
             value={ConfirmPassword}
             onChange={onConfirmPasswordHandler} />
         </Form.Item>
-        <Form.Item required label="이름"
+        <Form.Item required label="이름　　"
         style={{margin: '0 0 30px'}}>
           <Input
             id="name"
@@ -142,7 +145,7 @@ function RegisterPage(props) {
             onChange={onNameHandler} />
         </Form.Item>
        <Form.Item>
-       <Title level={4} classname='join' style={{ width: '100%', height: '1vh', margin: '0 0 30px 90px', alignContent: 'center' }}>
+       <Title level={4} classname='join' style={{ width: '100%', height: '1vh', margin: '30px 0 50px 90px', alignContent: 'center' }}>
             최애장르</Title>
           <div key="custom-inline-checkbox" className="mb-3">
             <Checkbox
@@ -151,13 +154,25 @@ function RegisterPage(props) {
               //label="미스터리"
               name="genre"
               type="radio"
-              checked={inputs.genre === "mystery"}
+              checked={inputs.genre === "미스터리"}
               id="custom-inline-checkbox-1"
-              value="mystery"
+              value="미스터리"
               onChange={handleChange}>
                 미스터리
             </Checkbox>
             <Checkbox
+              custom
+              inline
+              name="genre"
+              //label="LN"
+              type="radio"
+              id="custom-inline-checkbox-3"
+              checked={inputs.genre === "라이트노벨"}
+              value="라이트노벨"
+              onChange={handleChange}>
+                라이트노벨
+              </Checkbox>
+              <Checkbox
               custom
               inline
               name="genre"
@@ -168,21 +183,9 @@ function RegisterPage(props) {
               value="BL"
               onChange={handleChange}>
                 BL
-            </Checkbox>
+                </Checkbox>
             </div>
             <div key="custom-inline-checkbox" className="mb-3">
-            <Checkbox
-              custom
-              inline
-              name="genre"
-              //label="LN"
-              type="radio"
-              id="custom-inline-checkbox-3"
-              checked={inputs.genre === "LN"}
-              value="LN"
-              onChange={handleChange}>
-                라이트노벨
-              </Checkbox>
               <Checkbox
               custom
               inline
@@ -190,24 +193,36 @@ function RegisterPage(props) {
               //label="LN"
               type="radio"
               id="custom-inline-checkbox-4"
-              checked={inputs.genre === "hero"}
-              value="hero"
+              checked={inputs.genre === "무협"}
+              value="무협"
               onChange={handleChange}>
-                무협
+                무협　　
               </Checkbox>
-          </div>
-          <div key="custom-inline-checkbox" className="mb-3">
-            <Checkbox
+              <Checkbox
               custom
               inline
               name="genre"
               //label="LN"
               type="radio"
               id="custom-inline-checkbox-5"
-              checked={inputs.genre === "MF"}
-              value="MF"
+              checked={inputs.genre === "현대판타지"}
+              value="현대판타지"
               onChange={handleChange}>
                 현대판타지
+              </Checkbox>
+          </div>
+          <div key="custom-inline-checkbox" className="mb-3">
+          <Checkbox
+              custom
+              inline
+              name="genre"
+              //label="LN"
+              type="radio"
+              id="custom-inline-checkbox-7"
+              checked={inputs.genre === "판타지"}
+              value="판타지"
+              onChange={handleChange}>
+                판타지　
               </Checkbox>
               <Checkbox
               custom
@@ -216,25 +231,15 @@ function RegisterPage(props) {
               //label="LN"
               type="radio"
               id="custom-inline-checkbox-6"
-              checked={inputs.genre === "RF"}
-              value="RF"
+              checked={inputs.genre === "로맨스판타지"}
+              value="로맨스판타지"
               onChange={handleChange}>
                 로맨스판타지
               </Checkbox>
+              
           </div>
           <div key="custom-inline-checkbox" className="mb-3">
-            <Checkbox
-              custom
-              inline
-              name="genre"
-              //label="LN"
-              type="radio"
-              id="custom-inline-checkbox-7"
-              checked={inputs.genre === "fantasy"}
-              value="fantasy"
-              onChange={handleChange}>
-                판타지
-              </Checkbox>
+            
               <Checkbox
               custom
               inline
@@ -242,24 +247,22 @@ function RegisterPage(props) {
               //label="LN"
               type="radio"
               id="custom-inline-checkbox-8"
-              checked={inputs.genre === "romance"}
-              value="romance"
+              checked={inputs.genre === "로맨스"}
+              value="로맨스"
               onChange={handleChange}>
-                로맨스
+                로맨스　
               </Checkbox>
-          </div>
-          <div key="custom-inline-checkbox" className="mb-3">
-            <Checkbox
+              <Checkbox
               custom
               inline
               name="genre"
               //label="LN"
               type="radio"
               id="custom-inline-checkbox-9"
-              checked={inputs.genre === "fusion"}
-              value="fusion"
+              checked={inputs.genre === "퓨전"}
+              value="퓨전"
               onChange={handleChange}>
-                퓨전
+                퓨전　　
               </Checkbox>
               <Checkbox
               custom
@@ -268,22 +271,10 @@ function RegisterPage(props) {
               //label="LN"
               type="radio"
               id="custom-inline-checkbox-10"
-              checked={inputs.genre === "game"}
-              value="game"
+              checked={inputs.genre === "게임"}
+              value="게임"
               onChange={handleChange}>
                 게임
-              </Checkbox>
-              <Checkbox
-              custom
-              inline
-              name="genre"
-              //label="LN"
-              type="radio"
-              id="custom-inline-checkbox-11"
-              checked={inputs.genre === "novel"}
-              value="novel"
-              onChange={handleChange}>
-                소설
               </Checkbox>
           </div>
           <div key="custom-inline-checkbox" className="mb-3">
@@ -294,11 +285,23 @@ function RegisterPage(props) {
               name="genre"
               //label="LN"
               type="radio"
-              id="custom-inline-checkbox-12"
-              checked={inputs.genre === "history"}
-              value="history"
+              id="custom-inline-checkbox-11"
+              checked={inputs.genre === "소설"}
+              value="소설"
               onChange={handleChange}>
-                역사
+                소설　　
+              </Checkbox>
+              <Checkbox
+              custom
+              inline
+              name="genre"
+              //label="LN"
+              type="radio"
+              id="custom-inline-checkbox-12"
+              checked={inputs.genre === "역사"}
+              value="역사"
+              onChange={handleChange}>
+                역사　　
               </Checkbox>
               <Checkbox
               custom
@@ -307,11 +310,15 @@ function RegisterPage(props) {
               //label="LN"
               type="radio"
               id="custom-inline-checkbox-13"
-              checked={inputs.genre === "sports"}
-              value="sports"
+              checked={inputs.genre === "스포츠"}
+              value="스포츠"
               onChange={handleChange}>
                 스포츠
               </Checkbox>
+          </div>
+          <div key="custom-inline-checkbox" className="mb-3">
+            
+              
               <Checkbox
               custom
               inline
@@ -319,24 +326,22 @@ function RegisterPage(props) {
               //label="LN"
               type="radio"
               id="custom-inline-checkbox-14"
-              checked={inputs.genre === "horror"}
-              value="horror"
+              checked={inputs.genre === "공포"}
+              value="공포"
               onChange={handleChange}>
-                공포
+                공포　　
               </Checkbox>
-          </div>
-          <div key="custom-inline-checkbox" className="mb-3">
-            <Checkbox
+              <Checkbox
               custom
               inline
               name="genre"
               //label="LN"
               type="radio"
               id="custom-inline-checkbox-15"
-              checked={inputs.genre === "policier"}
-              value="policier"
+              checked={inputs.genre === "추리"}
+              value="추리"
               onChange={handleChange}>
-                추리
+                추리　　
               </Checkbox>
               <Checkbox
               custom
@@ -350,6 +355,9 @@ function RegisterPage(props) {
               onChange={handleChange}>
                 SF
               </Checkbox>
+          </div>
+          <div key="custom-inline-checkbox" className="mb-3">
+            
               <Checkbox
               custom
               inline
@@ -357,8 +365,8 @@ function RegisterPage(props) {
               //label="LN"
               type="radio"
               id="custom-inline-checkbox-17"
-              checked={inputs.genre === "military"}
-              value="military"
+              checked={inputs.genre === "밀리터리"}
+              value="밀리터리"
               onChange={handleChange}>
                 밀리터리
               </Checkbox>
@@ -376,7 +384,7 @@ function RegisterPage(props) {
           회원 가입
         </button> */}
       </form>
-
+      </div>
     </div>
   )
 }
