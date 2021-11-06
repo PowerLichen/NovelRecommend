@@ -166,7 +166,7 @@ ENGINE=InnoDB
 
 ### novel_taging.py
 
-- 위 파일은 run_pycode.js에 의해 실행되며, 실행 시 DB에 있는 소설 데이터에 대한 NPL 작업(TAG 작업)을 진행하여 novel_tag 테이블에 INSERT 합니다.
+- 위 파일은 run_pycode.js에 의해 실행되며, 실행 시 DB에 있는 소설 데이터에 대한 NLP 작업(TAG 작업)을 진행하여 novel_tag 테이블에 INSERT 합니다.
 
 ### week_run_pycode.js
 
@@ -174,4 +174,4 @@ ENGINE=InnoDB
 
 ### week_novel_taging.py
 
-- 위 파일은 week_run_pycode.js에 의해 실행되며, 실행 시 week_crawler_run.js에 의해 생성된 csv 파일은 DB에 삽입함과 동시에 삽입하는 소설에 대한 NPL 작업(TAG 작업)을 진행하여 해당 결과를 DB에 함께 INSERT 합니다.
+- 위 파일은 week_run_pycode.js에 의해 실행되며, 실행 시 week_crawler_run.js에 의해 생성된 csv 파일은 DB에 삽입함과 동시에 삽입하는 소설에 대한 NLP 작업(TAG 작업)을 진행하여 해당 결과를 DB에 함께 INSERT 합니다.
