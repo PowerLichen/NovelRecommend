@@ -6,7 +6,7 @@ import RatingPage from "../RatingPage/RatingPage";
 function NovelDetail(props) {
 
     const [Novel, setMovie] = useState([]);
-    const url = useState((window.location.pathname).slice(7));
+    const nidUrl = useState((window.location.pathname).slice(7));
 
 
     useEffect(() => {
@@ -16,8 +16,8 @@ function NovelDetail(props) {
       
     return (
         <div>
-        <NovelInfo id = {url}></NovelInfo>
-        <RatingPage id = {url}></RatingPage>
+        <NovelInfo nid = {nidUrl}></NovelInfo>
+        <RatingPage nid = {nidUrl}></RatingPage>
         </div>
         
     )
