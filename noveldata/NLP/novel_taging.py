@@ -24,19 +24,25 @@ tag_db = pymysql.connect(
 ## DB와 상호작용을 위한 cursor 객체 생성
 cursor = tag_db.cursor(pymysql.cursors.DictCursor)
 
-
 ## 데이터 조작 : 조회할 때
 sql = 'SELECT * FROM novel_data;'
 cursor.execute(sql)
 result = cursor.fetchall()
 
 for data in result:
-    array = []
-    word = okt.pos(data['description'])
-    for type in word:
-        if type[1] == 'Noun' and len(type[0]) > 1:
-            array.append(type[0])
-    sql = "INSERT INTO novel_tag (nid, tag) VALUES (%s, %s)"
-    for search in array:
-        cursor.execute(sql, (data['id'], search))
-    tag_db.commit()
+    array=[]
+    sql = 'SELECT EXISTS(SELECT * FROM novel_tag WHERE nid = %s) as isChk;'
+    cursor.execute(sql,(data['id']))
+    check_db_result = cursor.fetchall()
+    if(check_db_result[0]['isChk']==False):
+        word = okt.pos(data['description'])
+        for type in word:
+            if type[1] == 'Noun' and len(type[0])>1:
+                array.append(type[0])
+        sql = "INSERT INTO novel_tag (nid, tag) VALUES(%s,%s);"
+        for search in array:
+            cursor.execute(sql,(data['id'],search))
+        tag_db.commit()
+    else:
+        continue
+tag_db.close()
