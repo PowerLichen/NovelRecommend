@@ -4,10 +4,10 @@ const stringify = require('csv-stringify/lib/sync');
 
 const run = async () => {
     // 크롤링 완료된 소설 data file read
-    const naver = fs.readFileSync(__dirname+'/csv/naver.csv')
-    const kakao = fs.readFileSync(__dirname+'/csv/kakao.csv');
-    const joara = fs.readFileSync(__dirname+'/csv/joara.csv');
-    const ridibooks = fs.readFileSync(__dirname+'/csv/ridibooks.csv')
+    const naver = fs.readFileSync(__dirname+'/../../csv/naver.csv')
+    const kakao = fs.readFileSync(__dirname+'/../../csv/kakao.csv');
+    const joara = fs.readFileSync(__dirname+'/../../csv/joara.csv');
+    const ridibooks = fs.readFileSync(__dirname+'/../../csv/ridibooks.csv')
     // csv file parse
     const naver_records = parse(naver.toString('utf-8'));
     const kakao_records = parse(kakao.toString('utf-8'));
@@ -124,7 +124,7 @@ const run = async () => {
     });
     // result를 다시 csv 파일로 저장
     const str = stringify(results);
-    fs.writeFileSync(__dirname+'/csv/novelList.csv',str);
+    fs.writeFileSync(__dirname+'/../../csv/novelList.csv',str);
     console.log('done');
 }
 exports.run = run;

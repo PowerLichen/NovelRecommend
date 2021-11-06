@@ -6,19 +6,18 @@ import csv
 from konlpy.tag import Okt
 import json
 
-with open('database.json') as fj: config = json.load(fj)
 # 현재 디렉토리 주소
 CUR_DIR = os.path.dirname(os.path.abspath(__file__))
-# 메인 폴더 디렉토리 주소
+# 상위 폴더 디렉토리 주소
 BASE_DIR = os.path.dirname((CUR_DIR))
 # 불러올 소설 정보 파일 주소
-file_dir = BASE_DIR+'/crawler/csv/novelList_week.csv'
+file_dir = BASE_DIR+'/csv/novelList_week.csv'
 # csv 파일 읽기
 fc = open(file_dir,'r',encoding='UTF-8')
 rdr = csv.reader(fc)
 
+with open(BASE_DIR+'/database.json') as fj: config = json.load(fj)
 okt = Okt()
-
 ## MySQL 연결
 tag_db = pymysql.connect(
     user=config['user'],

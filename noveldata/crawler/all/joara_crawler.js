@@ -18,12 +18,11 @@ const run = async () => {
             ['완결',1,0],
         ];
         const browser = await puppeteer.launch(browserOption);
-
+        console.log('조아라 크롤링 시작');
         await Promise.all(ending.map(async (isFinish,i)=>{
             try{
                 const page = await browser.newPage();
                 datas[i] = new Array();
-                console.log(`조아라 ${isFinish[0]} 작품 크롤링 시작`);
                 while(1){
                     let url;
                     if(isFinish[0]=='연재') url = `http://pre.joara.com/premium_new/book_list.html?page_no=${isFinish[1]}&sl_category=&sl_search=&sl_keyword=&sl_orderby=amt_sale&sl_othercategory=&list_type=&sub_category=&sl_cate_no=fm`;
@@ -85,7 +84,7 @@ const run = async () => {
         await browser.close();
         console.log('조아라 크롤링 완료');
         const str = stringify(result);
-        fs.writeFileSync(__dirname+`/csv/joara.csv`,str);
+        fs.writeFileSync(__dirname+`/../../csv/joara.csv`,str);
 
     }catch(e){
         console.error(e);

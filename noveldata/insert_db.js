@@ -2,7 +2,7 @@
 const mysql = require('mysql2/promise');
 const parse = require('csv-parse/lib/sync');
 const fs = require('fs');
-const config = require('./database.json');
+const config = require(__dirname+'/database.json');
 
 // 실행 함수
 const run = async () => {
