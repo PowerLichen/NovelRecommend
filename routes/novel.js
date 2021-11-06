@@ -4,23 +4,9 @@ const router = express.Router();
 
 const recommend = require('../lib/recommend/recommend_main')
 
-module.exports = (pool) => {
-    // 소설 리스트 출력
-    // API: '/novel/list/[num]'
-    router.get('/list/:id', (req, res, next) => {
-        const list_id = path.parse(req.params.id).base * 20;
-        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
-        pool.query(sql, [list_id], (err, results) => {
-            if (err) {
-                console.log(err);
-                return next(err);
-            }
-            res.send(results);
-        });
-    });
-
+module.exports = (pool) => {    
     // 작품 상세정보 출력
-    // API : '/novel/detail/[num]'
+    // API : '/novel/noveldata/[num]'
     router.get('/noveldata/:novel_id', (req, res, next) => {
         //패러미터 파싱
         const novel_id = path.parse(req.params.novel_id).base;
@@ -42,12 +28,44 @@ module.exports = (pool) => {
             });
     });
 
+
+    // 소설 최신 리스트 출력
+    // API: '/novel/list/[num]'
+    router.get('/list/:id', (req, res, next) => {
+        const pageId = path.parse(req.params.id).base * 20;
+        const sql = 'SELECT id,title,imgurl FROM novel_data ORDER BY id DESC LIMIT ?,20';
+        pool.query(sql, [pageId], (err, results) => {
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+            res.send(results);
+        });
+    });
+
+
+    // 장르 별 소설 리스트 출력
+    //API: '/novel/genrelist/[genre]/[page_id]'
+    router.get('/genrelist/:genre/:id', (req, res, next) => {
+        const pageId = path.parse(req.params.id).base * 20;
+        const genre = path.parse(req.params.genre).base;
+        const sql = 'SELECT id,title,imgurl FROM novel_data WHERE genre=? ORDER BY id DESC LIMIT ?,20';
+        pool.query(sql, [genre, pageId], (err, results) => {
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+            res.send(results);
+        });
+    });
+
+
     //평점 준 작품 소설 리스트 출력
     router.get('/mybook/:uid/:id', (req, res, next) => {
         //TODO: 임시 데이터
-        const list_id = path.parse(req.params.id).base * 20;
+        const pageId = path.parse(req.params.id).base * 20;
         const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
-        pool.query(sql, [list_id], (err, results) => {
+        pool.query(sql, [pageId], (err, results) => {
             if (err) {
                 console.log(err);
                 return next(err);
@@ -56,12 +74,14 @@ module.exports = (pool) => {
         });
         //TODO: 임시 데이터 종료
     });
+
+
     //평점 준 작가 기반 소설 리스트 출력
     router.get('/relatedbook/:uid/:id', (req, res, next) => {
         //TODO: 임시 데이터
-        const list_id = path.parse(req.params.id).base * 20;
+        const pageId = path.parse(req.params.id).base * 20;
         const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
-        pool.query(sql, [list_id], (err, results) => {
+        pool.query(sql, [pageId], (err, results) => {
             if (err) {
                 console.log(err);
                 return next(err);
@@ -75,9 +95,9 @@ module.exports = (pool) => {
     //조회수 기반 소설 리스트 출력
     router.get('/list/view/:id', (req, res, next) => {
         //TODO: 임시 데이터
-        const list_id = path.parse(req.params.id).base * 20;
+        const pageId = path.parse(req.params.id).base * 20;
         const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
-        pool.query(sql, [list_id], (err, results) => {
+        pool.query(sql, [pageId], (err, results) => {
             if (err) {
                 console.log(err);
                 return next(err);
@@ -87,8 +107,8 @@ module.exports = (pool) => {
         //TODO: 임시 데이터 종료
     });
 
+
     //추천 알고리즘 기반 소설 리스트 출력
-    //컨텐츠 기반
     router.get('/content-rec/:uid', async (req, res, next) =>{
         const userId = path.parse(req.params.uid).base;
         if(userId == ""){
@@ -99,7 +119,6 @@ module.exports = (pool) => {
         var result = await recommend(userId);
 
         res.send(result);
-
     });
 
     return router;
