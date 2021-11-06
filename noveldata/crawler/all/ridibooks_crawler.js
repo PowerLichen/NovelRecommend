@@ -22,12 +22,11 @@ const run = async() =>{
         };
 
         const browser = await puppeteer.launch(browserOption);
-
+        console.log('리디북스 크롤링 시작');
         await Promise.all(genres.map(async (genreCode,i)=>{
             const page = await browser.newPage();
             // 각 장르별로 데이터를 따로 저장하기 위해서
             datas[i] = new Array();
-            console.log(`리디북스 ${genreCode[0]} 장르 크롤링 시작`);
             while(1){
                 const url = `https://ridibooks.com/category/books/${genreCode[1]}?rent=n&adult=n&adult_exclude=y&order=selling&page=${genreCode[2]}`;
                 // 해당 url로 페이지 이동
@@ -98,7 +97,7 @@ const run = async() =>{
         await browser.close();
         console.log('리디북스 크롤링 완료');
         const str = stringify(results);
-        fs.writeFileSync(__dirname+'/csv/ridibooks.csv',str);
+        fs.writeFileSync(__dirname+'/../../csv/ridibooks.csv',str);
 
     }catch(e){
         console.log(e);

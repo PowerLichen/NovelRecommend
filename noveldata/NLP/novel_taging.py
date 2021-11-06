@@ -1,15 +1,24 @@
 # pip 설치 : pip install -r requirements.txt
+# database에 들어있는 모든 소설에 대한 tag 작업 처리
+import os
 import pymysql
 from konlpy.tag import Okt
+import json
+# 현재 디렉토리 주소 /noveldata/NLP
+CUR_DIR = os.path.dirname(os.path.abspath(__file__))
+# 상위 디렉토리 주소 /noveldata
+BASE_DIR = os.path.dirname((CUR_DIR))
+with open(BASE_DIR+'/database.json') as fj: config = json.load(fj)
+
 okt = Okt()
 
 ## MySQL 연결
 tag_db = pymysql.connect(
-    user='root',
-    passwd='', # 비밀번호 설정할 것
-    host='localhost',
-    db='', # db명 수정할 것
-    charset='utf8'
+    user=config['user'],
+    passwd=config['password'],
+    host=config['host'],
+    db=config['database'], # db명 수정할 것
+    charset='utf8mb4'
 )
 
 ## DB와 상호작용을 위한 cursor 객체 생성

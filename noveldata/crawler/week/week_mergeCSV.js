@@ -3,10 +3,10 @@ const fs = require('fs');
 const stringify = require('csv-stringify/lib/sync');
 
 const run = async () => {
-    const naver = fs.readFileSync(__dirname+'/csv/naver_week.csv')
-    const kakao = fs.readFileSync(__dirname+'/csv/kakao.csv');
-    const joara = fs.readFileSync(__dirname+'/csv/joara_week.csv');
-    const ridibooks = fs.readFileSync(__dirname+'/csv/ridibooks_week.csv')
+    const naver = fs.readFileSync(__dirname+'/../../csv/naver_week.csv')
+    const kakao = fs.readFileSync(__dirname+'/../../csv/kakao.csv');
+    const joara = fs.readFileSync(__dirname+'/../../csv/joara_week.csv');
+    const ridibooks = fs.readFileSync(__dirname+'/../../csv/ridibooks_week.csv')
 
     const naver_records = parse(naver.toString('utf-8'));
     const kakao_records = parse(kakao.toString('utf-8'));
@@ -123,8 +123,8 @@ const run = async () => {
         }
     });
     const str = stringify(results);
-    fs.writeFileSync(__dirname+'/csv/novelList_week.csv',str);
+    fs.writeFileSync(__dirname+'/../../csv/novelList_week.csv',str);
     console.log('done');
 }
-run();
+// 모듈로 사용하기 위해 run 함수 exports
 exports.run = run;
