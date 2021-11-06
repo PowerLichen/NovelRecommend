@@ -166,10 +166,11 @@ const Container = styled.div`
 `;
 const Post = styled.div`
   border: 1px solid black;
-  background: white;
+  background: #E2ECFF;
   align-items: center;
   margin:  0 0 0 35%;
   padding: 0px 10px;
+  border-radius:8px;
 `;
 
 const Title = styled.div`
