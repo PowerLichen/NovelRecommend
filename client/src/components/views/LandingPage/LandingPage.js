@@ -7,6 +7,7 @@ import { USER_SERVER } from '../../../components/Config.js';
 import styled, { createGlobalStyle } from "styled-components";
 import Slide from "../../../../node_modules/react-slick";
 import { NavLink } from "react-router-dom";
+import Layout  from "./Layout";
 
 function LandingPage() {
 
@@ -139,8 +140,9 @@ function LandingPage() {
                         />
                     </Container>
                 </div>
-            </div>
-            
+            </div>   
+            <Layout/>
+   
         </Fragment>
     );
 }

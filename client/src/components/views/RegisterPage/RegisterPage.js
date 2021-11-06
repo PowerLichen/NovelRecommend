@@ -88,9 +88,10 @@ function RegisterPage(props) {
  
 
   return (
+    <div>
     <div classname="signinup"style={{ display: 'flex', justifyContent: 'center',
      alignContent: 'center', width: '30%', margin: '100px auto ', height: '70vh',
-     backgroundColor: '#FAE3BF', borderRadius: '8px',  boxShadow:'4px 4px 4px'}} >
+     backgroundColor: '#D5E4FF', borderRadius: '8px',  boxShadow:'4px 4px 4px'}} >
     <div style={{
       display:'flex', justifyContent:'center',alignContent:'center',
       width:'100%',height:'100vh', margin:'70px auto', boxShadow:'5px'
@@ -385,6 +386,7 @@ function RegisterPage(props) {
         </button> */}
       </form>
       </div>
+    </div>
     </div>
   )
 }
