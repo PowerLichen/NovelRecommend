@@ -80,7 +80,7 @@ function App(props) {
         <Switch>
           <Route exact path="/" component={(LandingPage)} />
           <Route exact path="/login" component={(LoginPage)} />
-          <Route exact path="/join" component={(RegisterPage)} />
+          <Route exact path="/join" component={RegisterPage} />
           <Route exact path="/mypage" component={(MyPage)} />
           {/* <Route exact path="/community" component={(BoardModal)} /> */}
           <Route exact path="/novel" component={NovelPostPage} />  
