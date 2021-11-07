@@ -20,7 +20,7 @@ import { menuAction_fetch } from '../_actions/menuActions';
 import RecommendAlgorithmPage from './views/RecommendPage/RecommendAlgorithmPage.js';
 import RatingNovelPage from './views/RecommendPage/RatingNovelPage.js';
 import RatingAuthorPage from './views/RecommendPage/RatingAuthorPage.js';
-import viewsPage from './views/RecommendPage/viewsPage.js';
+import ViewsPage from './views/RecommendPage/ViewsPage.js';
 import GenrePage from './views/GenrePage/GenrePage.js';
 
 //null   Anyone Can go inside
@@ -94,8 +94,8 @@ function App(props) {
           {/* 추천 소설 관련 페이지 */}
           <Route exact path="/algorithm" component={RecommendAlgorithmPage} /> {/*추천 알고리즘 기반 소설 리스트 출력*/}
           <Route exact path="/ratingNovel" component={RatingNovelPage} /> {/*평점 준 작품 소설 리스트 출력*/}
-          <Route exact path="/ratingAuthor" component={RatingAuthorPage} /> {/*평점 준 w 소설 리스트 출력*/}
-          <Route exact path="/view" component={viewsPage} />{/*조회수 기반 소설 리스트 출력 */}
+          <Route exact path="/ratingAuthor" component={RatingAuthorPage} /> {/*평점 준 작가 기반 소설 리스트 출력*/}
+          <Route exact path="/view" component={ViewsPage} />{/*조회수 기반 소설 리스트 출력 */}
           
           {/* 검색 페이지 */} 
           <Route exact path="/search" component={SearchPage} />
