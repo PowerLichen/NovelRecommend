@@ -114,5 +114,10 @@ const ContentWrap = styled.div`
   .overseas-remittance-link:hover {
     text-decoration: underline;
   }
+  .footer__rightContent{
+    
+}
   `;
+
+
 export default withRouter(Footer)
