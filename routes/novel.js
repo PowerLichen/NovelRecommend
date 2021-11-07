@@ -64,6 +64,7 @@ module.exports = (pool) => {
     router.get('/mybook/:uid/:id', (req, res, next) => {
         //TODO: 임시 데이터
         const pageId = path.parse(req.params.id).base * 20;
+        const uid = path.parse(req.params.uid).base;
         const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
         pool.query(sql, [pageId], (err, results) => {
             if (err) {
