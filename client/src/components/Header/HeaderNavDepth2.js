@@ -1,19 +1,11 @@
 import React, { useState,} from "react";
 import { NavLink } from "react-router-dom";
 import history from "../../history";
-import Genre from '../views/GenrePage/GenrePage'
 
 function HeaderNavDepth2({ menuItem }) {
     const children = menuItem.children || [];
-    const [genre, setgenre] =useState('');
-
     const handleAddMenu = () => {
         history.push("/nav?depth2=" + menuItem.path);
-    };
-    const OnMouseClick = (value) => {
-        setgenre(value);
-        console.log(value)
-        console.log(genre)
     };
     
     return (
@@ -23,12 +15,8 @@ function HeaderNavDepth2({ menuItem }) {
                     
                     <NavLink
                         key={item.path}
-                        to={item.path}
-                        
+                        to={item.path}                        
                         activeClassName="active"
-                        onClick={() =>
-                            OnMouseClick(item.value)
-                        }
                     >
                         {item.name}
                     </NavLink>
@@ -40,7 +28,6 @@ function HeaderNavDepth2({ menuItem }) {
                 ></i>
             </div>
             <div>
-            {/* <Genre genrez={genre} /> */}
         </div>
         </div>
         

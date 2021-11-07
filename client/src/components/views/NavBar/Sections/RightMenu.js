@@ -29,7 +29,6 @@ function RightMenu(props) {
       });
       
   };
-  console.log(user.userData)
 
   if ((!!user.userData)===true) {
     return (

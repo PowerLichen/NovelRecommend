@@ -1,6 +1,5 @@
 import React,{ useState, useEffect } from 'react'
 import { useSelector } from "react-redux";
-import MyInfo from './MyInfo';
 import { Descriptions } from 'antd';
 import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
@@ -8,15 +7,13 @@ import styled, { createGlobalStyle } from "styled-components";
 
 function MyPage() {
     const user = useSelector(state => state.user)
-    console.log(user.userData)
     const [Posts, setPosts] = useState([]);
-    const [Pages, setPages] = useState([1]);
     useEffect(() => {  
         if(user.userData === undefined)
             return
         axios
           .get(`${USER_SERVER}/novel/mybook/${user.userData.idx}/1`)
-          .then(({ data }) => { setPosts(data); console.log(data);});
+          .then(({ data }) => { setPosts(data); });
           
       }, [user])
 
@@ -25,13 +22,6 @@ function MyPage() {
         <div>
             {/* Body*/}
             <div style={{ width: '85%', margin: '1rem auto' }}>
-                {/* My Info*/}
-{/*                 
-                <Descriptions title="My Info" bordered>
-                
-                    <MyInfo user={user} />
-                </Descriptions> */}
-                
                 <Descriptions title="내 정보" bordered style={{margin:'5% 10% auto'}}>
                 {user.userData &&(
                     <Descriptions.Item label="My ID" style={{padding:'30px'}}>

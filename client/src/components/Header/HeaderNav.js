@@ -11,7 +11,6 @@ const HeaderNav = () => {
     const { menuItems } = useSelector((state) => state.menu); // 전체 메뉴 아이템
     const [menuPath, setMenuPath] = useState(""); // 자식 메뉴 오픈 여부
     const user = useSelector(state => state.user);
-    console.log(menuItems);
     
 
     // Open Menu
@@ -23,7 +22,6 @@ const HeaderNav = () => {
     const handleMouseLeave = () => {
         setMenuPath("");
     };
-    console.log(menuPath);
 
 
     return (

@@ -12,7 +12,6 @@ import Layout  from "./Layout";
 function LandingPage() {
 
     const user = useSelector(state => state.user)
-    console.log(user.userData)
     const [last_Posts, setlastPosts] = useState([]);
     const [lastslide, setlastSlide] = useState(0); // 현재 슬라이드
     const [top_Posts, settopPosts] = useState([]);
@@ -27,13 +26,13 @@ function LandingPage() {
     useEffect(() => {
         axios
             .get(`${USER_SERVER}/novel/list/1`)
-            .then(({ data }) => { setlastPosts(data.slice(0, 10)); console.log(data); });
+            .then(({ data }) => { setlastPosts(data.slice(0, 10));});
 
     }, [])
     useEffect(() => {
         axios
             .get(`${USER_SERVER}/novel/list/view/0`)
-            .then(({ data }) => { settopPosts(data.slice(0, 10)); console.log(data); });
+            .then(({ data }) => { settopPosts(data.slice(0, 10));});
 
     }, [])
 
