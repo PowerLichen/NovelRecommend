@@ -101,7 +101,7 @@ module.exports = (pool) => {
         //TODO: 임시 데이터
         const pageId = path.parse(req.params.id).base * 20;
         // const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
-        const sql = `SELECT id, title, imgurl FROM novel_data WHERE nid in (SELECT nid FROM novel_scoredata GROUP BY nid ORDER BY avg(score) DESC) LIMIT ?, 20`;
+        const sql = `SELECT id, title, imgurl FROM novel_data WHERE id in (SELECT nid FROM novel_scoredata GROUP BY nid ORDER BY avg(score) DESC) LIMIT ?, 20`;
         pool.query(sql, [pageId], (err, results) => {
             if (err) {
                 console.log(err);
