@@ -6,14 +6,15 @@ import { USER_SERVER } from '../../../components/Config.js';
 
 
 //작품출력
-function NovelPostPage(props) {
+//수정 필요
+function GenrePage(props) {
     
   const [Posts, setPosts] = useState([]);
   const [Pages, setPages] = useState([1]);
     
   useEffect(() => {
     axios
-      .get(`${USER_SERVER}/novel/list/0`)
+      .get(`${USER_SERVER}/novel/genrelist/라이트노벨/0`)
       .then(({ data }) => { setPosts(data); console.log(data);});
   }, [])
 
@@ -22,7 +23,7 @@ function NovelPostPage(props) {
       
     setPages(Number(Pages)+1);
 
-    fetch(`${USER_SERVER}/novel/list/${Pages}`)
+    fetch(`${USER_SERVER}/novel/genrelist/라이트노벨/${Pages}`)
           .then(response => response.json())
           .then(response => {
               console.log(response)
@@ -109,4 +110,4 @@ const Effcet = styled.div`
   position: relative;
 `;
 
-export default NovelPostPage
+export default GenrePage
