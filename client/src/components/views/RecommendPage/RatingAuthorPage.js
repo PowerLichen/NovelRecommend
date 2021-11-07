@@ -1,28 +1,35 @@
 import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
-import { USER_SERVER } from '../../../components/Config.js';
+import { USER_SERVER } from '../../Config.js';
+import { useSelector } from "react-redux";
 
 
-
-//작품출력
-function NovelPostPage(props) {
+//평점 준 작가 기반 소설 리스트 출력
+function RatingAuthorPage(props) {
     
   const [Posts, setPosts] = useState([]);
   const [Pages, setPages] = useState([1]);
-    
+
+  //유저 정보
+  const user = useSelector(state => state.user)
+  console.log(user.userData)
+
   useEffect(() => {
+    if (user.userData === undefined) {
+      return
+    }
     axios
-      .get(`${USER_SERVER}/novel/list/0`)
+      .get(`${USER_SERVER}/novel/relatedbook/${user.userData.idx}/0`)
       .then(({ data }) => { setPosts(data); console.log(data);});
-  }, [])
+  }, [user])
 
   //소설 포스트 페이지 갱신
   const fetchNovel = () => {
       
     setPages(Number(Pages)+1);
 
-    fetch(`${USER_SERVER}/novel/list/${Pages}`)
+    fetch(`${USER_SERVER}/novel/relatedbook/${user.userData.idx}/${Pages}`)
           .then(response => response.json())
           .then(response => {
               console.log(response)
@@ -109,4 +116,5 @@ const Effcet = styled.div`
   position: relative;
 `;
 
-export default NovelPostPage
+export default RatingAuthorPage
+

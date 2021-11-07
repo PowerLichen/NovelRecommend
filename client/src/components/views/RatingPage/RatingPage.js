@@ -38,6 +38,7 @@ function RatingPage(props) {
       axios
         .get(`${USER_SERVER}/rating/addscore/${user.userData.idx}/${props.nid}/${Score}`) 
         .then((data)=>{console.log(data);})
+      
       setCheck(true);
     }
 

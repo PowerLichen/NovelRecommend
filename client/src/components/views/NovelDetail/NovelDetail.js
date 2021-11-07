@@ -7,13 +7,7 @@ function NovelDetail(props) {
 
     const [Novel, setMovie] = useState([]);
     const nidUrl = useState((window.location.pathname).slice(7));
-
-
-    useEffect(() => {
-
-
-    });
-      
+ 
     return (
         <div>
         <NovelInfo nid = {nidUrl}></NovelInfo>
