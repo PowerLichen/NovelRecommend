@@ -63,10 +63,11 @@ module.exports = (pool) => {
     //평점 준 작품 소설 리스트 출력
     router.get('/mybook/:uid/:id', (req, res, next) => {
         //TODO: 임시 데이터
-        const pageId = path.parse(req.params.id).base * 20;
         const uid = path.parse(req.params.uid).base;
-        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
-        pool.query(sql, [pageId], (err, results) => {
+        const pageId = path.parse(req.params.id).base * 20;
+        // const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
+        const sql = `SELECT id, title, imgurl FROM novel_data where id in (select nid from novel_scoredata where uid=?) LIMIT ?, 20`;
+        pool.query(sql, [uid, pageId], (err, results) => {
             if (err) {
                 console.log(err);
                 return next(err);
@@ -80,9 +81,11 @@ module.exports = (pool) => {
     //평점 준 작가 기반 소설 리스트 출력
     router.get('/relatedbook/:uid/:id', (req, res, next) => {
         //TODO: 임시 데이터
+        const uid = path.parse(req.params.uid).base;
         const pageId = path.parse(req.params.id).base * 20;
-        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
-        pool.query(sql, [pageId], (err, results) => {
+        // const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
+        const sql = `SELECT id, title, imgurl FROM novel_data WHERE author_id in (SELECT author_id FROM novel_data WHERE id in (SELECT nid FROM novel_scoredata WHERE uid=?)) LIMIT ?, 20`
+        pool.query(sql, [uid, pageId], (err, results) => {
             if (err) {
                 console.log(err);
                 return next(err);
@@ -97,7 +100,8 @@ module.exports = (pool) => {
     router.get('/list/view/:id', (req, res, next) => {
         //TODO: 임시 데이터
         const pageId = path.parse(req.params.id).base * 20;
-        const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
+        // const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
+        const sql = `SELECT id, title, imgurl FROM novel_data WHERE nid in (SELECT nid FROM novel_scoredata GROUP BY nid ORDER BY avg(score) DESC) LIMIT ?, 20`;
         pool.query(sql, [pageId], (err, results) => {
             if (err) {
                 console.log(err);
