@@ -20,7 +20,7 @@ import { menuAction_fetch } from '../_actions/menuActions';
 import RecommendAlgorithmPage from './views/RecommendPage/RecommendAlgorithmPage.js';
 import RatingNovelPage from './views/RecommendPage/RatingNovelPage.js';
 import RatingAuthorPage from './views/RecommendPage/RatingAuthorPage.js';
-import ViewsPage from './views/RecommendPage/ViewsPage.js';
+import ViewsPage from './views/RecommendPage/viewsPage.js';
 import GenrePage from './views/GenrePage/GenrePage.js';
 
 //null   Anyone Can go inside
@@ -32,6 +32,9 @@ function App(props) {
   const user  = useSelector((state) => state.user);
   const [isLogin, setIsLogin] = useState(false);
   const dispatch = useDispatch();
+// 
+// 
+
 
   useEffect(() => {
     dispatch(auth())
@@ -50,32 +53,6 @@ function App(props) {
     dispatch(menuAction_fetch());
 }, [dispatch]);
 
-  // useEffect(() => {
-  //   if(localStorage.getItem('usertoken') === null){
-  //   // localStorage 에 usertoken 라는 key 값으로 저장된 값이 없다면
-  //     console.log('isLogin ?? :: ', isLogin)
-  //   } else {
-  //   // localStorage 에 usertoken 라는 key 값으로 저장된 값이 있다면
-  //   // 로그인 상태 변경
-  //     setIsLogin(true)
-  //     console.log('isLogin ?? :: ', isLogin)
-  //   }
-  // })
-
-//   const AuthRoute = ({ component: Component, ...rest }) => (
-//     <Route
-//         {...rest}
-//         render={(props) => {
-//             if (!!user.userData!==false) {
-//                 return <LoginPage />;
-//             }
-
-//             if (Component) {
-//                 return <Component {...props} />;
-//             }
-//         }}
-//     />
-// );
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
       <NavBar />
@@ -101,7 +78,7 @@ function App(props) {
           <Route exact path="/search" component={SearchPage} />
         
           {/* 장르 출력 페이지 */}
-          <Route exact path="/genre" component={GenrePage} />
+          <Route path="/genres/:genre" component={GenrePage} />
 
         </Switch>
       </div>

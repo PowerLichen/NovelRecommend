@@ -7,114 +7,114 @@
             "children": [
                 {
                     "name": "SF/히어로",
-                    "path": "/movies/type1",
+                    "path": "/genres/fusion",
                     "color": "green",
                     "children": [
                         {
                             "name": "퓨전",
-                            "value": "fusion",
-                            "path": "/movies/type1/fusion"
+                            "value": "퓨전",
+                            "path": "/genres/미스터리"
                         },
                         {
                             "name": "무협",
-                            "value": "hero",
-                            "path": "/movies/type1/hero"
+                            "value": "무협",
+                            "path": "/genres/무협"
                         },
                         {
                             "name": "판타지",
-                            "value": "fantasy",
-                            "path": "/movies/type1/fantasy"
+                            "value": "판타지",
+                            "path": "/genres/판타지"
                         },
                         {
                             "name": "현대판타지",
-                            "value": "MF",
-                            "path": "/movies/type1/MF"
+                            "value": "현대판타지",
+                            "path": "/genres/현대판타지"
                         },
                         {
                             "name": "SF",
                             "value": "SF",
-                            "path": "/movies/type1/SF"
+                            "path": "/genres/SF"
                         }
                     ]
                 },
                 {
                     "name": "로맨스/코메디",
-                    "path": "/movies/type2",
+                    "path": "/genres/romance",
                     "color": "orange",
                     "children": [
                         {
                             "name": "로맨스",
-                            "value": "romance",
-                            "path": "/movies/type2/romance"
+                            "value": "로맨스",
+                            "path": "/genres/로맨스"
                         },
                         {
                             "name": "라이트노벨",
-                            "value": "LN",
-                            "path": "/movies/type2/LN"
+                            "value": "라이트노벨",
+                            "path": "/genres/라이트노벨"
                         },
                         {
                             "name": "BL",
                             "value": "BL",
-                            "path": "/movies/type2/BL"
+                            "path": "/genres/BL"
                         },
                         {
                             "name": "로맨스-판타지",
-                            "value": "RF",
-                            "path": "/movies/type2/RF"
+                            "value": "로맨스판타지",
+                            "path": "/genres/로맨스판타지"
                         }
                     ]
                 },
                 {
                     "name": "범죄/호러",
-                    "path": "/movies/type3",
+                    "path": "/genres/mystery",
                     "color": "yellow",
                     "children": [
                         {
                             "name": "미스테리",
-                            "value": "mystery",
-                            "path": "/movies/type3/mystery"
+                            "value": "미스테리",
+                            "path": "/genres/미스테리"
                         },
                         {
                             "name": "추리",
-                            "value": "policier",
-                            "path": "/movies/type3/policier"
+                            "value": "추리",
+                            "path": "/genres/추리"
                         },
                         {
                             "name": "공포",
-                            "value": "horror",
-                            "path": "/movies/type3/horror"
+                            "value": "공포",
+                            "path": "/genres/공포"
                         }
                     ]
                 },
                 {
                     "name": "기타",
-                    "path": "/movies/type4",
+                    "path": "/genres/game",
                     "color": "green",
                     "children": [
                         {
                             "name": "게임",
-                            "value": "game",
-                            "path": "/movies/type4/game"
+                            "value": "게임",
+                            "path": "/genres/게임"
                         },
                         {
                             "name": "소설",
-                            "value": "novel",
-                            "path": "/movies/type4/novel"
+                            "value": "소설",
+                            "path": "/genres/소설"
                         },
                         {
                             "name": "역사",
-                            "value": "history",
-                            "path": "/movies/type4/history"
+                            "value": "역사",
+                            "path": "/genres/역사"
                         },
                         {
                             "name": "스포츠",
-                            "value": "sports",
-                            "path": "/movies/type4/sports"
+                            "value": "스포츠",
+                            "path": "/genres/스포츠"
                         },
                         {
                             "name": "밀리터리",
-                            "value": "military",
-                            "path": "/movies/type4/military"
+                            "value": "밀리터리",
+                            "path": "/genres/밀리터리"
                         }
                     ]
                 }
