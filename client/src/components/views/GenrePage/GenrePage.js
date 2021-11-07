@@ -6,6 +6,7 @@ import { USER_SERVER } from '../../../components/Config.js';
 
 
 //작품출력
+//수정 필요
 function GenrePage(props) {
     
   const [Posts, setPosts] = useState([]);
