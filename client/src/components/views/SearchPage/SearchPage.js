@@ -54,17 +54,18 @@ function SearchPage(props) {
                 <GlobalStyle />
                 {Posts.map((data, index) => (
                     <Post key={index}>
+                    <a href={`/novel/${data.id}`}>
                     <Body>
-                        <a href={`/novel/${data.id}`}>
                         {/* 작품 표지 이미지 url */}
-                        <img src = {`${data.imgurl}`} width = '150' align = 'center'></img>
-                        </a>
+                        <Img>
+                        <img src = {`${data.imgurl}`} width = '200' height = '280' align = 'center' ></img> 
+                        </Img>
+                        <Effcet/>
                     </Body>
                     {/* 작품 타이틀*/}
                     <Title>{data.title}</Title>
-                    
-                    </Post>
-                    
+                    </a>
+                    </Post>  
                 ))}
             </Container>
 
@@ -77,7 +78,6 @@ function SearchPage(props) {
     )
 }
 
-
 //스타일 영역
 const GlobalStyle = createGlobalStyle`
   body {
@@ -87,35 +87,44 @@ const GlobalStyle = createGlobalStyle`
 
 const Container = styled.div`
   min-height: 100vh;
-  padding: 150px 0;
+  padding: 100px 0;
   display: grid;
-  grid-template-columns: repeat(5, 300px);
-  grid-template-rows: repeat(auto-fit, 300px);
-  grid-auto-rows: 300px;
-  grid-gap: 30px 20px;
+  grid-template-columns: repeat(5, 200px);
+  grid-gap: 20px 50px;
   justify-content: center;
   box-sizing: border-box;
 `;
 
 const Post = styled.div`
+  a:link { color: black; font-weight: bold;}
+  a:visited { color: purple; font-weight: bold;}
+  a:hover { color: Orange; font-weight: bold;}
+  position: relative;
+`;
+const Img = styled.div`
   border: 1px solid black;
-  background: white;
-  
 `;
 
 const Title = styled.div`
-  height: 20%;
+  padding: 0px 0px;
+  //height: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px black;
+  //border-bottom: 1px black;
 `;
 
 const Body = styled.div`
-  height: 80%;
-  padding: 11px;
-  border-radius: 20px;
-  
+  padding: 2px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Effcet = styled.div`
+  border: 2px solid black;
+  height: 270px;
+  position: relative;
 `;
 
 

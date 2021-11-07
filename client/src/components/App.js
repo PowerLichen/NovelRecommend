@@ -17,7 +17,11 @@ import SearchPage from './views/SearchPage/SearchPage'
 import { useSelector, useDispatch } from "react-redux";
 import { auth } from '../_actions/user_actions';
 import { menuAction_fetch } from '../_actions/menuActions';
-import RecommendPostPage from './views/RecommendPostPage/RecommendPostPage.js';
+import RecommendAlgorithmPage from './views/RecommendPage/RecommendAlgorithmPage.js';
+import RatingNovelPage from './views/RecommendPage/RatingNovelPage.js';
+import RatingAuthorPage from './views/RecommendPage/RatingAuthorPage.js';
+import viewsPage from './views/RecommendPage/viewsPage.js';
+import GenrePage from './views/GenrePage/GenrePage.js';
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -82,13 +86,22 @@ function App(props) {
           <Route exact path="/login" component={(LoginPage)} />
           <Route exact path="/join" component={RegisterPage} />
           <Route exact path="/mypage" component={(MyPage)} />
-          {/* <Route exact path="/community" component={(BoardModal)} /> */}
+          
+          {/* 소설 관련 페이지 */}
           <Route exact path="/novel" component={NovelPostPage} />  
-          <Route exact path="/novel/:id" component={NovelDetail} /> 
-          <Route exact path="/recommend" component={RecommendPostPage} /> 
-
-          <Route exact path="/rating" component={RatingPage} /> 
+          <Route exact path="/novel/:id" component={NovelDetail} />  
+          
+          {/* 추천 소설 관련 페이지 */}
+          <Route exact path="/algorithm" component={RecommendAlgorithmPage} /> {/*추천 알고리즘 기반 소설 리스트 출력*/}
+          <Route exact path="/ratingNovel" component={RatingNovelPage} /> {/*평점 준 작품 소설 리스트 출력*/}
+          <Route exact path="/ratingAuthor" component={RatingAuthorPage} /> {/*평점 준 w 소설 리스트 출력*/}
+          <Route exact path="/view" component={viewsPage} />{/*조회수 기반 소설 리스트 출력 */}
+          
+          {/* 검색 페이지 */} 
           <Route exact path="/search" component={SearchPage} />
+        
+          {/* 장르 출력 페이지 */}
+          <Route exact path="/genre" component={GenrePage} />
 
         </Switch>
       </div>

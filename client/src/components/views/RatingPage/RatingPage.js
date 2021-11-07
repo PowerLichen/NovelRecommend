@@ -12,9 +12,21 @@ function RatingPage(props) {
     //별점 점수
     const [Score, setScore] = useState([4]);
 
+    const [Check, setCheck] = useState([]);
+
     //유저 정보
     const user = useSelector(state => state.user)
     console.log(user.userData)
+
+    useEffect(() => {
+      //유저 점수 체크(이미 했으면 버튼 비활성화 기능)
+      if (user.userData === undefined) {
+        return
+      }
+      axios
+        .get(`${USER_SERVER}/rating/check_db/${user.userData.idx}/${props.nid}`)
+        .then(({ data }) => { setCheck(data.check); console.log(data.check);});
+    }, [user])
     
     //별점 클릭
     const onStarClick = (nextValue) => {
@@ -24,9 +36,29 @@ function RatingPage(props) {
     //점수 제출
     const submitScore = () => {
       axios
-        .get(`${USER_SERVER}/rating/addscore/${user.userData.idx}/${props.id}/${Score}`) 
+        .get(`${USER_SERVER}/rating/addscore/${user.userData.idx}/${props.nid}/${Score}`) 
         .then((data)=>{console.log(data);})
+      
+      setCheck(true);
+    }
 
+    //유저 점수 체크 기능
+    function checkScore() {
+      const c = Check
+      if(c === true) {
+        return (
+          <div style={{ display: 'flex' }}>
+            <button onClick={submitScore} disabled="disabled" >제출불가</button>
+          </div>
+        )
+      }
+      else {
+        return(
+          <div style={{ display: 'flex' }}>
+            <button onClick={submitScore} >제출</button>
+          </div>
+        )
+      }
     }
 
     return (         
@@ -59,9 +91,13 @@ function RatingPage(props) {
           onStarClick={onStarClick}
         />
         <br></br>
-        <div style={{ display: 'flex' }}>
+        {/* <div style={{ display: 'flex' }}>
           <button onClick={submitScore}>제출</button>
-        </div>
+        </div> */}
+        
+        {
+          checkScore()
+        }
         
       </div>
         

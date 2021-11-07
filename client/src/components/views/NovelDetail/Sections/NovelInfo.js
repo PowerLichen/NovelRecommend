@@ -13,7 +13,7 @@ function NovelInfo(props) {
 
     useEffect(() => {
         axios
-            .get(`${USER_SERVER}/novel/noveldata/${props.id}`)
+            .get(`${USER_SERVER}/novel/noveldata/${props.nid}`)
             .then(({ data }) => {setNovels(data); setUrls(data.urls); console.log(data); console.log(data.urls)});
       }, [])
     
@@ -65,13 +65,13 @@ function NovelInfo(props) {
             <br></br>
             <br></br>
             {/* 작품 이미지 */}
-            <img src = {`${novels.imgurl}`} width = '300' align = 'left'></img> {/*임시 이미지*/}
             
+            <img src = {`${novels.imgurl}`} width = '300' align = 'left'></img> {/*임시 이미지*/}
             
             {/*타이틀*/}
             <h1>{novels.title}</h1>
              {/*평점*/}
-            <div align="left"  >
+            {/* <div align="left"  >
                 <StarRatingComponent 
                         name="rate2" 
                         editing={false}
@@ -79,7 +79,7 @@ function NovelInfo(props) {
                         value={rating}
                     />
                 <h3> 평점                {rating} </h3> 
-            </div>
+            </div> */}
             <h2> 장르  :  {novels.genre}</h2>
             <h2> 링크  :  </h2>
 
@@ -96,8 +96,6 @@ function NovelInfo(props) {
         
     );
 }
-
-
 
 const GlobalStyle = createGlobalStyle`
   body {
