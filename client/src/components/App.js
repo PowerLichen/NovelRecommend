@@ -25,6 +25,7 @@ import GenrePage from './views/GenrePage/GenrePage.js';
 import ViewsPage from './views/RecommendPage/ViewsPage.js';
 import RecommendPage from './views/RecommendPage/RecommendPage.js';
 
+
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
@@ -73,16 +74,17 @@ function App(props) {
           {/* 추천 소설 관련 페이지 */}
           
           <Route exact path="/recommend" component={RecommendPage} />
-          <Route exact path="/algorithm" component={AlgorithmPage} /> {/*추천 알고리즘 기반 소설 리스트 출력*/}
-          <Route exact path="/ratingNovel" component={RatingNovelPage} /> {/*평점 준 작품 소설 리스트 출력*/}
-          <Route exact path="/ratingAuthor" component={RatingAuthorPage} /> {/*평점 준 작가 기반 소설 리스트 출력*/}
-          <Route exact path="/view" component={ViewsPage} />{/*조회수 기반 소설 리스트 출력 */}
+          <Route exact path="/recommend/algorithm" component={AlgorithmPage} /> {/*추천 알고리즘 기반 소설 리스트 출력*/}
+          <Route exact path="/recommend//ratingNovel" component={RatingNovelPage} /> {/*평점 준 작품 소설 리스트 출력*/}
+          <Route exact path="/recommend/ratingAuthor" component={RatingAuthorPage} /> {/*평점 준 작가 기반 소설 리스트 출력*/}
+          <Route exact path="/recommend/view" component={ViewsPage} />{/*조회수 기반 소설 리스트 출력 */}
           
           {/* 검색 페이지 */} 
           <Route exact path="/search" component={SearchPage} />
         
           {/* 장르 출력 페이지 */}
           <Route path="/genres/:genre" component={GenrePage} />
+
 
         </Switch>
       </div>

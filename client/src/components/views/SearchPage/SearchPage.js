@@ -158,8 +158,8 @@ const Search = styled.div`
     width: 380px;
   }
   .searchButton {
-    background-color orange;
-    border: 10px solid orange;
+    background-color #f4ac19;
+    border: 10px solid #f4ac19;
     color: White;
   }
   .div1{
@@ -170,7 +170,7 @@ const Search = styled.div`
     justify-content: center;
   } 
   .div2{
-    border: 8px solid orange;
+    border: 8px solid #f4ac19;
     width: 400px;
     height: 50px;
   }

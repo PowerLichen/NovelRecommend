@@ -19,6 +19,7 @@ function RatingNovelPage(props) {
     if (user.userData === undefined) {
       return
     }
+    
     axios
       .get(`${USER_SERVER}/novel/mybook/${user.userData.idx}/0`)
       .then(({ data }) => { setPosts(data); console.log(data);});
