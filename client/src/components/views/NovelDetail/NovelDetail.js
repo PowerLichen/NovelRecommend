@@ -10,7 +10,7 @@ function NovelDetail(props) {
     return (
         <div>
             <NovelInfo nid = {nidUrl}></NovelInfo>
-            <RatingPage nid = {nidUrl}></RatingPage>
+            {/* <RatingPage nid = {nidUrl}></RatingPage> */}
         </div>
         
     )

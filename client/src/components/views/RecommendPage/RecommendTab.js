@@ -43,7 +43,7 @@ list-style: none;
 //margin-bottom: 7rem;
 border-radius: 10px;
 
-position: absolute;
+  position: absolute;
   left: 50%;
   transform: translateX(-50%);
 .submenu {

@@ -3,6 +3,8 @@ import axios from "axios";
 import StarRatingComponent from 'react-star-rating-component';
 import { USER_SERVER } from '../../../../components/Config.js';
 import styled, { createGlobalStyle } from "styled-components";
+import { Descriptions, Badge } from 'antd';
+import RatingPage from "../../RatingPage/RatingPage.js";
 
 //작품 페이지 출력
 function NovelInfo(props) {
@@ -59,36 +61,26 @@ function NovelInfo(props) {
     
     return (
         <div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            {/* 작품 이미지 */}
-            
-            <img src = {`${novels.imgurl}`} width = '300' align = 'left'></img> {/*임시 이미지*/}
-            
-            {/*타이틀*/}
-            <h1>{novels.title}</h1>
-             {/*평점*/}
-            {/* <div align="left"  >
-                <StarRatingComponent 
-                        name="rate2" 
-                        editing={false}
-                        starCount={5}
-                        value={rating}
-                    />
-                <h3> 평점                {rating} </h3> 
-            </div> */}
-            <h2> 장르  :  {novels.genre}</h2>
-            <h2> 링크  :  </h2>
 
+            {/* 작품 이미지 */}
+            <Div>
+            <Descriptions bordered > 
+            <Descriptions.Item span={4}><Font>{novels.title}</Font></Descriptions.Item>
+            <Descriptions.Item span={4}><img src = {`${novels.imgurl}`} width = '270' align = 'center'></img></Descriptions.Item>
+            
+            
+            <Descriptions.Item label="작가" >{novels.author_id}</Descriptions.Item>
+            <Descriptions.Item label="장르" span={4}>{novels.genre}</Descriptions.Item>
+            <Descriptions.Item label="플랫폼 이동" span={4}>
               {urls.map((urls) => (
                 goUrl(urls.url)
               ))}
-            
-            <h2> 줄거리   </h2>
-            <p>{novels.description}</p>
+            </Descriptions.Item>
+            <Descriptions.Item label="줄거리" span={4}>{novels.description}</Descriptions.Item>
+            <Descriptions.Item label="평가하기" span={4}><RatingPage nid = {props.nid}/></Descriptions.Item>
+            </Descriptions>
+            </Div>
+
 
             
 
@@ -134,6 +126,25 @@ const Body = styled.div`
   padding: 11px;
   border-radius: 20px;
   
+`;
+
+const Font = styled.div`
+  font-weight: bold;
+  font-size: 20px;
+ 
+`;
+const Div = styled.div`
+  width: 800px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+const Div2 = styled.div`
+  width: 200px;
+`;
+const Center = styled.div`
+  
+  align = center;
 `;
 
 export default NovelInfo

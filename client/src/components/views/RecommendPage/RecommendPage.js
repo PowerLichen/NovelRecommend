@@ -49,11 +49,12 @@ function RecommendPage(props) {
         <RecommendTab/>
         <Router>
             <Switch>
-                <Route exact path="/recommend/algorithm" component={AlgorithmPage} /> {/*추천 알고리즘 기반 소설 리스트 출력*/}
-                <Route exact path="/recommend/ratingAuthor" component={RatingAuthorPage} /> {/*평점 준 작가 기반 소설 리스트 출력*/}
-                <Route exact path="/recommend/view" component={ViewsPage} />{/*조회수 기반 소설 리스트 출력 */}
+                <Route exact path="/recommend/algorithm" component={AlgorithmPage} /> 
+                <Route exact path="/recommend/ratingAuthor" component={RatingAuthorPage} />
+                <Route exact path="/recommend/view" component={ViewsPage} />
             </Switch>
         </Router>
+        
         </div>
     );
 }

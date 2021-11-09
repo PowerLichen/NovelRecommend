@@ -3,13 +3,14 @@ import { useSelector } from "react-redux";
 import StarRatingComponent from 'react-star-rating-component';
 import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
+import styled from 'styled-components';
 import { Descriptions } from 'antd';
 
  
 function RatingPage(props) {
   
     //별점 점수
-    const [Score, setScore] = useState([4]);
+    const [Score, setScore] = useState([5]);
 
     const [Check, setCheck] = useState([]);
 
@@ -74,34 +75,14 @@ function RatingPage(props) {
 
     return (         
       <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-
-        
-        {user.userData &&(
-          <Descriptions.Item label="My ID">
-              {user.userData.idx}
-              
-          </Descriptions.Item>
-        )}
-        <br></br>
-        {props.id}      
-        <h2>평점 선택 : {Score}</h2>
+        <Styles>
         <StarRatingComponent 
           name="rate1" 
           starCount={5}
           value={Score}
           onStarClick={onStarClick}
-        />
-        <br></br>
+        /> ( {Score} )
+
         {/* <div style={{ display: 'flex' }}>
           <button onClick={submitScore}>제출</button>
         </div> */}
@@ -109,12 +90,17 @@ function RatingPage(props) {
         {
           checkScore()
         }
-        
+        </Styles>
       </div>
         
       
     );
   
 }
+
+const Styles = styled.div`
+  margin-left:10px;
+  
+`;
 
 export default RatingPage;
