@@ -5,32 +5,31 @@ import axios from "axios";
 
 function SearchPage(props) {
 
-    const [Word,setWord] = useState("");
-    
+    const [Word, setWord] = useState("");
     const [Posts, setPosts] = useState([]);
     const [Pages, setPages] = useState([1]);
-
+    const [Notice, setNotice] = useState(false);
 
     const onWordHandler=(event)=>{
-        setWord(event.currentTarget.value)
+      setWord(event.currentTarget.value)
+      setPages([1]);
+      setNotice(false);
     }
-    
-    const onSubmitHandler= (event) =>{
-        event.preventDefault();
-        
-        //onSubmitHandler pages 0 으로 초기화
-        axios
+
+    //검색 버튼 이벤트
+    const onSubmitHandler = (event) =>{
+     
+      event.preventDefault();
+      axios
         .get(`${USER_SERVER}/search/keyword/${Word}/0`) 
         .then(({ data }) => { setPosts(data); console.log(data);});
 
+      setNotice(true);
     }
-
 
     //소설 포스트 페이지 갱신
     const fetchNovel = () => {
-
         setPages(Number(Pages)+1);
-  
         fetch(`${USER_SERVER}/search/keyword/${Word}/${Pages}`)
               .then(response => response.json())
               .then(response => {
@@ -40,16 +39,38 @@ function SearchPage(props) {
         })
     }
 
+    //검색 알림
+    function notice() {
+      if (Notice === true) {
+        return (
+          <Notices>
+          <div>
+            "{Word}"에 대한 검색 결과입니다.
+          </div>
+          </Notices>
+        )
+      }
+      else {
+
+      }
+    }
+
     return (
-    
-        <div>
-            <form style={{display:'flex'}} onSubmit={onSubmitHandler}>
-                <input type="text" value={Word} onChange={onWordHandler}></input>
-                <button type='submit'>
+      <div>
+          <Search>
+            <form className = "form1" onSubmit={onSubmitHandler} >
+              <div className = "div2">
+                <input type="text" className="searchInput" value={Word} onChange={onWordHandler}></input>
+              </div>
+                <div className = "div1"></div>
+                <button type='submit' className="searchButton">
                     검색
                 </button>
             </form>
-
+          </Search>
+          {
+            notice()
+          }
             <Container>
                 <GlobalStyle />
                 {Posts.map((data, index) => (
@@ -127,5 +148,40 @@ const Effcet = styled.div`
   position: relative;
 `;
 
+const Search = styled.div`
+  .searchInput {
+    font-size: 20px;
+    border:none;border-right:0px; 
+    border-top:0px; 
+    boder-left:0px; 
+    boder-bottom:0px;
+    width: 380px;
+  }
+  .searchButton {
+    background-color orange;
+    border: 10px solid orange;
+    color: White;
+  }
+  .div1{
+    width: 10px;
+  }
+  .form1{
+    display: flex;
+    justify-content: center;
+  } 
+  .div2{
+    border: 8px solid orange;
+    width: 400px;
+    height: 50px;
+  }
+`;
 
+const Notices = styled.div`
+
+  width: 400px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+`;
 export default SearchPage

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 
 //추천 알고리즘 기반 소설 리스트 출력
-function RecommendPostPage(props) {
+function AlgorithmPage(props) {
     
   const [Posts, setPosts] = useState([]);
 
@@ -97,4 +97,4 @@ const Effcet = styled.div`
 `;
 
 
-export default RecommendPostPage
+export default AlgorithmPage
