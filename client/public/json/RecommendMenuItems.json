@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "name": "추천 알고리즘",
+            "path": "/algorithm",
+            "icon": "fa-question-circle"
+        },
+        {
+            "name": "평점한 작가기반",
+            "path": "/ratingAuthor",
+            "icon": "fa-address-book"
+        },
+        {
+            "name": "조회수 기반",
+            "path": "/view",
+            "icon": "fa-cogs"
+        },
+        {
+            "name": "조회수",
+            "path": "/view",
+            "icon": "fa-cogs"
+        }
+    ]
+}

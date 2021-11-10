@@ -19,6 +19,7 @@ function RatingNovelPage(props) {
     if (user.userData === undefined) {
       return
     }
+    
     axios
       .get(`${USER_SERVER}/novel/mybook/${user.userData.idx}/0`)
       .then(({ data }) => { setPosts(data); console.log(data);});
@@ -40,6 +41,7 @@ function RatingNovelPage(props) {
 
   return (
     <div>
+      <h1>평가 기반 추천: 평점을 남긴 작품의 작가가 쓴 다른 소설 추천</h1>
       <Container>
         <GlobalStyle />
         {Posts.map((data, index) => (

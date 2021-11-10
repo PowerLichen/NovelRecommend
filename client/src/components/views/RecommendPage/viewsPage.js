@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 import { USER_SERVER } from '../../Config.js';
 import { useSelector } from "react-redux";
+import RecommendTab from "./RecommendTab.js";
 
 
 //조회수 기반 소설 리스트 출력
@@ -20,6 +21,7 @@ function ViewsPage(props) {
     if (user.userData === undefined) {
       return
     }
+    
     axios
       .get(`${USER_SERVER}/novel/list/view/0`)
       .then(({ data }) => { setPosts(data); console.log(data);});
@@ -41,6 +43,8 @@ function ViewsPage(props) {
 
   return (
     <div>
+      <Div>조회수 기반: 조회수가 가장 높은 소설을 기반으로 작품을 추천</Div>
+      <RecommendTab/>
       <Container>
         <GlobalStyle />
         {Posts.map((data, index) => (
@@ -115,6 +119,15 @@ const Effcet = styled.div`
   border: 2px solid black;
   height: 270px;
   position: relative;
+`;
+
+const Div = styled.ul`
+  position: absolute;
+  left: 43%;
+  transform: translateX(-100%);
+  transform: translateY(250%);
+  color: #f4ac19;
+  //font-size: 10px;
 `;
 
 export default ViewsPage

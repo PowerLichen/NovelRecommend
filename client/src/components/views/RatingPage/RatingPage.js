@@ -3,29 +3,41 @@ import { useSelector } from "react-redux";
 import StarRatingComponent from 'react-star-rating-component';
 import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
-
+import styled from 'styled-components';
 import { Descriptions } from 'antd';
 
  
 function RatingPage(props) {
   
     //별점 점수
-    const [Score, setScore] = useState([4]);
+    const [Score, setScore] = useState([5]);
 
     const [Check, setCheck] = useState([]);
 
     //유저 정보
     const user = useSelector(state => state.user)
-    console.log(user.userData)
+    const RecHandler = (event) => {
+      if ((!!user.userData)===true) {
+    
+      }
+      else{
+        alert('로그인이 필요합니다. 로그인 페이지로 이동합니다.')
+        window.location.href = "/login"
+        //props.history.push('/login');
+      }
+    }
 
     useEffect(() => {
       //유저 점수 체크(이미 했으면 버튼 비활성화 기능)
       if (user.userData === undefined) {
         return
       }
+      if (user.userData === null) {
+        return RecHandler();
+      }
       axios
         .get(`${USER_SERVER}/rating/check_db/${user.userData.idx}/${props.nid}`)
-        .then(({ data }) => { setCheck(data.check); console.log(data.check);});
+        .then(({ data }) => { setCheck(data.check); console.log(data.check);})
     }, [user])
     
     //별점 클릭
@@ -38,7 +50,7 @@ function RatingPage(props) {
       axios
         .get(`${USER_SERVER}/rating/addscore/${user.userData.idx}/${props.nid}/${Score}`) 
         .then((data)=>{console.log(data);})
-      
+  
       setCheck(true);
     }
 
@@ -63,34 +75,14 @@ function RatingPage(props) {
 
     return (         
       <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-
-        
-        {user.userData &&(
-          <Descriptions.Item label="My ID">
-              {user.userData.idx}
-              
-          </Descriptions.Item>
-        )}
-        <br></br>
-        {props.id}      
-        <h2>평점 선택 : {Score}</h2>
+        <Styles>
         <StarRatingComponent 
           name="rate1" 
           starCount={5}
           value={Score}
           onStarClick={onStarClick}
-        />
-        <br></br>
+        /> ( {Score} )
+
         {/* <div style={{ display: 'flex' }}>
           <button onClick={submitScore}>제출</button>
         </div> */}
@@ -98,12 +90,17 @@ function RatingPage(props) {
         {
           checkScore()
         }
-        
+        </Styles>
       </div>
         
       
     );
   
 }
+
+const Styles = styled.div`
+  margin-left:10px;
+  
+`;
 
 export default RatingPage;
