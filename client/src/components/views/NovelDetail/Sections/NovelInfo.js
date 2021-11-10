@@ -69,7 +69,7 @@ function NovelInfo(props) {
             <Descriptions.Item span={4}><img src = {`${novels.imgurl}`} width = '270' align = 'center'></img></Descriptions.Item>
             
             
-            <Descriptions.Item label="작가" >{novels.author_id}</Descriptions.Item>
+            <Descriptions.Item label="작가" >{novels.name}</Descriptions.Item>
             <Descriptions.Item label="장르" span={4}>{novels.genre}</Descriptions.Item>
             <Descriptions.Item label="플랫폼 이동" span={4}>
               {urls.map((urls) => (

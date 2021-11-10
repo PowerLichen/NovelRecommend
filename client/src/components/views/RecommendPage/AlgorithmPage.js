@@ -27,6 +27,8 @@ function AlgorithmPage(props) {
   return (
     <div>
       <RecommendTab/>
+      
+      <Div>AI 기반: 평가한 작품을 기반으로, 세부 알고리즘을 적용한 추천</Div>
       <Container>
         <GlobalStyle />
         {Posts.map((data, index) => (
@@ -98,5 +100,13 @@ const Effcet = styled.div`
   position: relative;
 `;
 
+const Div = styled.ul`
+  position: absolute;
+  left: 43%;
+  transform: translateX(-100%);
+  transform: translateY(250%);
+  //font-size: 10px;
+  color: #f4ac19;
+`;
 
 export default AlgorithmPage

@@ -10,7 +10,7 @@ export const RecommendTab = () => {
     
     const menuArr = [
       { name: 'AI 기반 추천', path: "/recommend/algorithm" },
-      { name: '평점한 소설의 작가 기반', path: "/recommend/ratingAuthor"},
+      { name: '평가 기반 추천', path: "/recommend/ratingAuthor"},
       { name: '조회수 기반 추천', path: "/recommend/view"},
     ];
     const selectMenuHandler = (index) => {
@@ -32,16 +32,16 @@ export const RecommendTab = () => {
   };
 
 const TabMenu = styled.ul`
-//background-color: #dcdcdc;
-color: rgba(73, 73, 73, 0.5);
-//font-weight: bold;
-display: flex;
-flex-direction: row;
-justify-items: center;
-align-items: center;
-list-style: none;
-//margin-bottom: 7rem;
-border-radius: 10px;
+  //background-color: #dcdcdc;
+  color: rgba(73, 73, 73, 0.5);
+  //font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  list-style: none;
+  //margin-bottom: 7rem;
+  border-radius: 10px;
 
   position: absolute;
   left: 50%;
@@ -53,9 +53,11 @@ border-radius: 10px;
   padding-left: 0.9rem;
   text-align: center;
   padding-right: 0.9rem;
+  margin-right: 10px;
   cursor: pointer;
-  border-radius: 10px;
-  color: black;
+  border-radius: 2px;
+  color: #f4ac19;
+  border: 1px solid #f4ac19;
 }
 .focused {
   ${'' /* 선택된 Tabmenu 에만 적용되는 CSS를 구현합니다.  */}
