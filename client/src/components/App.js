@@ -22,7 +22,7 @@ import RatingNovelPage from './views/RecommendPage/RatingNovelPage.js';
 import RatingAuthorPage from './views/RecommendPage/RatingAuthorPage.js';
 
 import GenrePage from './views/GenrePage/GenrePage.js';
-import ViewsPage from './views/RecommendPage/ViewsPage.js';
+import ViewsPage from './views/RecommendPage/viewsPage.js';
 import RecommendPage from './views/RecommendPage/RecommendPage.js';
 
 
