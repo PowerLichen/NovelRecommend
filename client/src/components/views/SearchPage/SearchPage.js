@@ -24,7 +24,7 @@ function SearchPage(props) {
      
       event.preventDefault();
       axios
-        .get(`${USER_SERVER}/search/keyword/${Word}/0`) 
+        .get(`${USER_SERVER}/search/${SearchItems}/${Word}/0`) 
         .then(({ data }) => { setPosts(data); console.log(data);});
 
       setNotice(true);
@@ -38,7 +38,7 @@ function SearchPage(props) {
     //소설 포스트 페이지 갱신
     const fetchNovel = () => {
         setPages(Number(Pages)+1);
-        fetch(`${USER_SERVER}/search/keyword/${Word}/${Pages}`)
+        fetch(`${USER_SERVER}/search/${SearchItems}/${Word}/${Pages}`)
               .then(response => response.json())
               .then(response => {
                   console.log(response)

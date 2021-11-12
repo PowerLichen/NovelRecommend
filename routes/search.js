@@ -4,40 +4,19 @@ const router = express.Router();
 
 module.exports = (pool) => {
     //전체에서 단어 검색
-    //API: '/search/keyword/천마/568'
-    router.get('/keyword/:keyword/:id', (req, res, next) => {
+    //API: '/search/title/천마/568'
+    router.get('/:order/:keyword/:id', (req, res, next) => {
+        const order = path.parse(req.params.order).base;
         const keyword = path.parse(req.params.keyword).base;
         const pageId = path.parse(req.params.id).base * 20;
         const queryword = "%" + keyword + "%";
+        const isNameSearch = (order === "name")?'LEFT JOIN author ON novel_data.author_id = author.id':'';
         const sql =
-            'SELECT id, title, imgurl \
-            FROM novel_data \
-            WHERE title LIKE ? OR description LIKE ? \
-            LIMIT ?, 20';
-        pool.query(sql, [queryword, queryword, pageId],
-            (err, results) => {
-                if (err) {
-                    console.log(err);
-                    return next(err);
-                }
-                res.send(results);
-            });
-    });
-    //특정 장르에서 단어 검색
-    //API: '/genre/미스테리/천마/568'
-    router.get('/genre/:genre/:keyword/:id', (req, res, next) => {
-        const genre = path.parse(req.params.genre).base;
-        const keyword = path.parse(req.params.keyword).base;
-        const pageId = path.parse(req.params.id).base * 20;
-        const queryword = "%" + keyword + "%";
-
-        const sql =
-            'SELECT id, title, imgurl \
-            FROM novel_data \
-            WHERE (title LIKE ? OR description LIKE ?) \
-            AND genre = ?\
-            LIMIT ?, 20';
-        pool.query(sql, [queryword, queryword, genre, pageId],
+            `SELECT novel_data.id, novel_data.title, novel_data.imgurl \
+            FROM novel_data ${isNameSearch}\
+            WHERE ${order} LIKE ?  \
+            LIMIT ?, 20`;
+        pool.query(sql, [queryword, pageId],
             (err, results) => {
                 if (err) {
                     console.log(err);

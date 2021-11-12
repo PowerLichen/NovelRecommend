@@ -95,6 +95,11 @@ const run = async () => {
                     await connection.query(sql,[rows3[0].id,novel.ridibooks]);
                     connection.release();
                 }
+
+                // 조회수 정보 삽입
+                sql = `INSERT INTO novel_hitdata(id,hit) values(?,?)`;
+                await connection.query(sql,[rows3[0].id, '0']);
+                connection.release();
             }
             // 삽입 작업이 끝나면 출력
             console.log('INSERT DONE');

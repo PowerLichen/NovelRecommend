@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
 import styled, { createGlobalStyle } from "styled-components";
-import Slide from "../../../../node_modules/react-slick";
+import Slide from "react-slick";
 import { NavLink } from "react-router-dom";
 import Layout  from "./Layout";
 
