@@ -65,53 +65,51 @@ function SearchPage(props) {
 
     return (
       <div>
-          <Search>
+        <Search>
+          <form className="form" onSubmit={onSubmitHandler} >
+            <select className="check" onChange={handleChangeCheck}>
+              <option value="title">제목</option>
+              <option value="name">작가</option>
+              <option value="description">줄거리</option>
+              <option value="tag">태그</option>
+            </select>
+            <div className="div1"></div>
 
-            <form className = "form" onSubmit={onSubmitHandler} >
-              <select className = "check" onChange={handleChangeCheck}>
-                <option value="title">제목</option>
-                <option value="name">작가</option>
-                <option value="description">줄거리</option>
-              </select>
-              <div className = "div1"></div>
-
-              <div className = "searchForm">
-                <input type="text" className="searchInput" value={Word} onChange={onWordHandler}></input>
-              </div>
-                <div className = "div1"></div>
-                <button type='submit' className="searchButton">
-                    검색
-                </button>
-            </form>
-          </Search>
-          {
-            notice()
-          }
-            <Container>
-                <GlobalStyle />
-                {Posts.map((data, index) => (
-                    <Post key={index}>
-                    <a href={`/novel/${data.id}`}>
-                    <Body>
-                        {/* 작품 표지 이미지 url */}
-                        <Img>
-                        <img src = {`${data.imgurl}`} width = '200' height = '280' align = 'center' ></img> 
-                        </Img>
-                        <Effcet/>
-                    </Body>
-                    {/* 작품 타이틀*/}
-                    <Title>{data.title}</Title>
-                    </a>
-                    </Post>  
-                ))}
-            </Container>
-
-            {/*Load More 방식 - 페이지 갱신*/}
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button onClick={fetchNovel}> Load More</button>
+            <div className="searchForm">
+              <input type="text" className="searchInput" value={Word} onChange={onWordHandler}></input>
             </div>
-
+            <div className="div1"></div>
+            <button type='submit' className="searchButton">
+              검색
+            </button>
+          </form>
+        </Search>
+        {
+          notice()
+        }
+        <Container>
+          <GlobalStyle />
+          {Posts.map((data, index) => (
+            <Post key={index}>
+              <a href={`/novel/${data.id}`}>
+                <Body>
+                  {/* 작품 표지 이미지 url */}
+                  <Img>
+                    <img src={`${data.imgurl}`} width='200' height='280' align='center' ></img>
+                  </Img>
+                  <Effcet />
+                </Body>
+                {/* 작품 타이틀*/}
+                <Title>{data.title}</Title>
+              </a>
+            </Post>
+          ))}
+        </Container>
+        {/*Load More 방식 - 페이지 갱신*/}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <button onClick={fetchNovel}> Load More</button>
         </div>
+      </div>
     )
 }
 

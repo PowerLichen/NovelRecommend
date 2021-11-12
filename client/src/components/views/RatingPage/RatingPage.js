@@ -9,21 +9,19 @@ import { Descriptions } from 'antd';
  
 function RatingPage(props) {
   
-    //별점 점수
+    //별점 점수 
     const [Score, setScore] = useState([5]);
-
+    //평점 체크
     const [Check, setCheck] = useState([]);
 
     //유저 정보
     const user = useSelector(state => state.user)
     const RecHandler = (event) => {
-      if ((!!user.userData)===true) {
-    
+      if ((!!user.userData) === true) {
+        return
       }
       else{
-        alert('로그인이 필요합니다. 로그인 페이지로 이동합니다.')
-        window.location.href = "/login"
-        //props.history.push('/login');
+        return setCheck(true);
       }
     }
 
@@ -32,6 +30,7 @@ function RatingPage(props) {
       if (user.userData === undefined) {
         return
       }
+      //유저 데이터가 없으면 비활성화
       if (user.userData === null) {
         return RecHandler();
       }

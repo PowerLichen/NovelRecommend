@@ -12,7 +12,6 @@ function NovelPostPage(props) {
   const [Pages, setPages] = useState([1]);
     
   useEffect(() => {
-
     axios
       .get(`${USER_SERVER}/novel/list/0`)
       .then(({ data }) => { setPosts(data); console.log(data);});
