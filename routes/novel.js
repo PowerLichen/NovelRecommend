@@ -4,7 +4,24 @@ const router = express.Router();
 
 const recommend = require('../lib/recommend/recommend_main')
 
-module.exports = (pool) => {    
+module.exports = (pool) => {
+    //조회수 증가 API
+    router.get('/hit/:novel_id', (req, res, next) =>{
+        const novel_id = path.parse(req.params.novel_id).base;
+
+        let sql = 'SELECT hit FROM novel_hitdata WHERE id = ?';
+        pool.query(sql, [novel_id], (err, results) =>{
+            if(err) {
+                console.log(err);
+                return next(err);
+            }
+            const cur_hit = results[0]['hit']
+            sql = `UPDATE novel_hitdata SET hit = ${cur_hit} + 1 WHERE id = ?`
+            pool.query(sql, [novel_id]);
+
+        });
+    });
+
     // 작품 상세정보 출력
     // API : '/novel/noveldata/[num]'
     router.get('/noveldata/:novel_id', (req, res, next) => {
@@ -33,6 +50,7 @@ module.exports = (pool) => {
     // API: '/novel/list/[num]'
     router.get('/list/:id', (req, res, next) => {
         const pageId = path.parse(req.params.id).base * 20;
+
         const sql = 'SELECT id,title,imgurl FROM novel_data ORDER BY id DESC LIMIT ?,20';
         pool.query(sql, [pageId], (err, results) => {
             if (err) {
@@ -49,6 +67,7 @@ module.exports = (pool) => {
     router.get('/genrelist/:genre/:id', (req, res, next) => {
         const pageId = path.parse(req.params.id).base * 20;
         const genre = path.parse(req.params.genre).base;
+
         const sql = 'SELECT id,title,imgurl FROM novel_data WHERE genre=? ORDER BY id DESC LIMIT ?,20';
         pool.query(sql, [genre, pageId], (err, results) => {
             if (err) {
@@ -62,10 +81,9 @@ module.exports = (pool) => {
 
     //평점 준 작품 소설 리스트 출력
     router.get('/mybook/:uid/:id', (req, res, next) => {
-        //TODO: 임시 데이터
         const uid = path.parse(req.params.uid).base;
         const pageId = path.parse(req.params.id).base * 20;
-        // const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
+
         const sql = `SELECT id, title, imgurl FROM novel_data where id in (select nid from novel_scoredata where uid=?) LIMIT ?, 20`;
         pool.query(sql, [uid, pageId], (err, results) => {
             if (err) {
@@ -74,16 +92,14 @@ module.exports = (pool) => {
             }
             res.send(results);
         });
-        //TODO: 임시 데이터 종료
     });
 
 
     //평점 준 작가 기반 소설 리스트 출력
     router.get('/relatedbook/:uid/:id', (req, res, next) => {
-        //TODO: 임시 데이터
         const uid = path.parse(req.params.uid).base;
         const pageId = path.parse(req.params.id).base * 20;
-        // const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
+        
         const sql = `SELECT id, title, imgurl FROM novel_data WHERE author_id in (SELECT author_id FROM novel_data WHERE id in (SELECT nid FROM novel_scoredata WHERE uid=?)) LIMIT ?, 20`
         pool.query(sql, [uid, pageId], (err, results) => {
             if (err) {
@@ -92,16 +108,14 @@ module.exports = (pool) => {
             }
             res.send(results);
         });
-        //TODO: 임시 데이터 종료
     });
     
 
     //조회수 기반 소설 리스트 출력
     router.get('/list/view/:id', (req, res, next) => {
-        //TODO: 임시 데이터
         const pageId = path.parse(req.params.id).base * 20;
-        // const sql = 'SELECT id,title,imgurl FROM novel_data LIMIT ?,20';
-        const sql = `SELECT id, title, imgurl FROM novel_data WHERE id in (SELECT nid FROM novel_scoredata GROUP BY nid ORDER BY avg(score) DESC) LIMIT ?, 20`;
+
+        const sql = `SELECT d.id, d.title, d.imgurl FROM novel_data as d LEFT JOIN novel_hitdata ON d.id = novel_hitdata.id ORDER BY hit DESC, id DESC LIMIT ?, 20`;
         pool.query(sql, [pageId], (err, results) => {
             if (err) {
                 console.log(err);
@@ -109,7 +123,6 @@ module.exports = (pool) => {
             }
             res.send(results);
         });
-        //TODO: 임시 데이터 종료
     });
 
 
