@@ -22,6 +22,7 @@ function NovelInfo(props) {
         axios
             .get(`${USER_SERVER}/novel/noveldata/${props.nid}`)
             .then(({ data }) => {setNovels(data); setUrls(data.urls); console.log(data); console.log(data.urls)});
+        axios.get(`${USER_SERVER}/novel/hit/${props.nid}`)
       }, [])
     
     function goUrl(url) {
