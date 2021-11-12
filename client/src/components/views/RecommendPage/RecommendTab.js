@@ -9,10 +9,11 @@ export const RecommendTab = () => {
     const [currentTab, setCurrentTab] = useState(0);
     
     const menuArr = [
-      { name: 'AI 기반 추천', path: "/recommend/algorithm" },
-      { name: '평가 기반 추천', path: "/recommend/ratingAuthor"},
       { name: '조회수 기반 추천', path: "/recommend/view"},
+      { name: '평가 기반 추천', path: "/recommend/ratingAuthor"},
+      { name: 'AI 기반 추천', path: "/recommend/algorithm" },
     ];
+    
     const selectMenuHandler = (index) => {
       setCurrentTab(index);
     };
@@ -47,20 +48,18 @@ const TabMenu = styled.ul`
   left: 50%;
   transform: translateX(-50%);
 .submenu {
-  ${'' /* 기본 Tabmenu 에 대한 CSS를 구현합니다. */}
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
   padding-left: 0.9rem;
   text-align: center;
   padding-right: 0.9rem;
-  margin-right: 10px;
+  margin-right: 20px;
   cursor: pointer;
   border-radius: 2px;
   color: #f4ac19;
   border: 1px solid #f4ac19;
 }
 .focused {
-  ${'' /* 선택된 Tabmenu 에만 적용되는 CSS를 구현합니다.  */}
   color: #ffffff;
   background-color: #f4ac19;
 }

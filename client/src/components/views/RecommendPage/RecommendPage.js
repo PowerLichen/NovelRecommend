@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 import AlgorithmPage from "./AlgorithmPage";
 import RatingAuthorPage from "./RatingAuthorPage";
-import ViewsPage from "./viewsPage";
+import ViewsPage from "./ViewsPage";
 
 import RecommendTab from "./RecommendTab";
 

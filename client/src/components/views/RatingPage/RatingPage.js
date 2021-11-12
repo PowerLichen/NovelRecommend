@@ -59,29 +59,34 @@ function RatingPage(props) {
       const c = Check
       if(c === true) {
         return (
-          <div style={{ display: 'flex' }}>
-            <button onClick={submitScore} disabled="disabled" >제출불가</button>
-          </div>
+          <span>
+            <RedButton onClick={submitScore} disabled="disabled" >평가불가</RedButton>
+          </span>
         )
       }
       else {
         return(
-          <div style={{ display: 'flex' }}>
-            <button onClick={submitScore} >제출</button>
-          </div>
+          <span>
+            <Button onClick={submitScore}> 평가하기
+
+            </Button>
+            {/* <button onClick={submitScore} style={{border: '1px solid #f4ac19', color: '#f4ac19', backgroundColor: 'white'}}>평가하기</button> */}
+          </span>
         )
       }
     }
 
     return (         
-      <div>
-        <Styles>
+      <span style={{ float: 'right', margin:'0% 0 0 0'}} >
         <StarRatingComponent 
           name="rate1" 
           starCount={5}
           value={Score}
           onStarClick={onStarClick}
-        /> ( {Score} )
+        />  
+        <span style={{ color: '#f4ac19',fontSize: '20px', margin: '0 20px 0 10px'}}>
+          {Score}
+        </span>  
 
         {/* <div style={{ display: 'flex' }}>
           <button onClick={submitScore}>제출</button>
@@ -90,17 +95,26 @@ function RatingPage(props) {
         {
           checkScore()
         }
-        </Styles>
-      </div>
-        
-      
+      </span>
     );
   
 }
 
-const Styles = styled.div`
-  margin-left:10px;
-  
+const Button = styled.button`
+  padding: 6px 12px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  background-color: #74b9ff;
+  :hover {
+    background-color: #99c6f5;
+  }
 `;
 
+const RedButton = styled(Button)`
+  background-color: #f53e3e;
+  :hover {
+    background-color: #f53e3e;
+  }
+`;
 export default RatingPage;
