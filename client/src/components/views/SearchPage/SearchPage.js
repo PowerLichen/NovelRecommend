@@ -10,6 +10,9 @@ function SearchPage(props) {
     const [Pages, setPages] = useState([1]);
     const [Notice, setNotice] = useState(false);
 
+    const [SearchItems, setSearchItems] = useState("title");
+
+    //검색어 이벤트
     const onWordHandler=(event)=>{
       setWord(event.currentTarget.value)
       setPages([1]);
@@ -25,6 +28,11 @@ function SearchPage(props) {
         .then(({ data }) => { setPosts(data); console.log(data);});
 
       setNotice(true);
+    }
+
+    //검색 항목 체크박스 이벤트
+    const handleChangeCheck = e =>{
+      setSearchItems(e.target.value)
     }
 
     //소설 포스트 페이지 갱신
@@ -58,8 +66,16 @@ function SearchPage(props) {
     return (
       <div>
           <Search>
-            <form className = "form1" onSubmit={onSubmitHandler} >
-              <div className = "div2">
+
+            <form className = "form" onSubmit={onSubmitHandler} >
+              <select className = "check" onChange={handleChangeCheck}>
+                <option value="title">제목</option>
+                <option value="name">작가</option>
+                <option value="description">줄거리</option>
+              </select>
+              <div className = "div1"></div>
+
+              <div className = "searchForm">
                 <input type="text" className="searchInput" value={Word} onChange={onWordHandler}></input>
               </div>
                 <div className = "div1"></div>
@@ -151,33 +167,36 @@ const Effcet = styled.div`
 const Search = styled.div`
   .searchInput {
     font-size: 20px;
-    border:none;border-right:0px; 
-    border-top:0px; 
-    boder-left:0px; 
-    boder-bottom:0px;
+    border:none;
     width: 380px;
   }
   .searchButton {
     background-color #f4ac19;
     border: 10px solid #f4ac19;
     color: White;
+    border-radius: 2px;
   }
   .div1{
     width: 10px;
   }
-  .form1{
+  .form{
     display: flex;
     justify-content: center;
   } 
-  .div2{
+  .searchForm{
     border: 8px solid #f4ac19;
     width: 400px;
     height: 50px;
+    border-radius: 2px;
+  }
+  .check {
+    border: 4px solid #f4ac19;
+    border-radius: 2px;
+    color: #f4ac19;
   }
 `;
 
 const Notices = styled.div`
-
   width: 400px;
   position: absolute;
   left: 50%;
