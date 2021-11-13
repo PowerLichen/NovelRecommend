@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 import { useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import ViewsPage from "./ViewsPage";
 
 import RecommendTab from "./RecommendTab";
 
+//추천하기 페이지
 function RecommendPage(props) {
 
     const user = useSelector(state => state.user)

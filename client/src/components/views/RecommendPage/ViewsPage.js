@@ -7,7 +7,6 @@ import RecommendTab from "./RecommendTab.js";
 
 
 //조회수 기반 소설 리스트 출력
-//수정 필요
 function ViewsPage(props) {
     
   const [Posts, setPosts] = useState([]);
@@ -21,7 +20,6 @@ function ViewsPage(props) {
     if (user.userData === undefined) {
       return
     }
-    
     axios
       .get(`${USER_SERVER}/novel/list/view/0`)
       .then(({ data }) => { setPosts(data); console.log(data);});
@@ -36,8 +34,7 @@ function ViewsPage(props) {
           .then(response => response.json())
           .then(response => {
               console.log(response)
-              setPosts([...Posts, ...response])     
-              //setCurrentPage(response.page)
+              setPosts([...Posts, ...response])
     })
   }
 
@@ -62,8 +59,7 @@ function ViewsPage(props) {
             </a>
           </Post>  
         ))}
-      </Container>
-      
+      </Container> 
       {/*Load More 방식 - 페이지 갱신*/}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <LoadButton onClick={fetchNovel}>Load More</LoadButton>

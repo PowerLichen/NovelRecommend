@@ -5,8 +5,7 @@ import { USER_SERVER } from '../../../components/Config.js';
 import { useParams } from 'react-router';
 import { Descriptions } from 'antd';
 
-//작품출력
-//수정 필요
+//해당하는 장르 작품 출력 페이지
 function GenrePage() {
     
   const [Posts, setPosts] = useState([]);
@@ -56,7 +55,6 @@ function GenrePage() {
           </Post>  
         ))}
       </Container>
-      
       {/*Load More 방식 - 페이지 갱신*/}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <LoadButton onClick={fetchNovel}>Load More</LoadButton>

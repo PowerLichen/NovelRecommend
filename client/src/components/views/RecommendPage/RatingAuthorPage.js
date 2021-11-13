@@ -35,8 +35,7 @@ function RatingAuthorPage(props) {
           .then(response => response.json())
           .then(response => {
               console.log(response)
-              setPosts([...Posts, ...response])     
-              //setCurrentPage(response.page)
+              setPosts([...Posts, ...response])
     })
   }
 
@@ -62,7 +61,6 @@ function RatingAuthorPage(props) {
           </Post>  
         ))}
       </Container>
-      
       {/*Load More 방식 - 페이지 갱신*/}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <LoadButton onClick={fetchNovel}>Load More</LoadButton>
