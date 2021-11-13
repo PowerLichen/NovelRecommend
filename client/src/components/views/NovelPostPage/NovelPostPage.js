@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
+import { Descriptions } from 'antd';
 
 
 
@@ -33,6 +34,8 @@ function NovelPostPage(props) {
 
   return (
     <div>
+      <Descriptions title="전체" bordered style={{margin:'0% 25% auto'}}>
+      </Descriptions>
       <Container>
         <GlobalStyle />
         {Posts.map((data, index) => (
@@ -69,7 +72,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Container = styled.div`
   min-height: 100vh;
-  padding: 100px 0;
+  padding: 50px 0;
   display: grid;
   grid-template-columns: repeat(5, 200px);
   grid-gap: 20px 50px;
