@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import styled, { createGlobalStyle } from "styled-components";
-import { NavLink, Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
-import axios from "axios";
-import { USER_SERVER } from '../../Config.js';
 import { useSelector } from "react-redux";
 
 import AlgorithmPage from "./AlgorithmPage";
@@ -12,15 +9,7 @@ import ViewsPage from "./ViewsPage";
 
 import RecommendTab from "./RecommendTab";
 
-import RatingNovelPage from './RatingNovelPage.js';
-
 function RecommendPage(props) {
-
-    const [color, setColor] = useState("black");
-
-    const changeMenu = (menuIndex) =>{
-        this.setState({menu : menuIndex});
-    }
 
     const user = useSelector(state => state.user)
     const RecHandler = (event) => {
@@ -41,11 +30,10 @@ function RecommendPage(props) {
           return RecHandler();
         }
 
-        
       }, [])
 
     return (
-        <div>
+      <div>
         <RecommendTab/>
         <Router>
             <Switch>
@@ -54,8 +42,7 @@ function RecommendPage(props) {
                 <Route exact path="/recommend/view" component={ViewsPage} />
             </Switch>
         </Router>
-        
-        </div>
+      </div>
     );
 }
 

@@ -42,8 +42,7 @@ function SearchPage(props) {
               .then(response => response.json())
               .then(response => {
                   console.log(response)
-                  setPosts([...Posts, ...response])     
-                  //setCurrentPage(response.page)
+                  setPosts([...Posts, ...response])  
         })
     }
 
@@ -51,11 +50,11 @@ function SearchPage(props) {
     function notice() {
       if (Notice === true) {
         return (
-          <Notices>
           <div>
-            "{Word}"에 대한 검색 결과입니다.
+            <Notices>
+              "{Word}"에 대한 검색 결과입니다.
+            </Notices>
           </div>
-          </Notices>
         )
       }
       else {
@@ -65,53 +64,51 @@ function SearchPage(props) {
 
     return (
       <div>
-          <Search>
+        <Search>
+          <form className="form" onSubmit={onSubmitHandler} >
+            <select className="check" onChange={handleChangeCheck}>
+              <option value="title">제목</option>
+              <option value="name">작가</option>
+              <option value="description">줄거리</option>
+              <option value="tag">태그</option>
+            </select>
+            <div className="div1"></div>
 
-            <form className = "form" onSubmit={onSubmitHandler} >
-              <select className = "check" onChange={handleChangeCheck}>
-                <option value="title">제목</option>
-                <option value="name">작가</option>
-                <option value="description">줄거리</option>
-              </select>
-              <div className = "div1"></div>
-
-              <div className = "searchForm">
-                <input type="text" className="searchInput" value={Word} onChange={onWordHandler}></input>
-              </div>
-                <div className = "div1"></div>
-                <button type='submit' className="searchButton">
-                    검색
-                </button>
-            </form>
-          </Search>
-          {
-            notice()
-          }
-            <Container>
-                <GlobalStyle />
-                {Posts.map((data, index) => (
-                    <Post key={index}>
-                    <a href={`/novel/${data.id}`}>
-                    <Body>
-                        {/* 작품 표지 이미지 url */}
-                        <Img>
-                        <img src = {`${data.imgurl}`} width = '200' height = '280' align = 'center' ></img> 
-                        </Img>
-                        <Effcet/>
-                    </Body>
-                    {/* 작품 타이틀*/}
-                    <Title>{data.title}</Title>
-                    </a>
-                    </Post>  
-                ))}
-            </Container>
-
-            {/*Load More 방식 - 페이지 갱신*/}
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button onClick={fetchNovel}> Load More</button>
+            <div className="searchForm">
+              <input type="text" className="searchInput" value={Word} onChange={onWordHandler}></input>
             </div>
-
+            <div className="div1"></div>
+            <button type='submit' className="searchButton">
+              검색
+            </button>
+          </form>
+        </Search>
+        {
+          notice()
+        }
+        <Container>
+          <GlobalStyle />
+          {Posts.map((data, index) => (
+            <Post key={index}>
+              <a href={`/novel/${data.id}`}>
+                <Body>
+                  {/* 작품 표지 이미지 url */}
+                  <Img>
+                    <img src={`${data.imgurl}`} width='200' height='280' align='center' ></img>
+                  </Img>
+                  <Effcet />
+                </Body>
+                {/* 작품 타이틀*/}
+                <Title>{data.title}</Title>
+              </a>
+            </Post>
+          ))}
+        </Container>
+        {/*Load More 방식 - 페이지 갱신*/}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <button onClick={fetchNovel}> Load More</button>
         </div>
+      </div>
     )
 }
 
@@ -124,7 +121,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Container = styled.div`
   min-height: 100vh;
-  padding: 100px 0;
+  padding: 50px 0;
   display: grid;
   grid-template-columns: repeat(5, 200px);
   grid-gap: 20px 50px;
@@ -135,7 +132,7 @@ const Container = styled.div`
 const Post = styled.div`
   a:link { color: black; font-weight: bold;}
   a:visited { color: purple; font-weight: bold;}
-  a:hover { color: Orange; font-weight: bold;}
+  a:hover { color: #f4ac19; font-weight: bold;}
   position: relative;
 `;
 const Img = styled.div`
@@ -196,7 +193,7 @@ const Search = styled.div`
   }
 `;
 
-const Notices = styled.div`
+const Notices = styled.span`
   width: 400px;
   position: absolute;
   left: 50%;
