@@ -66,9 +66,9 @@ function RatingPage(props) {
       else {
         return(
           <span>
-            <Button onClick={submitScore}> 평가하기
+            <BlueButton onClick={submitScore}> 평가하기
 
-            </Button>
+            </BlueButton>
             {/* <button onClick={submitScore} style={{border: '1px solid #f4ac19', color: '#f4ac19', backgroundColor: 'white'}}>평가하기</button> */}
           </span>
         )
@@ -99,7 +99,7 @@ function RatingPage(props) {
   
 }
 
-const Button = styled.button`
+const BlueButton = styled.button`
   padding: 6px 12px;
   color: white;
   border: none;
@@ -110,7 +110,7 @@ const Button = styled.button`
   }
 `;
 
-const RedButton = styled(Button)`
+const RedButton = styled(BlueButton)`
   background-color: #f53e3e;
   :hover {
     background-color: #f53e3e;

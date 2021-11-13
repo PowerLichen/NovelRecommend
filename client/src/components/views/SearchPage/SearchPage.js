@@ -42,8 +42,7 @@ function SearchPage(props) {
               .then(response => response.json())
               .then(response => {
                   console.log(response)
-                  setPosts([...Posts, ...response])     
-                  //setCurrentPage(response.page)
+                  setPosts([...Posts, ...response])  
         })
     }
 
@@ -51,11 +50,11 @@ function SearchPage(props) {
     function notice() {
       if (Notice === true) {
         return (
-          <Notices>
           <div>
-            "{Word}"에 대한 검색 결과입니다.
+            <Notices>
+              "{Word}"에 대한 검색 결과입니다.
+            </Notices>
           </div>
-          </Notices>
         )
       }
       else {
@@ -122,7 +121,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Container = styled.div`
   min-height: 100vh;
-  padding: 100px 0;
+  padding: 50px 0;
   display: grid;
   grid-template-columns: repeat(5, 200px);
   grid-gap: 20px 50px;
@@ -133,7 +132,7 @@ const Container = styled.div`
 const Post = styled.div`
   a:link { color: black; font-weight: bold;}
   a:visited { color: purple; font-weight: bold;}
-  a:hover { color: Orange; font-weight: bold;}
+  a:hover { color: #f4ac19; font-weight: bold;}
   position: relative;
 `;
 const Img = styled.div`
@@ -194,7 +193,7 @@ const Search = styled.div`
   }
 `;
 
-const Notices = styled.div`
+const Notices = styled.span`
   width: 400px;
   position: absolute;
   left: 50%;

@@ -54,7 +54,7 @@ function NovelPostPage(props) {
       
       {/*Load More 방식 - 페이지 갱신*/}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <button onClick={fetchNovel}> Load More</button>
+        <LoadButton onClick={fetchNovel}>Load More</LoadButton>
       </div>
     </div> 
   );
@@ -107,6 +107,17 @@ const Effcet = styled.div`
   border: 2px solid black;
   height: 270px;
   position: relative;
+`;
+
+const LoadButton = styled.button`
+  padding: 6px 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  background-color: #DCDCDC;
+  :hover {
+    background-color: #F5F5F5;
+  }
 `;
 
 export default NovelPostPage

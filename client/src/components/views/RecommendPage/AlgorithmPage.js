@@ -71,7 +71,7 @@ const Container = styled.div`
 const Post = styled.div`
   a:link { color: black; font-weight: bold;}
   a:visited { color: purple; font-weight: bold;}
-  a:hover { color: Orange; font-weight: bold;}
+  a:hover { color: #f4ac19; font-weight: bold;}
   position: relative;
 `;
 const Img = styled.div`

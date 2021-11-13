@@ -16,9 +16,9 @@ import { NavLink, Switch, Route ,BrowserRouter as Router } from 'react-router-do
 //작품 페이지 출력
 function NovelInfo(props) {
 
-    const [rating, setRating] = useState([4]);
     const [novels, setNovels] = useState([]);
     const [urls, setUrls] = useState([]);
+    const [tags, setTags] = useState([]);
 
     //임시 데이터
     const tagArr = [
@@ -30,7 +30,7 @@ function NovelInfo(props) {
     useEffect(() => {
         axios
             .get(`${USER_SERVER}/novel/noveldata/${props.nid}`)
-            .then(({ data }) => {setNovels(data); setUrls(data.urls); console.log(data); console.log(data.urls)});
+            .then(({ data }) => {setNovels(data); setUrls(data.urls); setTags(data.tags); console.log(data); console.log(data.urls); console.log(data.tags);});
         axios.get(`${USER_SERVER}/novel/hit/${props.nid}`)
       }, [])
     
@@ -115,7 +115,7 @@ function NovelInfo(props) {
         <Descriptions layout="vertical" bordered >
           <Descriptions.Item span={4}><Font>{novels.title}</Font> <RatingPage nid={props.nid} /> </Descriptions.Item>
           <Descriptions.Item span={4}>
-            <img src={`${novels.imgurl}`} width='270' style={{ margin: '0 30%'}}></img>
+            <img src={`${novels.imgurl}`} width='270' style={{ margin: '0 30%', border: '1px solid #dcdcdc'}}></img>
           </Descriptions.Item>
           <Descriptions.Item label="작가" >{novels.name}</Descriptions.Item>
           <Descriptions.Item label="장르" >{novels.genre}</Descriptions.Item>
@@ -127,13 +127,13 @@ function NovelInfo(props) {
           <Descriptions.Item label="줄거리" span={3}>{novels.description}</Descriptions.Item>
           <Descriptions.Item label="태그" span={3}> 
             
-              {tagArr.map((tag, idx) => (
+              {tags.map((tags, idx) => (
                 // <Fragment key={tag.path}>
                 //   <NavLink className='submenu' activeClassName='submenu focused' to={tag.path} > {tag.name} 
                 //   </NavLink>
                 // </Fragment>
               <Tags>
-                #{tag.name}
+                #{tags.tag}
               </Tags>
               ))}
           </Descriptions.Item>
@@ -147,9 +147,16 @@ const Font = styled.span`
   font-size: 20px;
 `;
 
-const Tags = styled.span`
-  margin-right: 10px;
-  
+const Tags = styled.button`
+  margin: 0 5px 5px 0;
+  padding: 6px 12px;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  background-color: #74b9ff;
+  :hover {
+    background-color: #99c6f5;
+  }
 `;
 
 export default NovelInfo

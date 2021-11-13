@@ -18,7 +18,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { auth } from '../_actions/user_actions';
 import { menuAction_fetch } from '../_actions/menuActions';
 import AlgorithmPage from './views/RecommendPage/AlgorithmPage.js';
-import RatingNovelPage from './views/RecommendPage/RatingNovelPage.js';
 import RatingAuthorPage from './views/RecommendPage/RatingAuthorPage.js';
 
 import GenrePage from './views/GenrePage/GenrePage.js';
@@ -72,10 +71,8 @@ function App(props) {
           <Route exact path="/novel/:id" component={NovelDetail} />  
           
           {/* 추천 소설 관련 페이지 */}
-          
           <Route exact path="/recommend" component={RecommendPage} />
           <Route exact path="/recommend/algorithm" component={AlgorithmPage} /> {/*추천 알고리즘 기반 소설 리스트 출력*/}
-          <Route exact path="/recommend//ratingNovel" component={RatingNovelPage} /> {/*평점 준 작품 소설 리스트 출력*/}
           <Route exact path="/recommend/ratingAuthor" component={RatingAuthorPage} /> {/*평점 준 작가 기반 소설 리스트 출력*/}
           <Route exact path="/recommend/view" component={ViewsPage} />{/*조회수 기반 소설 리스트 출력 */}
           

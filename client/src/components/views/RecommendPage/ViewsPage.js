@@ -66,7 +66,7 @@ function ViewsPage(props) {
       
       {/*Load More 방식 - 페이지 갱신*/}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <button onClick={fetchNovel}> Load More</button>
+        <LoadButton onClick={fetchNovel}>Load More</LoadButton>
       </div>
     </div> 
   );
@@ -92,7 +92,7 @@ const Container = styled.div`
 const Post = styled.div`
   a:link { color: black; font-weight: bold;}
   a:visited { color: purple; font-weight: bold;}
-  a:hover { color: Orange; font-weight: bold;}
+  a:hover { color: #f4ac19; font-weight: bold;}
   position: relative;
 `;
 const Img = styled.div`
@@ -128,6 +128,17 @@ const Div = styled.ul`
   transform: translateY(250%);
   color: #f4ac19;
   //font-size: 10px;
+`;
+
+const LoadButton = styled.button`
+  padding: 6px 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  background-color: #DCDCDC;
+  :hover {
+    background-color: #F5F5F5;
+  }
 `;
 
 export default ViewsPage
