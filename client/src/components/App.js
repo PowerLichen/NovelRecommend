@@ -12,7 +12,6 @@ import HeaderNav from "./Header/HeaderNav";
 // import BoardModal from "./Board/BoardModal";
 import NovelPostPage from './views/NovelPostPage/NovelPostPage'
 import NovelDetail from './views/NovelDetail/NovelDetail'
-import RatingPage from './views/RatingPage/RatingPage'
 import SearchPage from './views/SearchPage/SearchPage'
 import { useSelector, useDispatch } from "react-redux";
 import { auth } from '../_actions/user_actions';
@@ -23,6 +22,7 @@ import RatingAuthorPage from './views/RecommendPage/RatingAuthorPage.js';
 import GenrePage from './views/GenrePage/GenrePage.js';
 import ViewsPage from './views/RecommendPage/ViewsPage.js';
 import RecommendPage from './views/RecommendPage/RecommendPage.js';
+import TagPage from './views/tagPage/TagPage.js';
 
 
 //null   Anyone Can go inside
@@ -68,7 +68,7 @@ function App(props) {
           
           {/* 소설 관련 페이지 */}
           <Route exact path="/novel" component={NovelPostPage} />  
-          <Route exact path="/novel/:id" component={NovelDetail} />  
+          <Route exact path="/novel/:id" component={NovelDetail} />
           
           {/* 추천 소설 관련 페이지 */}
           <Route exact path="/recommend" component={RecommendPage} />
@@ -82,7 +82,8 @@ function App(props) {
           {/* 장르 출력 페이지 */}
           <Route path="/genres/:genre" component={GenrePage} />
 
-
+          {/*태그 출력 페이지*/}
+          <Route path="/tag/:keyword" component={TagPage} />
         </Switch>
       </div>
       <Footer />
