@@ -130,6 +130,11 @@ for v in rdr:
             cursor.execute(sql,(result_nid[0]['id'],noveldata['joara']))
             result = cursor.fetchall()
         
+        #  조회수 정보 삽입
+        sql = 'INSERT INTO novel_hitdata(id,hit) values(%s,%s);'
+        cursor.execute(sql,(result_nid[0]['id'],0))
+        hit_result = cursor.fetchall()
+        
         # 자연어 처리 및 태그 INSERT
         array = []
         word = okt.pos(noveldata['desc'])
