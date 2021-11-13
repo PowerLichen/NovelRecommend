@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import styled from 'styled-components';
 
-import { NavLink, Switch, Route ,BrowserRouter as Router } from 'react-router-dom';
+import { NavLink ,BrowserRouter as Router } from 'react-router-dom';
 
 //추천페이지 탭
 export const RecommendTab = () => {

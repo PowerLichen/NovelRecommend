@@ -36,7 +36,7 @@ function AlgorithmPage(props) {
             <Body>
               {/* 작품 표지 이미지 url */}
               <Img>
-                <img src = {`${data.imgurl}`} width = '200' height = '280' align = 'center' ></img> 
+                <img src = {`${data.imgurl}`} alt={data.title} width = '200' height = '280' align = 'center' ></img> 
               </Img>
               <Effcet/>
             </Body>

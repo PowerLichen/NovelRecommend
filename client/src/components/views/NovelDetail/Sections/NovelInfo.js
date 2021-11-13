@@ -73,7 +73,7 @@ function NovelInfo(props) {
         <Descriptions layout="vertical" bordered >
           <Descriptions.Item span={4}><Font>{novels.title}</Font> <RatingPage nid={props.nid} /> </Descriptions.Item>
           <Descriptions.Item span={4}>
-            <img src={`${novels.imgurl}`} width='270' style={{ margin: '0 30%', border: '1px solid #dcdcdc'}}></img>
+            <img src={`${novels.imgurl}`} alt={novels.title} width='270' style={{ margin: '0 30%', border: '1px solid #dcdcdc'}}></img>
           </Descriptions.Item>
           <Descriptions.Item label="작가" >{novels.name}</Descriptions.Item>
           <Descriptions.Item label="장르" >{novels.genre}</Descriptions.Item>

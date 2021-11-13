@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import NovelInfo from "./Sections/NovelInfo";
 
 //작품 페이지 출력

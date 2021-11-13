@@ -22,7 +22,7 @@ import RatingAuthorPage from './views/RecommendPage/RatingAuthorPage.js';
 import GenrePage from './views/GenrePage/GenrePage.js';
 import ViewsPage from './views/RecommendPage/ViewsPage.js';
 import RecommendPage from './views/RecommendPage/RecommendPage.js';
-import TagPage from './views/tagPage/TagPage.js';
+import TagPage from './views/TagPage/TagPage.js';
 
 
 //null   Anyone Can go inside
