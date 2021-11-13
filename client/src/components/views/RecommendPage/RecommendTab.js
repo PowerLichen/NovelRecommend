@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { NavLink, Switch, Route ,BrowserRouter as Router } from 'react-router-dom';
 
+//추천페이지 탭
 export const RecommendTab = () => {
-    // TIP: Tab Menu 중 현재 어떤 Tab이 선택되어 있는지 확인하기 위한
-    // currentTab 상태와 currentTab을 갱신하는 함수가 존재해야 하고, 초기값은 0 입니다.
+    
     const [currentTab, setCurrentTab] = useState(0);
     
     const menuArr = [
@@ -33,17 +33,13 @@ export const RecommendTab = () => {
   };
 
 const TabMenu = styled.ul`
-  //background-color: #dcdcdc;
   color: rgba(73, 73, 73, 0.5);
-  //font-weight: bold;
   display: flex;
   flex-direction: row;
   justify-items: center;
   align-items: center;
   list-style: none;
-  //margin-bottom: 7rem;
   border-radius: 10px;
-
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

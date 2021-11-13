@@ -28,7 +28,6 @@ function NovelPostPage(props) {
           .then(response => {
               console.log(response)
               setPosts([...Posts, ...response])     
-              //setCurrentPage(response.page)
     })
   }
 

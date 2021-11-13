@@ -66,10 +66,9 @@ function RatingPage(props) {
       else {
         return(
           <span>
-            <BlueButton onClick={submitScore}> 평가하기
-
+            <BlueButton onClick={submitScore}> 
+              평가하기
             </BlueButton>
-            {/* <button onClick={submitScore} style={{border: '1px solid #f4ac19', color: '#f4ac19', backgroundColor: 'white'}}>평가하기</button> */}
           </span>
         )
       }
@@ -86,11 +85,6 @@ function RatingPage(props) {
         <span style={{ color: '#f4ac19',fontSize: '20px', margin: '0 20px 0 10px'}}>
           {Score}
         </span>  
-
-        {/* <div style={{ display: 'flex' }}>
-          <button onClick={submitScore}>제출</button>
-        </div> */}
-        
         {
           checkScore()
         }

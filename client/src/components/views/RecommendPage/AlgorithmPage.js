@@ -27,7 +27,6 @@ function AlgorithmPage(props) {
   return (
     <div>
       <RecommendTab/>
-      
       <Div>AI 기반: 평가한 작품을 기반으로, 세부 알고리즘을 적용한 추천</Div>
       <Container>
         <GlobalStyle />

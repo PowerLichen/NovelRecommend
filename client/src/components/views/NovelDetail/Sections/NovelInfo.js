@@ -1,9 +1,8 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import StarRatingComponent from 'react-star-rating-component';
 import { USER_SERVER } from '../../../../components/Config.js';
-import styled, { createGlobalStyle } from "styled-components";
-import { Descriptions, Badge } from 'antd';
+import styled from "styled-components";
+import { Descriptions } from 'antd';
 import RatingPage from "../../RatingPage/RatingPage.js";
 
 import naverseries from "../../../../images/naverseries-app-icon.png";
@@ -11,7 +10,7 @@ import kakaopage from "../../../../images/kakaopage-app-icon.png";
 import ridibooks from "../../../../images/ridibooks-app-icon.png";
 import joara from "../../../../images/joara-app-icon.png";
 
-import { NavLink, Switch, Route ,BrowserRouter as Router } from 'react-router-dom';
+
 
 //작품 페이지 출력
 function NovelInfo(props) {
@@ -19,13 +18,6 @@ function NovelInfo(props) {
     const [novels, setNovels] = useState([]);
     const [urls, setUrls] = useState([]);
     const [tags, setTags] = useState([]);
-
-    //임시 데이터
-    const tagArr = [
-      { name: '조회수 기반 추천', path: "/recommend/view"},
-      { name: '평가 기반 추천', path: "/recommend/ratingAuthor"},
-      { name: 'AI 기반 추천', path: "/recommend/algorithm" },
-    ];
 
     useEffect(() => {
         axios
@@ -36,7 +28,6 @@ function NovelInfo(props) {
     
     function goUrl(url) {
       const str = url;
-
 
       if (str.indexOf('naver')>=0) {
         return (
@@ -73,40 +64,6 @@ function NovelInfo(props) {
           </a>
         )
       }
-
-      // switch(str){
-      //   case (str.indexOf('naver'))>=0 :
-      //     return (
-      //       <a href = {url}>
-      //         <img src = {naverseries} width = '50' alt="네이버시리즈" align = 'center' style={{margin: '5px' }}></img>
-      //       </a>
-      //     ); 
-      //   case (str.indexOf('ridibooks'))>=0 :
-      //     return (
-      //       <a href = {url}>
-      //         <img src = {ridibooks} width = '50' alt="리디북스" align = 'center' style={{margin: '5px' }}></img>
-      //       </a>
-      //     );
-      //   case (str.indexOf('kakao'))>=0 :
-      //     return (
-      //       <a href = {url}>
-      //         <img src = {kakaopage} width = '50' alt="카카오페이지" align = 'center' style={{margin: '5px' }}></img>
-      //       </a>
-      //     );
-      //   case (str.indexOf('joara'))>=0 :
-      //     return (
-      //       <a href = {url}>
-      //         <img src = {kakaopage} width = '50' alt="조아라" align = 'center' style={{margin: '5px' }}></img>
-      //       </a>
-      //     );
-      //   default :
-      //     return (
-      //       <a href = {url}>
-      //         <button> ??? </button>
-      //       </a>
-      //     )
-      // }
-
     }
     
     return (
@@ -128,10 +85,6 @@ function NovelInfo(props) {
           <Descriptions.Item label="태그" span={3}> 
             
               {tags.map((tags, idx) => (
-                // <Fragment key={tag.path}>
-                //   <NavLink className='submenu' activeClassName='submenu focused' to={tag.path} > {tag.name} 
-                //   </NavLink>
-                // </Fragment>
               <Tags>
                 #{tags.tag}
               </Tags>
