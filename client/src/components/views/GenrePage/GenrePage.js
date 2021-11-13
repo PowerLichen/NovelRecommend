@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
 import { useParams } from 'react-router';
+import { Descriptions } from 'antd';
 
 //작품출력
 //수정 필요
@@ -35,6 +36,8 @@ function GenrePage() {
 
   return (
     <div>
+      <Descriptions title={url} bordered style={{margin:'0% 25% auto'}}>
+      </Descriptions>
       <Container>
         <GlobalStyle />
         {Posts.map((data, index) => (
@@ -56,7 +59,7 @@ function GenrePage() {
       
       {/*Load More 방식 - 페이지 갱신*/}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <button onClick={fetchNovel}> Load More</button>
+        <LoadButton onClick={fetchNovel}>Load More</LoadButton>
       </div>
     </div> 
   );
@@ -71,7 +74,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Container = styled.div`
   min-height: 100vh;
-  padding: 100px 0;
+  padding: 50px 0;
   display: grid;
   grid-template-columns: repeat(5, 200px);
   grid-gap: 20px 50px;
@@ -109,6 +112,17 @@ const Effcet = styled.div`
   border: 2px solid black;
   height: 270px;
   position: relative;
+`;
+
+const LoadButton = styled.button`
+  padding: 6px 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  background-color: #DCDCDC;
+  :hover {
+    background-color: #F5F5F5;
+  }
 `;
 
 export default GenrePage
