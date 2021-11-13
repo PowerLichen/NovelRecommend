@@ -8,6 +8,8 @@ import styled, { createGlobalStyle } from "styled-components";
 function MyPage() {
     const user = useSelector(state => state.user)
     const [Posts, setPosts] = useState([]);
+    const [Pages, setPages] = useState([1]);
+
     useEffect(() => {  
         if(user.userData === undefined)
             return
@@ -16,6 +18,20 @@ function MyPage() {
           .then(({ data }) => { setPosts(data); });
           
       }, [user])
+
+      const fetchNovel = () => {
+      
+        setPages(Number(Pages)+1);
+    
+        fetch(`${USER_SERVER}/novel/mybook/${user.userData.idx}/${Pages}`)
+              .then(response => response.json())
+              .then(response => {
+                  console.log(response)
+                  setPosts([...Posts, ...response])     
+                  //setCurrentPage(response.page)
+        })
+      }
+
 
     return (
         
@@ -42,29 +58,29 @@ function MyPage() {
                 )}
                 </Descriptions>
                 <br />
+                <Descriptions title="평가한 작품" bordered style={{margin:'5% 10% auto'}}>
+                </Descriptions>
                 {/* Actors Grid*/}
                 <Container>
                     <GlobalStyle />
                     {Posts.map((data, index) => (
-                        <Post key={index}>
-                            <Body>
-                                <a href={`/novel/${data.id}`}>
-                                    {/* 작품 표지 이미지 url */}
-                                    <img src={`${data.imgurl}`} width='150' align='center'></img>
-
-                                </a>
-                            </Body>
-                            {/* 작품 타이틀*/}
-                            <Title>{data.title}</Title>
-
-                        </Post>
-
+                    <Post key={index}>
+                        <a href={`/novel/${data.id}`}>
+                        <Body>
+                        {/* 작품 표지 이미지 url */}
+                        <Img>
+                            <img src = {`${data.imgurl}`} width = '200' height = '280' align = 'center' ></img> 
+                        </Img>
+                        <Effcet/>
+                        </Body>
+                        {/* 작품 타이틀*/}
+                        <Title>{data.title}</Title>
+                        </a>
+                    </Post>  
                     ))}
                 </Container>
-                <div
-                    style={{ display: 'flex', justifyContent: 'center', margin: '2rem' }}
-                >
-                    <button> More Information</button>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <LoadButton onClick={fetchNovel}>Load More</LoadButton>
                 </div>
             </div>
         </div>
@@ -80,37 +96,55 @@ const GlobalStyle = createGlobalStyle`
 
 const Container = styled.div`
   min-height: 100vh;
-  padding: 50px 100px 0 0;
+  padding: 25px 0 50px 0;
   display: grid;
-  grid-template-columns: repeat(5, 300px);
-  grid-template-rows: repeat(auto-fit, 300px);
-  grid-auto-rows: 300px;
-  grid-gap: 30px 20px;
+  grid-template-columns: repeat(5, 200px);
+  grid-gap: 20px 50px;
   justify-content: center;
   box-sizing: border-box;
 `;
 
 const Post = styled.div`
+  a:link { color: black; font-weight: bold;}
+  a:visited { color: purple; font-weight: bold;}
+  a:hover { color: Orange; font-weight: bold;}
+  position: relative;
+`;
+const Img = styled.div`
   border: 1px solid black;
-  background: white;
-  align-items: center;
-  margin:  0 0 0 35%;
-  padding: 0px 10px;
 `;
 
 const Title = styled.div`
-  height: 20%;
+  padding: 0px 0px;
+  //height: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px black;
+  //border-bottom: 1px black;
 `;
 
 const Body = styled.div`
-  height: 80%;
-  padding: 11px;
-  border-radius: 20px;
-  
+  padding: 2px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Effcet = styled.div`
+  border: 2px solid black;
+  height: 270px;
+  position: relative;
+`;
+
+const LoadButton = styled.button`
+  padding: 6px 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  background-color: #DCDCDC;
+  :hover {
+    background-color: #F5F5F5;
+  }
 `;
 
 export default MyPage;
