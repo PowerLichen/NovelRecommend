@@ -11,13 +11,14 @@ import ridibooks from "../../../../images/ridibooks-app-icon.png";
 import joara from "../../../../images/joara-app-icon.png";
 
 
-
 //작품 페이지 출력
 function NovelInfo(props) {
 
     const [novels, setNovels] = useState([]);
     const [urls, setUrls] = useState([]);
     const [tags, setTags] = useState([]);
+
+    const [tagId, settagId] = useState([]);
 
     useEffect(() => {
         axios
@@ -85,9 +86,12 @@ function NovelInfo(props) {
           <Descriptions.Item label="태그" span={3}> 
             
               {tags.map((tags, idx) => (
+                <a href = {`/tag/${tags.tag}`}>
               <Tags>
                 #{tags.tag}
+               
               </Tags>
+              </a>
               ))}
           </Descriptions.Item>
         </Descriptions>
