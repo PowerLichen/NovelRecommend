@@ -41,7 +41,6 @@ function RatingAuthorPage(props) {
 
   return (
     <div>
-      <Div>평가 기반: 평가한 작품을 기반으로, 해당 작품의 작가가 쓴 다른 작품을 추천</Div>
       <RecommendTab/>
       <Container>
         <GlobalStyle />
@@ -114,15 +113,6 @@ const Effcet = styled.div`
   border: 2px solid black;
   height: 270px;
   position: relative;
-`;
-
-const Div = styled.ul`
-  position: absolute;
-  left: 43%;
-  transform: translateX(-100%);
-  transform: translateY(250%);
-  color: #f4ac19;
-  //font-size: 10px;
 `;
 
 const LoadButton = styled.button`
