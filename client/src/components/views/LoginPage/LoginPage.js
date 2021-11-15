@@ -1,15 +1,9 @@
-//import Axios from 'axios'
-//import { response } from 'express';
 import React,{useState} from 'react'
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../../../_actions/user_actions'
-import { withRouter } from "react-router-dom";
-import { Formik } from 'formik';
 import { Form, Input, Button, Checkbox, Typography } from 'antd';
-import Icon from '@ant-design/icons';
 import {FaUserAlt} from "react-icons/fa";
 import {FaLockOpen} from "react-icons/fa";
-//import { USER_SERVER } from '../../../components/Config.js';
 
 const { Title } = Typography;
 
@@ -51,9 +45,6 @@ function LoginPage(props) {
                 setFormErrorMessage("")
               }, 3000);
             });
-
-    // Axios.post('/api/users/login', body)
-    //   .then(response => {})
   }
  
 

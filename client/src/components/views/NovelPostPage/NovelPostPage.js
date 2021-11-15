@@ -5,8 +5,7 @@ import { USER_SERVER } from '../../../components/Config.js';
 import { Descriptions } from 'antd';
 
 
-
-//작품출력
+//작품 출력
 function NovelPostPage(props) {
     
   const [Posts, setPosts] = useState([]);
@@ -91,11 +90,9 @@ const Img = styled.div`
 
 const Title = styled.div`
   padding: 0px 0px;
-  //height: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
-  //border-bottom: 1px black;
 `;
 
 const Body = styled.div`
@@ -120,6 +117,7 @@ const LoadButton = styled.button`
   :hover {
     background-color: #F5F5F5;
   }
+  cursor: pointer;
 `;
 
 export default NovelPostPage

@@ -3,6 +3,8 @@ import styled, { createGlobalStyle } from "styled-components";
 import { USER_SERVER } from '../../../components/Config.js';
 import axios from "axios";
 
+
+//검색 페이지
 function SearchPage(props) {
 
     const [Word, setWord] = useState("");
@@ -44,6 +46,9 @@ function SearchPage(props) {
                   console.log(response)
                   setPosts([...Posts, ...response])  
         })
+        if(Posts === null) {
+          alert('마지막 페이지 입니다.')
+        }
     }
 
     //검색 알림
@@ -106,7 +111,7 @@ function SearchPage(props) {
         </Container>
         {/*Load More 방식 - 페이지 갱신*/}
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <button onClick={fetchNovel}> Load More</button>
+          <LoadButton onClick={fetchNovel}>Load More</LoadButton>
         </div>
       </div>
     )
@@ -170,6 +175,7 @@ const Search = styled.div`
     border: 10px solid #f4ac19;
     color: White;
     border-radius: 2px;
+    cursor: pointer;
   }
   .div1{
     width: 10px;
@@ -185,9 +191,10 @@ const Search = styled.div`
     border-radius: 2px;
   }
   .check {
-    border: 4px solid #f4ac19;
+    border: 2px solid #f4ac19;
     border-radius: 2px;
     color: #f4ac19;
+    cursor: pointer;
   }
 `;
 
@@ -197,5 +204,17 @@ const Notices = styled.span`
   left: 50%;
   transform: translateX(-50%);
 
+`;
+
+const LoadButton = styled.button`
+  padding: 6px 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  background-color: #DCDCDC;
+  :hover {
+    background-color: #F5F5F5;
+  }
+  cursor: pointer;
 `;
 export default SearchPage

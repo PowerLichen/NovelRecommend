@@ -4,9 +4,9 @@ import StarRatingComponent from 'react-star-rating-component';
 import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
 import styled from 'styled-components';
-import { Descriptions } from 'antd';
-
  
+
+//평점 매기기 페이지
 function RatingPage(props) {
   
     //별점 점수 
@@ -102,6 +102,7 @@ const BlueButton = styled.button`
   :hover {
     background-color: #99c6f5;
   }
+  cursor: pointer;
 `;
 
 const RedButton = styled(BlueButton)`
@@ -109,5 +110,6 @@ const RedButton = styled(BlueButton)`
   :hover {
     background-color: #f53e3e;
   }
+  cursor: default;
 `;
 export default RatingPage;
