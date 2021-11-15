@@ -23,8 +23,9 @@ function SearchPage(props) {
 
     //검색 버튼 이벤트
     const onSubmitHandler = (event) =>{
-     
+      setPages([1]);
       event.preventDefault();
+      
       axios
         .get(`${USER_SERVER}/search/${SearchItems}/${Word}/0`) 
         .then(({ data }) => { setPosts(data); console.log(data);});
@@ -46,9 +47,6 @@ function SearchPage(props) {
                   console.log(response)
                   setPosts([...Posts, ...response])  
         })
-        if(Posts === null) {
-          alert('마지막 페이지 입니다.')
-        }
     }
 
     //검색 알림
@@ -176,6 +174,7 @@ const Search = styled.div`
     color: White;
     border-radius: 2px;
     cursor: pointer;
+    padding: 0px 10px;
   }
   .div1{
     width: 10px;
