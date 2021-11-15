@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 import { NavLink ,BrowserRouter as Router } from 'react-router-dom';
 
-//추천페이지 탭
+
+//추천하기페이지 탭
 export const RecommendTab = () => {
     
     const [currentTab, setCurrentTab] = useState(0);

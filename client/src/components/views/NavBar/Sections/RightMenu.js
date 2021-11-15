@@ -1,12 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React,{useState} from 'react';
 import { Menu } from 'antd';
-//import { USER_SERVER } from '../../../Config';
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import {logoutUser} from '../../../../_actions/user_actions'
-import Icon from '@ant-design/icons';
 import {FaSearch} from "react-icons/fa";
+
 
 //formErrorMessage는 에러문구를 표시하는 것? 토스트메시지처럼 사용?
 function RightMenu(props) {

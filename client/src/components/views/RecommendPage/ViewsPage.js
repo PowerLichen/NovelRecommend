@@ -97,11 +97,9 @@ const Img = styled.div`
 
 const Title = styled.div`
   padding: 0px 0px;
-  //height: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
-  //border-bottom: 1px black;
 `;
 
 const Body = styled.div`
@@ -135,6 +133,7 @@ const LoadButton = styled.button`
   :hover {
     background-color: #F5F5F5;
   }
+  cursor: pointer;
 `;
 
 export default ViewsPage

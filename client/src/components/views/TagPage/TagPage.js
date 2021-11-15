@@ -4,7 +4,8 @@ import axios from "axios";
 import { USER_SERVER } from '../../Config.js';
 import { Descriptions } from 'antd';
 
-//해당하는 장르 작품 출력 페이지
+
+//해당 태그의 작품들 출력 페이지
 function TagPage(props) {
 
   let tagId = props.match.params.keyword;
@@ -90,11 +91,9 @@ const Img = styled.div`
 
 const Title = styled.div`
   padding: 0px 0px;
-  //height: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
-  //border-bottom: 1px black;
 `;
 
 const Body = styled.div`
@@ -119,6 +118,7 @@ const LoadButton = styled.button`
   :hover {
     background-color: #F5F5F5;
   }
+  cursor: pointer;
 `;
 
 export default TagPage

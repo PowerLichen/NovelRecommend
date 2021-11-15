@@ -1,10 +1,11 @@
 import React from "react";
-import NovelInfo from "./Sections/NovelInfo";
+import NovelInfo from "./NovelInfo";
 
-//작품 페이지 출력
+
+//작품 상세 페이지
 function NovelDetail(props) {
     
-    let nid = props.match.params.id;
+    let nid = props.match.params.nid;
 
     return (
         <div style={{ width: '800px', margin: '1rem auto' }}>
