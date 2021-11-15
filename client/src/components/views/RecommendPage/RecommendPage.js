@@ -7,7 +7,7 @@ import ViewsPage from "./ViewsPage";
 import RecommendTab from "./RecommendTab";
 
 
-//추천하기 페이지
+//추천받기 페이지
 function RecommendPage(props) {
 
     const user = useSelector(state => state.user)
