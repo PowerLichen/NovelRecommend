@@ -44,8 +44,8 @@ const run = async() =>{
                 // 쿼리문을 통한 소설 정보 크롤링
                 const novels = document.querySelectorAll('.listItemBox');
                 for(const novel of novels){
-                    data.title = novel.querySelector(' .css-9prbtm span').textContent.trim();
-                    data.genre = novel.querySelectorAll('div.css-k87799>p')[1].textContent.trim();
+                    data.title = novel.querySelector(' .css-6mi0ws span').textContent.trim();
+                    data.genre = novel.querySelectorAll('div.css-jrdzk7>p')[1].textContent.trim();
                     if(data.genre=='로판'){
                         data.genre = '로맨스판타지'
                     }
@@ -54,7 +54,7 @@ const run = async() =>{
                     }
                     data.link = novel.querySelector(' a.jsx-219726507').href;
                     data.desc = novel.querySelector(' p.jsx-219726507.text-ellipsis').textContent.trim();
-                    data.author = novel.querySelector(' .css-k87799 .text-ellipsis').textContent.trim();
+                    data.author = novel.querySelector(' .css-jrdzk7 .text-ellipsis').textContent.trim();
                     data.image = novel.querySelector(' .imageWrapper img').getAttribute('data-src');
                     list.push(Object.values(data));
                     itemNum+=1;
