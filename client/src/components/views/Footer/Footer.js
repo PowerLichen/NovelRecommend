@@ -75,11 +75,6 @@ function Footer(props) {
                     {/* <FontAwesomeIcon icon={["fab", "google"]} className="google" size="2x"/> */}
                     <a onClick={() => window.open('https://github.com/LeeKwang-min/2021SeniorProject', '_blank')}>
                         <FontAwesomeIcon icon={['fab', 'github']} className="github" size="2x" /></a>
-                    {/* <i class="fab fa-facebook-square"></i>
-                    <i className="fab fa-instagram"></i>
-                    <i className="fab fa-youtube"></i>
-                    <i className="fab fa-twitter"></i>
-                    <i className="fas fa-mobile-alt"></i> */}
 
                     <div className="footer__rightContent">
                         <div>회원이시라면...</div>
@@ -87,9 +82,6 @@ function Footer(props) {
                         지금 웹소설을 평가하고,
                         내 취향에 딱 맞는 웹소설을 추천 받아보세요!
                     </div>
-                    {/* <div
-                        style={{ background: 'skyblue', display: 'flex', justifyContent: 'center', margin: '2rem' }}
-                    > */}
                     <ContentWrap>
                         <button className="overseas-remittance-link" onClick={RecHandler}>평가하고 추천받기</button>
                 {/* </div> */}</ContentWrap>

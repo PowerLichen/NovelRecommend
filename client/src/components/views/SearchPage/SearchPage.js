@@ -3,6 +3,8 @@ import styled, { createGlobalStyle } from "styled-components";
 import { USER_SERVER } from '../../../components/Config.js';
 import axios from "axios";
 
+
+//검색 페이지
 function SearchPage(props) {
 
     const [Word, setWord] = useState("");
@@ -21,8 +23,9 @@ function SearchPage(props) {
 
     //검색 버튼 이벤트
     const onSubmitHandler = (event) =>{
-     
+      setPages([1]);
       event.preventDefault();
+      
       axios
         .get(`${USER_SERVER}/search/${SearchItems}/${Word}/0`) 
         .then(({ data }) => { setPosts(data); console.log(data);});
@@ -94,7 +97,7 @@ function SearchPage(props) {
                 <Body>
                   {/* 작품 표지 이미지 url */}
                   <Img>
-                    <img src={`${data.imgurl}`} width='200' height='280' align='center' ></img>
+                    <img src={`${data.imgurl}`} alt={data.title} width='200' height='280' align='center' ></img>
                   </Img>
                   <Effcet />
                 </Body>
@@ -106,7 +109,7 @@ function SearchPage(props) {
         </Container>
         {/*Load More 방식 - 페이지 갱신*/}
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <button onClick={fetchNovel}> Load More</button>
+          <LoadButton onClick={fetchNovel}>Load More</LoadButton>
         </div>
       </div>
     )
@@ -170,6 +173,8 @@ const Search = styled.div`
     border: 10px solid #f4ac19;
     color: White;
     border-radius: 2px;
+    cursor: pointer;
+    padding: 0px 10px;
   }
   .div1{
     width: 10px;
@@ -185,9 +190,10 @@ const Search = styled.div`
     border-radius: 2px;
   }
   .check {
-    border: 4px solid #f4ac19;
+    border: 2px solid #f4ac19;
     border-radius: 2px;
     color: #f4ac19;
+    cursor: pointer;
   }
 `;
 
@@ -197,5 +203,17 @@ const Notices = styled.span`
   left: 50%;
   transform: translateX(-50%);
 
+`;
+
+const LoadButton = styled.button`
+  padding: 6px 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  background-color: #DCDCDC;
+  :hover {
+    background-color: #F5F5F5;
+  }
+  cursor: pointer;
 `;
 export default SearchPage

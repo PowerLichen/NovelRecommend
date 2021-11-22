@@ -7,114 +7,114 @@
             "children": [
                 {
                     "name": "SF/히어로",
-                    "path": "/genres/퓨전",
+                    "path": "/novel/genres/퓨전",
                     "color": "green",
                     "children": [
                         {
                             "name": "퓨전",
                             "value": "퓨전",
-                            "path": "/genres/퓨전"
+                            "path": "/novel/genres/퓨전"
                         },
                         {
                             "name": "무협",
                             "value": "무협",
-                            "path": "/genres/무협"
+                            "path": "/novel/genres/무협"
                         },
                         {
                             "name": "판타지",
                             "value": "판타지",
-                            "path": "/genres/판타지"
+                            "path": "/novel/genres/판타지"
                         },
                         {
                             "name": "현대판타지",
                             "value": "현대판타지",
-                            "path": "/genres/현대판타지"
+                            "path": "/novel/genres/현대판타지"
                         },
                         {
                             "name": "SF",
                             "value": "SF",
-                            "path": "/genres/SF"
+                            "path": "/novel/genres/SF"
                         }
                     ]
                 },
                 {
                     "name": "로맨스/코메디",
-                    "path": "/genres/로맨스",
+                    "path": "/novel/genres/로맨스",
                     "color": "orange",
                     "children": [
                         {
                             "name": "로맨스",
                             "value": "로맨스",
-                            "path": "/genres/로맨스"
+                            "path": "/novel/genres/로맨스"
                         },
                         {
                             "name": "라이트노벨",
                             "value": "라이트노벨",
-                            "path": "/genres/라이트노벨"
+                            "path": "/novel/genres/라이트노벨"
                         },
                         {
                             "name": "BL",
                             "value": "BL",
-                            "path": "/genres/BL"
+                            "path": "/novel/genres/BL"
                         },
                         {
                             "name": "로맨스-판타지",
                             "value": "로맨스판타지",
-                            "path": "/genres/로맨스판타지"
+                            "path": "/novel/genres/로맨스판타지"
                         }
                     ]
                 },
                 {
                     "name": "범죄/호러",
-                    "path": "/genres/미스터리",
+                    "path": "/novel/genres/미스터리",
                     "color": "yellow",
                     "children": [
                         {
                             "name": "미스터리",
                             "value": "미스터리",
-                            "path": "/genres/미스터리"
+                            "path": "/novel/genres/미스터리"
                         },
                         {
                             "name": "추리",
                             "value": "추리",
-                            "path": "/genres/추리"
+                            "path": "/novel/genres/추리"
                         },
                         {
                             "name": "공포",
                             "value": "공포",
-                            "path": "/genres/공포"
+                            "path": "/novel/genres/공포"
                         }
                     ]
                 },
                 {
                     "name": "기타",
-                    "path": "/genres/게임",
+                    "path": "/novel/genres/게임",
                     "color": "green",
                     "children": [
                         {
                             "name": "게임",
                             "value": "게임",
-                            "path": "/genres/게임"
+                            "path": "/novel/genres/게임"
                         },
                         {
                             "name": "소설",
                             "value": "소설",
-                            "path": "/genres/소설"
+                            "path": "/novel/genres/소설"
                         },
                         {
                             "name": "역사",
                             "value": "역사",
-                            "path": "/genres/역사"
+                            "path": "/novel/genres/역사"
                         },
                         {
                             "name": "스포츠",
                             "value": "스포츠",
-                            "path": "/genres/스포츠"
+                            "path": "/novel/genres/스포츠"
                         },
                         {
                             "name": "밀리터리",
                             "value": "밀리터리",
-                            "path": "/genres/밀리터리"
+                            "path": "/novel/genres/밀리터리"
                         }
                     ]
                 }
@@ -126,14 +126,9 @@
             "icon": "fa-question-circle"
         },
         {
-            "name": "리뷰",
-            "path": "/page3",
+            "name": "검색",
+            "path": "/search",
             "icon": "fa-address-book"
-        },
-        {
-            "name": "고객센터",
-            "path": "/page4",
-            "icon": "fa-cogs"
         }
     ]
 }

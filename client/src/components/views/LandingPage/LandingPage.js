@@ -4,8 +4,7 @@ import Carousel from "../Slide/SliderCarousel";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
-import styled, { createGlobalStyle } from "styled-components";
-import Slide from "react-slick";
+import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import Layout  from "./Layout";
 
@@ -50,22 +49,8 @@ function LandingPage() {
                     </NavLink>
                 </div>
 
-                {/* <Tit   style={{ width: '100%', height: '10vh',textAlign: 'left' }}>
-            최신작</Tit> */}
                 <div className="slide">
                     <Container>
-                        {/* <GlobalStyle />  */}
-                        {/* <Slide
-                        centerMode={true}
-                        centerPadding={0}
-                        infinite={true}
-                        speed={500}
-                        slidesToShow={2}
-                        slidesToScroll={1}
-                        initialSlide={1}
-                        prevArrow={<PrevArrow />}
-                        nextArrow={<NextArrow />}
-                    > */}
                         {last_Posts.map((data, index) => (
                             <Post key={index} className="slider__slide"
                                 style={{ transform: `translateX(${-lastslide * 715}%)` }}>
@@ -99,22 +84,8 @@ function LandingPage() {
                     </NavLink>
                 </div>
 
-                {/* <Tit   style={{ width: '100%', height: '10vh',textAlign: 'left' }}>
-            최신작</Tit> */}
                 <div className="slide">
                     <Container>
-                        {/* <GlobalStyle />  */}
-                        {/* <Slide
-                        centerMode={true}
-                        centerPadding={0}
-                        infinite={true}
-                        speed={500}
-                        slidesToShow={2}
-                        slidesToScroll={1}
-                        initialSlide={1}
-                        prevArrow={<PrevArrow />}
-                        nextArrow={<NextArrow />}
-                    > */}
                         {top_Posts.map((data, index) => (
                             <Post key={index} className="slider__slide"
                                 style={{ transform: `translateX(${-topslide * 715}%)` }}>
@@ -146,11 +117,7 @@ function LandingPage() {
     );
 }
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-  }
-`;
+
 const Container = styled.div`
   min-height: 100vh;
   padding: 50px 100px 0 0px;
@@ -187,33 +154,4 @@ const Body = styled.div`
   
 `;
 
-const Tit = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 10px black;
-  font-size:xx-large
-`;
-
-const PrevArrow = styled.button`
-  width: 38px;
-  height: 72px;
-  margin-right: 462px;
-  right: 50%;
-  left: auto;
-  :before {
-    content: url("/images/img-left.png");
-  }
-`;
-
-const NextArrow = styled.button`
-  width: 38px;
-  height: 72px;
-  margin-left: 462px;
-  left: 50%;
-  :before {
-    content: url("/images/img-right.png");
-  }
-`;
 export default LandingPage

@@ -5,6 +5,8 @@ import axios from "axios";
 import { USER_SERVER } from '../../../components/Config.js';
 import styled, { createGlobalStyle } from "styled-components";
 
+
+//마이페이지
 function MyPage() {
     const user = useSelector(state => state.user)
     const [Posts, setPosts] = useState([]);
@@ -27,8 +29,7 @@ function MyPage() {
               .then(response => response.json())
               .then(response => {
                   console.log(response)
-                  setPosts([...Posts, ...response])     
-                  //setCurrentPage(response.page)
+                  setPosts([...Posts, ...response])
         })
       }
 
@@ -69,7 +70,7 @@ function MyPage() {
                         <Body>
                         {/* 작품 표지 이미지 url */}
                         <Img>
-                            <img src = {`${data.imgurl}`} width = '200' height = '280' align = 'center' ></img> 
+                            <img src = {`${data.imgurl}`} alt = {data.title} width = '200' height = '280' align = 'center' ></img> 
                         </Img>
                         <Effcet/>
                         </Body>
@@ -116,11 +117,9 @@ const Img = styled.div`
 
 const Title = styled.div`
   padding: 0px 0px;
-  //height: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
-  //border-bottom: 1px black;
 `;
 
 const Body = styled.div`
@@ -145,6 +144,7 @@ const LoadButton = styled.button`
   :hover {
     background-color: #F5F5F5;
   }
+  cursor: pointer;
 `;
 
 export default MyPage;

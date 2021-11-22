@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { USER_SERVER } from '../../../../components/Config.js';
+import { USER_SERVER } from '../../../components/Config.js';
 import styled from "styled-components";
 import { Descriptions } from 'antd';
-import RatingPage from "../../RatingPage/RatingPage.js";
+import RatingPage from "../RatingPage/RatingPage.js";
+import naverseries from "../../../images/naverseries-app-icon.png";
+import kakaopage from "../../../images/kakaopage-app-icon.png";
+import ridibooks from "../../../images/ridibooks-app-icon.png";
+import joara from "../../../images/joara-app-icon.png";
 
-import naverseries from "../../../../images/naverseries-app-icon.png";
-import kakaopage from "../../../../images/kakaopage-app-icon.png";
-import ridibooks from "../../../../images/ridibooks-app-icon.png";
-import joara from "../../../../images/joara-app-icon.png";
 
-
-//작품 페이지 출력
+//작품 상세 페이지 정보 출력
 function NovelInfo(props) {
 
     const [novels, setNovels] = useState([]);
     const [urls, setUrls] = useState([]);
     const [tags, setTags] = useState([]);
-
-    const [tagId, settagId] = useState([]);
 
     useEffect(() => {
         axios
@@ -69,11 +66,10 @@ function NovelInfo(props) {
     
     return (
       <div>
-        {/* 작품 이미지 */}
         <Descriptions layout="vertical" bordered >
           <Descriptions.Item span={4}><Font>{novels.title}</Font> <RatingPage nid={props.nid} /> </Descriptions.Item>
           <Descriptions.Item span={4}>
-            <img src={`${novels.imgurl}`} width='270' style={{ margin: '0 30%', border: '1px solid #dcdcdc'}}></img>
+            <img src={`${novels.imgurl}`} alt={novels.title} width='270' style={{ margin: '0 30%', border: '1px solid #dcdcdc'}}></img>
           </Descriptions.Item>
           <Descriptions.Item label="작가" >{novels.name}</Descriptions.Item>
           <Descriptions.Item label="장르" >{novels.genre}</Descriptions.Item>
@@ -99,6 +95,7 @@ function NovelInfo(props) {
     );
 }
 
+//스타일 영역
 const Font = styled.span`
   font-weight: bold;
   font-size: 20px;
@@ -114,6 +111,7 @@ const Tags = styled.button`
   :hover {
     background-color: #99c6f5;
   }
+  cursor: pointer;
 `;
 
 export default NovelInfo

@@ -40,7 +40,6 @@ function ViewsPage(props) {
 
   return (
     <div>
-      <Div>조회수 기반: 조회수가 가장 높은 소설을 기반으로 작품을 추천</Div>
       <RecommendTab/>
       <Container>
         <GlobalStyle />
@@ -50,7 +49,7 @@ function ViewsPage(props) {
             <Body>
               {/* 작품 표지 이미지 url */}
               <Img>
-                <img src = {`${data.imgurl}`} width = '200' height = '280' align = 'center' ></img> 
+                <img src = {`${data.imgurl}`} alt={data.title} width = '200' height = '280' align = 'center' ></img> 
               </Img>
               <Effcet/>
             </Body>
@@ -97,11 +96,9 @@ const Img = styled.div`
 
 const Title = styled.div`
   padding: 0px 0px;
-  //height: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
-  //border-bottom: 1px black;
 `;
 
 const Body = styled.div`
@@ -117,15 +114,6 @@ const Effcet = styled.div`
   position: relative;
 `;
 
-const Div = styled.ul`
-  position: absolute;
-  left: 43%;
-  transform: translateX(-100%);
-  transform: translateY(250%);
-  color: #f4ac19;
-  //font-size: 10px;
-`;
-
 const LoadButton = styled.button`
   padding: 6px 12px;
   color: #ffffff;
@@ -135,6 +123,7 @@ const LoadButton = styled.button`
   :hover {
     background-color: #F5F5F5;
   }
+  cursor: pointer;
 `;
 
 export default ViewsPage
